@@ -16,6 +16,8 @@ class AudioPlayerViewController: UIViewController {
     private var volumeSlider: UISlider = UISlider ()
     private var stopButton: UIButton = UIButton(type: .system)
     
+    private var isPlaying: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,6 +32,7 @@ class AudioPlayerViewController: UIViewController {
         self.setStopButton()
         self.setPlaySlider()
         self.setVolumeLabel()
+        self.setVolumeSlider()
         
     }
     
@@ -79,15 +82,26 @@ class AudioPlayerViewController: UIViewController {
         self.view.addSubview(volumeLabel)
     }
     
-    private func setvolumeSlider(){
+    private func setVolumeSlider(){
         volumeSlider.autoresizingMask = .flexibleWidth
         volumeSlider.translatesAutoresizingMaskIntoConstraints=true
         volumeSlider.frame=CGRect(x: 20, y:250, width: self.view.frame.width/2, height: 50)
         self.view.addSubview(volumeSlider)
     }
     
+    override func viewWillLayoutSubviews() {
+        
+    }
     
-    
+    override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        self.isPlaying.toggle()
+        if(self.isPlaying){
+            print("Playing")
+        }
+        else{
+            print("Not playing")
+        }
+    }
 
     /*
     // MARK: - Navigation
