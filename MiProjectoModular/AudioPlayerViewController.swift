@@ -10,6 +10,11 @@ import UIKit
 class AudioPlayerViewController: UIViewController {
 
     var audioPlayerLabel: UILabel = UILabel()
+    var playButton: UIButton = UIButton(type: .system)
+    var playSlider: UISlider = UISlider()
+    var volumeLabel: UILabel = UILabel()
+    var volumeSlider: UISlider = UISlider ()
+    var stopButton: UIButton = UIButton(type: .system)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +34,6 @@ class AudioPlayerViewController: UIViewController {
         audioPlayerLabel.textAlignment = .center
         self.view.addSubview(audioPlayerLabel)
         
-        let playButton = UIButton(type: .system)
         playButton.setTitle("Play", for: .normal)
         playButton.autoresizingMask = .flexibleWidth
         playButton.translatesAutoresizingMaskIntoConstraints=true
@@ -37,20 +41,17 @@ class AudioPlayerViewController: UIViewController {
         playButton.frame=CGRect(x: 20, y: 100, width: 100, height: 40)
         self.view.addSubview(playButton)
         
-        let playSlider = UISlider ()
         playSlider.autoresizingMask = .flexibleWidth
         playSlider.translatesAutoresizingMaskIntoConstraints=true
         playSlider.frame=CGRect(x: 20, y:150, width: self.view.frame.width-40, height: 50)
         self.view.addSubview(playSlider)
         
-        let stopButton = UIButton(type: .system)
         stopButton.setTitle("Stop", for: .normal)
         stopButton.autoresizingMask = .flexibleWidth
         stopButton.translatesAutoresizingMaskIntoConstraints=true
         stopButton.frame=CGRect(x: self.view.frame.width-120, y: 100, width: 100, height: 40)
         self.view.addSubview(stopButton)
         
-        let volumeLabel = UILabel()
         volumeLabel.text = "Volume"
         volumeLabel.font = UIFont.systemFont(ofSize: 18)
         
@@ -60,7 +61,6 @@ class AudioPlayerViewController: UIViewController {
         volumeLabel.textAlignment = .left
         self.view.addSubview(volumeLabel)
         
-        let volumeSlider = UISlider ()
         volumeSlider.autoresizingMask = .flexibleWidth
         volumeSlider.translatesAutoresizingMaskIntoConstraints=true
         volumeSlider.frame=CGRect(x: 20, y:250, width: self.view.frame.width/2, height: 50)
