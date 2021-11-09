@@ -40,53 +40,81 @@ class AudioPlayerViewController: UIViewController {
         audioPlayerLabel.text = "AudioPlayer"
         audioPlayerLabel.font = UIFont.systemFont(ofSize: 30)
         
-        audioPlayerLabel.autoresizingMask = .flexibleWidth
-        audioPlayerLabel.translatesAutoresizingMaskIntoConstraints=true
-        audioPlayerLabel.frame=CGRect(x: 0, y: 50, width: self.view.frame.width, height: 50)
+        //audioPlayerLabel.autoresizingMask = .flexibleWidth
+        audioPlayerLabel.translatesAutoresizingMaskIntoConstraints=false
+        //audioPlayerLabel.frame=CGRect(x: 0, y: 50, width: self.view.frame.width, height: 50)
         audioPlayerLabel.textAlignment = .center
         self.view.addSubview(audioPlayerLabel)
+        
+        NSLayoutConstraint.activate([
+            audioPlayerLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 50),
+            audioPlayerLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+        ])
     }
     
     private func setPlayButton(){
         playButton.setTitle("Play", for: .normal)
-        playButton.autoresizingMask = .flexibleWidth
-        playButton.translatesAutoresizingMaskIntoConstraints=true
+        playButton.translatesAutoresizingMaskIntoConstraints=false
         playButton.setTitleColor(UIColor.blue, for: .normal)
-        playButton.frame=CGRect(x: 20, y: 100, width: 100, height: 40)
         self.view.addSubview(playButton)
+        
+        NSLayoutConstraint.activate([
+            playButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 110),
+            playButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 40),
+            playButton.widthAnchor.constraint(equalToConstant: 100),
+            playButton.heightAnchor.constraint(equalToConstant: 40)
+        ])
     }
     
     private func setStopButton(){
         stopButton.setTitle("Stop", for: .normal)
-        stopButton.autoresizingMask = .flexibleWidth
-        stopButton.translatesAutoresizingMaskIntoConstraints=true
-        stopButton.frame=CGRect(x: self.view.frame.width-120, y: 100, width: 100, height: 40)
+        stopButton.translatesAutoresizingMaskIntoConstraints=false
         self.view.addSubview(stopButton)
+        
+        NSLayoutConstraint.activate([
+            stopButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 110),
+            stopButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -40),
+            stopButton.widthAnchor.constraint(equalToConstant: 100),
+            stopButton.heightAnchor.constraint(equalToConstant: 40)
+        ])
     }
     
     private func setPlaySlider(){
-        playSlider.autoresizingMask = .flexibleWidth
-        playSlider.translatesAutoresizingMaskIntoConstraints=true
-        playSlider.frame=CGRect(x: 20, y:150, width: self.view.frame.width-40, height: 50)
+        playSlider.translatesAutoresizingMaskIntoConstraints=false
         self.view.addSubview(playSlider)
+        
+        NSLayoutConstraint.activate([
+            playSlider.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 160),
+            playSlider.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            playSlider.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            playSlider.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
     
     private func setVolumeLabel(){
         volumeLabel.text = "Volume"
         volumeLabel.font = UIFont.systemFont(ofSize: 18)
         
-        volumeLabel.autoresizingMask = .flexibleWidth
-        volumeLabel.translatesAutoresizingMaskIntoConstraints=true
-        volumeLabel.frame=CGRect(x: 20, y: 200, width: 100, height: 50)
+        volumeLabel.translatesAutoresizingMaskIntoConstraints=false
         volumeLabel.textAlignment = .left
         self.view.addSubview(volumeLabel)
+        
+        NSLayoutConstraint.activate([
+            volumeLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 240),
+            volumeLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20)
+        ])
     }
     
     private func setVolumeSlider(){
-        volumeSlider.autoresizingMask = .flexibleWidth
-        volumeSlider.translatesAutoresizingMaskIntoConstraints=true
-        volumeSlider.frame=CGRect(x: 20, y:250, width: self.view.frame.width/2, height: 50)
+        volumeSlider.translatesAutoresizingMaskIntoConstraints=false
         self.view.addSubview(volumeSlider)
+        
+        NSLayoutConstraint.activate([
+            volumeSlider.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 290),
+            volumeSlider.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            volumeSlider.widthAnchor.constraint(equalToConstant: self.view.frame.width/2),
+            volumeSlider.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
     
     override func viewWillLayoutSubviews() {
