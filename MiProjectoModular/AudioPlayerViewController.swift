@@ -61,7 +61,7 @@ class AudioPlayerViewController: UIViewController {
         self.view.addSubview(playButton)
         
         NSLayoutConstraint.activate([
-            playButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 110),
+            playButton.topAnchor.constraint(equalTo: audioPlayerLabel.bottomAnchor, constant: 20),
             playButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 40),
             playButton.widthAnchor.constraint(equalToConstant: 100),
             playButton.heightAnchor.constraint(equalToConstant: 40)
@@ -74,7 +74,7 @@ class AudioPlayerViewController: UIViewController {
         self.view.addSubview(stopButton)
         
         NSLayoutConstraint.activate([
-            stopButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 110),
+            stopButton.topAnchor.constraint(equalTo: audioPlayerLabel.bottomAnchor, constant: 20),
             stopButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -40),
             stopButton.widthAnchor.constraint(equalToConstant: 100),
             stopButton.heightAnchor.constraint(equalToConstant: 40)
@@ -86,7 +86,7 @@ class AudioPlayerViewController: UIViewController {
         self.view.addSubview(playSlider)
         
         NSLayoutConstraint.activate([
-            playSlider.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 160),
+            playSlider.topAnchor.constraint(equalTo: playButton.bottomAnchor, constant: 20),
             playSlider.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
             playSlider.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
             playSlider.heightAnchor.constraint(equalToConstant: 50)
@@ -102,7 +102,7 @@ class AudioPlayerViewController: UIViewController {
         self.view.addSubview(volumeLabel)
         
         NSLayoutConstraint.activate([
-            volumeLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 240),
+            volumeLabel.topAnchor.constraint(equalTo: playSlider.bottomAnchor, constant: 25),
             volumeLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20)
         ])
     }
@@ -112,7 +112,7 @@ class AudioPlayerViewController: UIViewController {
         self.view.addSubview(volumeSlider)
         
         NSLayoutConstraint.activate([
-            volumeSlider.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 290),
+            volumeSlider.topAnchor.constraint(equalTo: volumeLabel.bottomAnchor, constant: 20),
             volumeSlider.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
             volumeSlider.widthAnchor.constraint(equalToConstant: self.view.frame.width/2),
             volumeSlider.heightAnchor.constraint(equalToConstant: 50)
@@ -129,7 +129,7 @@ class AudioPlayerViewController: UIViewController {
         playingImage.translatesAutoresizingMaskIntoConstraints=false
         self.view.addSubview(self.playingImage)
         NSLayoutConstraint.activate([
-            playingImage.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 350),
+            playingImage.topAnchor.constraint(equalTo: volumeSlider.bottomAnchor, constant: 40),
             playingImage.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0),
             playingImage.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0),
             playingImage.heightAnchor.constraint(equalToConstant: 150)
