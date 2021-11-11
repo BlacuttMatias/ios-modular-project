@@ -23,8 +23,8 @@ class AudioPlayerViewController: UIViewController {
         super.viewDidLoad()
         
         //obtiene el alto y ancho de la pantalla que se esta usando
-        let w = UIScreen.main.currentMode?.size.width
-        let h = UIScreen.main.currentMode?.size.height
+        //let w = UIScreen.main.currentMode?.size.width
+        //let h = UIScreen.main.currentMode?.size.height
         
         self.view.backgroundColor = .white
 
