@@ -15,6 +15,7 @@ class AudioPlayerViewController: UIViewController {
     private var volumeLabel: UILabel = UILabel()
     private var volumeSlider: UISlider = UISlider ()
     private var stopButton: UIButton = UIButton(type: .system)
+    private var playingImage: UIImageView = UIImageView()
     
     private var isPlaying: Bool = false
     
@@ -33,6 +34,7 @@ class AudioPlayerViewController: UIViewController {
         self.setPlaySlider()
         self.setVolumeLabel()
         self.setVolumeSlider()
+        self.setPlayingImage()
         
     }
     
@@ -114,6 +116,23 @@ class AudioPlayerViewController: UIViewController {
             volumeSlider.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
             volumeSlider.widthAnchor.constraint(equalToConstant: self.view.frame.width/2),
             volumeSlider.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+    
+    private func setPlayingImage(){
+        let possibleUrlImage = Bundle.main.url(forResource: "stegosaurus-studio", withExtension: "gif")
+        guard let urlImage = possibleUrlImage else {
+            return
+        }
+        let animatedImage = UIImage.animatedImage(withAnimatedGIFURL: urlImage)
+        self.playingImage.image = animatedImage
+        playingImage.translatesAutoresizingMaskIntoConstraints=false
+        self.view.addSubview(self.playingImage)
+        NSLayoutConstraint.activate([
+            playingImage.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 350),
+            playingImage.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0),
+            playingImage.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0),
+            playingImage.heightAnchor.constraint(equalToConstant: 150)
         ])
     }
     
