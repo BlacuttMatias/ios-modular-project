@@ -75,6 +75,10 @@ class AudioPlayerViewController: UIViewController {
     }
     
     @objc private func playButtonTouch(){
+        self.changeStatePlaying()
+    }
+    
+    private func changeStatePlaying(){
         self.audioPlayer.changePlayingState()
         let image = UIImage(named: self.audioPlayer.getActionImageName())
         self.playButton.setImage(image, for: .normal)
@@ -153,13 +157,7 @@ class AudioPlayerViewController: UIViewController {
     }
     
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        self.isPlaying.toggle()
-        if(self.isPlaying){
-            print("Playing")
-        }
-        else{
-            print("Not playing")
-        }
+        self.changeStatePlaying()
     }
 
     /*
