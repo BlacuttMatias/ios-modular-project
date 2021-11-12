@@ -16,6 +16,7 @@ class AudioPlayerViewController: UIViewController {
     private var volumeSlider: UISlider = UISlider ()
     private var stopButton: UIButton = UIButton(type: .system)
     private var playingImage: UIImageView = UIImageView()
+    private var audioPlayer: AudioPlayer = AudioPlayer(file: "bensound-ukulele", fileExtension: "mp3")
     
     private var isPlaying: Bool = false
     
@@ -27,6 +28,8 @@ class AudioPlayerViewController: UIViewController {
         //let h = UIScreen.main.currentMode?.size.height
         
         self.view.backgroundColor = .white
+        
+        self.audioPlayer.play()
 
         self.setAudioPlayerLabel()
         self.setPlayButton()
