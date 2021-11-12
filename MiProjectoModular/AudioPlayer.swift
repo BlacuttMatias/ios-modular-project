@@ -43,4 +43,16 @@ class AudioPlayer{
         }
     }
     
+    func getActionImageName() -> String{
+        guard let sound = self.sound else{
+            return ""
+        }
+        if(sound.playing){
+            return "PauseCircleOutline"
+        }
+        else{
+            return "PlayCircleOutline"
+        }
+    }
+    
 }

@@ -58,7 +58,8 @@ class AudioPlayerViewController: UIViewController {
     }
     
     private func setPlayButton(){
-        playButton.setImage(UIImage(named: "PlayCircleOutline"), for: .normal)
+        let image = UIImage(named: self.audioPlayer.getActionImageName())
+        playButton.setImage(image, for: .normal)
         playButton.translatesAutoresizingMaskIntoConstraints=false
         playButton.setTitleColor(UIColor.blue, for: .normal)
         self.view.addSubview(playButton)
@@ -75,6 +76,8 @@ class AudioPlayerViewController: UIViewController {
     
     @objc private func playButtonTouch(){
         self.audioPlayer.changePlayingState()
+        let image = UIImage(named: self.audioPlayer.getActionImageName())
+        self.playButton.setImage(image, for: .normal)
     }
     
     private func setStopButton(){
