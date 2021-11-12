@@ -125,7 +125,9 @@ class AudioPlayerViewController: UIViewController {
     
     private func setVolumeSlider(){
         volumeSlider.translatesAutoresizingMaskIntoConstraints=false
+        volumeSlider.value = self.audioPlayer.getVolume()
         self.view.addSubview(volumeSlider)
+        volumeSlider.addTarget(self, action: #selector(volumeChanged), for: .valueChanged)
         
         NSLayoutConstraint.activate([
             volumeSlider.topAnchor.constraint(equalTo: volumeLabel.bottomAnchor, constant: 20),
@@ -133,6 +135,11 @@ class AudioPlayerViewController: UIViewController {
             volumeSlider.widthAnchor.constraint(equalToConstant: self.view.frame.width/2),
             volumeSlider.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+    
+    @objc func volumeChanged(){
+        let volume = volumeSlider.value
+        self.audioPlayer.setVolume(volume: volume)
     }
     
     private func setPlayingImage(){

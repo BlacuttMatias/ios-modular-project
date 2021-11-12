@@ -27,6 +27,13 @@ class AudioPlayer{
         self.sound?.stop()
     }
     
+    func getVolume() -> Float{
+        guard let sound = self.sound else{
+            return 0
+        }
+        return sound.volume
+    }
+    
     func setVolume(volume: Float){
         self.sound?.volume = volume
     }
