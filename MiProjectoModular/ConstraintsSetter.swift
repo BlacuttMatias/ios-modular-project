@@ -12,6 +12,7 @@ class ConstraintsSetter{
     
     init(uiView: UIView){
         self.uiView = uiView
+        self.uiView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func setPriorityAndActivate(constraint: NSLayoutConstraint, priority: Float){
@@ -49,6 +50,19 @@ class ConstraintsSetter{
         self.setPriorityAndActivate(constraint: constraint, priority: priority)
     }
     
+    func setCenterXContraint(referenceAnchorView: NSLayoutAnchor<NSLayoutXAxisAnchor>){
+        let constraint = uiView.centerXAnchor.constraint(equalTo: referenceAnchorView)
+        constraint.isActive = true
+    }
     
+    func setHeightConstraint(height: CGFloat){
+        let constraint = uiView.heightAnchor.constraint(equalToConstant: height)
+        constraint.isActive = true
+    }
+    
+    func setWidthConstraint(width: CGFloat){
+        let constraint = uiView.widthAnchor.constraint(equalToConstant: width)
+        constraint.isActive = true
+    }
     
 }

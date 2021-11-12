@@ -46,32 +46,32 @@ class AudioPlayerViewController: UIViewController {
         audioPlayerLabel.font = UIFont.systemFont(ofSize: 30)
         
         //audioPlayerLabel.autoresizingMask = .flexibleWidth
-        audioPlayerLabel.translatesAutoresizingMaskIntoConstraints=false
+        //audioPlayerLabel.translatesAutoresizingMaskIntoConstraints=false
         //audioPlayerLabel.frame=CGRect(x: 0, y: 50, width: self.view.frame.width, height: 50)
         audioPlayerLabel.textAlignment = .center
         self.view.addSubview(audioPlayerLabel)
         
-        NSLayoutConstraint.activate([
-            audioPlayerLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 50),
-            audioPlayerLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
-        ])
+        let constraintSetter = ConstraintsSetter(uiView: audioPlayerLabel)
+        constraintSetter.setTopEqualContraint(referenceAnchorView: self.view.topAnchor, distance: 50)
+        constraintSetter.setCenterXContraint(referenceAnchorView: self.view.centerXAnchor)
+
     }
     
     private func setPlayButton(){
         let image = UIImage(named: self.audioPlayer.getActionImageName())
         playButton.setImage(image, for: .normal)
-        playButton.translatesAutoresizingMaskIntoConstraints=false
         playButton.setTitleColor(UIColor.blue, for: .normal)
-        self.view.addSubview(playButton)
-        
-        NSLayoutConstraint.activate([
-            playButton.topAnchor.constraint(equalTo: audioPlayerLabel.bottomAnchor, constant: 20),
-            playButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            playButton.widthAnchor.constraint(equalToConstant: 50),
-            playButton.heightAnchor.constraint(equalToConstant: 50)
-        ])
         
         self.playButton.addTarget(self, action: #selector(playButtonTouch), for: .touchUpInside)
+        
+        self.view.addSubview(playButton)
+        
+        let constraintSetter = ConstraintsSetter(uiView: playButton)
+        constraintSetter.setTopEqualContraint(referenceAnchorView: audioPlayerLabel.bottomAnchor, distance: 20)
+        constraintSetter.setCenterXContraint(referenceAnchorView: self.view.centerXAnchor)
+        constraintSetter.setHeightConstraint(height: 50)
+        constraintSetter.setWidthConstraint(width: 50)
+        
     }
     
     @objc private func playButtonTouch(){
@@ -98,43 +98,40 @@ class AudioPlayerViewController: UIViewController {
     }
     
     private func setPlaySlider(){
-        playSlider.translatesAutoresizingMaskIntoConstraints=false
         self.view.addSubview(playSlider)
         
-        NSLayoutConstraint.activate([
-            playSlider.topAnchor.constraint(equalTo: playButton.bottomAnchor, constant: 20),
-            playSlider.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
-            playSlider.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
-            playSlider.heightAnchor.constraint(equalToConstant: 50)
-        ])
+        let constraintSetter = ConstraintsSetter(uiView: playSlider)
+        constraintSetter.setTopEqualContraint(referenceAnchorView: playButton.bottomAnchor, distance: 20)
+        constraintSetter.setRightEqualContraint(referenceAnchorView: self.view.trailingAnchor, distance: -20)
+        constraintSetter.setLeftEqualContraint(referenceAnchorView: self.view.leadingAnchor, distance: 20)
+        constraintSetter.setHeightConstraint(height: 50)
+    
     }
     
     private func setVolumeLabel(){
         volumeLabel.text = "Volume"
         volumeLabel.font = UIFont.systemFont(ofSize: 18)
         
-        volumeLabel.translatesAutoresizingMaskIntoConstraints=false
-        volumeLabel.textAlignment = .left
         self.view.addSubview(volumeLabel)
         
-        NSLayoutConstraint.activate([
-            volumeLabel.topAnchor.constraint(equalTo: playSlider.bottomAnchor, constant: 25),
-            volumeLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20)
-        ])
+        let constraintSetter = ConstraintsSetter(uiView: volumeLabel)
+        constraintSetter.setTopEqualContraint(referenceAnchorView: playSlider.bottomAnchor, distance: 25)
+        constraintSetter.setLeftEqualContraint(referenceAnchorView: self.view.leadingAnchor, distance: 20)
+        
     }
     
     private func setVolumeSlider(){
-        volumeSlider.translatesAutoresizingMaskIntoConstraints=false
         volumeSlider.value = self.audioPlayer.getVolume()
         self.view.addSubview(volumeSlider)
+        
         volumeSlider.addTarget(self, action: #selector(volumeChanged), for: .valueChanged)
         
-        NSLayoutConstraint.activate([
-            volumeSlider.topAnchor.constraint(equalTo: volumeLabel.bottomAnchor, constant: 20),
-            volumeSlider.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
-            volumeSlider.widthAnchor.constraint(equalToConstant: self.view.frame.width/2),
-            volumeSlider.heightAnchor.constraint(equalToConstant: 50)
-        ])
+        let constraintSetter = ConstraintsSetter(uiView: volumeSlider)
+        constraintSetter.setTopEqualContraint(referenceAnchorView: volumeLabel.bottomAnchor, distance: 20)
+        constraintSetter.setLeftEqualContraint(referenceAnchorView: self.view.leadingAnchor, distance: 20)
+        constraintSetter.setWidthConstraint(width: self.view.frame.width/2)
+        constraintSetter.setHeightConstraint(height: 50)
+        
     }
     
     @objc func volumeChanged(){
@@ -149,14 +146,15 @@ class AudioPlayerViewController: UIViewController {
         }
         let animatedImage = UIImage.animatedImage(withAnimatedGIFURL: urlImage)
         self.playingImage.image = animatedImage
-        playingImage.translatesAutoresizingMaskIntoConstraints=false
+        
         self.view.addSubview(self.playingImage)
-        NSLayoutConstraint.activate([
-            playingImage.topAnchor.constraint(equalTo: volumeSlider.bottomAnchor, constant: 40),
-            playingImage.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0),
-            playingImage.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0),
-            playingImage.heightAnchor.constraint(equalToConstant: 150)
-        ])
+        
+        let constraintSetter = ConstraintsSetter(uiView: playingImage)
+        constraintSetter.setTopEqualContraint(referenceAnchorView: volumeSlider.bottomAnchor, distance: 40)
+        constraintSetter.setLeftEqualContraint(referenceAnchorView: self.view.leadingAnchor, distance: 0, priority: 1000)
+        constraintSetter.setRightEqualContraint(referenceAnchorView: self.view.trailingAnchor, distance: 0, priority: 1000)
+        constraintSetter.setHeightConstraint(height: 150)
+        
     }
     
     override func viewWillLayoutSubviews() {
