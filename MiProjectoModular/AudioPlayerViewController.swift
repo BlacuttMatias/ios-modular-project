@@ -33,7 +33,6 @@ class AudioPlayerViewController: UIViewController {
 
         self.setAudioPlayerLabel()
         self.setPlayButton()
-        //self.setStopButton()
         self.setPlaySlider()
         self.setVolumeLabel()
         self.setVolumeSlider()
@@ -82,19 +81,6 @@ class AudioPlayerViewController: UIViewController {
         self.audioPlayer.changePlayingState()
         let image = UIImage(named: self.audioPlayer.getActionImageName())
         self.playButton.setImage(image, for: .normal)
-    }
-    
-    private func setStopButton(){
-        stopButton.setTitle("Stop", for: .normal)
-        stopButton.translatesAutoresizingMaskIntoConstraints=false
-        self.view.addSubview(stopButton)
-        
-        NSLayoutConstraint.activate([
-            stopButton.topAnchor.constraint(equalTo: audioPlayerLabel.bottomAnchor, constant: 20),
-            stopButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -40),
-            stopButton.widthAnchor.constraint(equalToConstant: 100),
-            stopButton.heightAnchor.constraint(equalToConstant: 40)
-        ])
     }
     
     private func setPlaySlider(){
