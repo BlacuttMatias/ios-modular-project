@@ -33,7 +33,7 @@ class AudioPlayerViewController: UIViewController {
 
         self.setAudioPlayerLabel()
         self.setPlayButton()
-        self.setStopButton()
+        //self.setStopButton()
         self.setPlaySlider()
         self.setVolumeLabel()
         self.setVolumeSlider()
@@ -58,17 +58,23 @@ class AudioPlayerViewController: UIViewController {
     }
     
     private func setPlayButton(){
-        playButton.setTitle("Play", for: .normal)
+        playButton.setImage(UIImage(named: "PlayCircleOutline"), for: .normal)
         playButton.translatesAutoresizingMaskIntoConstraints=false
         playButton.setTitleColor(UIColor.blue, for: .normal)
         self.view.addSubview(playButton)
         
         NSLayoutConstraint.activate([
             playButton.topAnchor.constraint(equalTo: audioPlayerLabel.bottomAnchor, constant: 20),
-            playButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 40),
-            playButton.widthAnchor.constraint(equalToConstant: 100),
-            playButton.heightAnchor.constraint(equalToConstant: 40)
+            playButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            playButton.widthAnchor.constraint(equalToConstant: 50),
+            playButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+        
+        self.playButton.addTarget(self, action: #selector(playButtonTouch), for: .touchUpInside)
+    }
+    
+    @objc private func playButtonTouch(){
+        self.audioPlayer.changePlayingState()
     }
     
     private func setStopButton(){

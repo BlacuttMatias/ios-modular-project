@@ -31,6 +31,16 @@ class AudioPlayer{
         self.sound?.volume = volume
     }
     
-    
+    func changePlayingState(){
+        guard let sound = self.sound else{
+            return
+        }
+        if(sound.playing){
+            sound.pause()
+        }
+        else{
+            sound.resume()
+        }
+    }
     
 }
