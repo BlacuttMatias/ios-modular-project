@@ -24,6 +24,8 @@
 		D0A7D84F2734446D00980BFF /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A7D84E2734446D00980BFF /* TrackTableViewCell.swift */; };
 		D0C90B0C27331324000FDC9F /* TrackerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C90B0B27331324000FDC9F /* TrackerTableViewController.swift */; };
 		D0D53DC2273567DC000F1BB7 /* AudioPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D53DC1273567DC000F1BB7 /* AudioPlayerViewController.swift */; };
+		D0F2E98B27429C7D006966D0 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2E98A27429C7D006966D0 /* ImageManager.swift */; };
+		D0F2E98D2742B17F006966D0 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2E98C2742B17F006966D0 /* Resources.swift */; };
 		D0FDBD8D27270B4900E3982B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FDBD8C27270B4900E3982B /* AppDelegate.swift */; };
 		D0FDBD8F27270B4900E3982B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FDBD8E27270B4900E3982B /* SceneDelegate.swift */; };
 		D0FDBD9127270B4900E3982B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FDBD9027270B4900E3982B /* LoginViewController.swift */; };
@@ -33,6 +35,8 @@
 		D0FDBDA427270B4C00E3982B /* MiProjectoModularTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FDBDA327270B4C00E3982B /* MiProjectoModularTests.swift */; };
 		D0FDBDAE27270B4C00E3982B /* MiProjectoModularUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FDBDAD27270B4C00E3982B /* MiProjectoModularUITests.swift */; };
 		D0FDBDB027270B4C00E3982B /* MiProjectoModularUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FDBDAF27270B4C00E3982B /* MiProjectoModularUITestsLaunchTests.swift */; };
+		D0FE0BEA273ECDA900CB481A /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FE0BE9273ECDA900CB481A /* AudioPlayer.swift */; };
+		D0FE0BEC273ED02000CB481A /* bensound-ukulele.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D0FE0BEB273ED02000CB481A /* bensound-ukulele.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +78,8 @@
 		D0A7D84E2734446D00980BFF /* TrackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
 		D0C90B0B27331324000FDC9F /* TrackerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerTableViewController.swift; sourceTree = "<group>"; };
 		D0D53DC1273567DC000F1BB7 /* AudioPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewController.swift; sourceTree = "<group>"; };
+		D0F2E98A27429C7D006966D0 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		D0F2E98C2742B17F006966D0 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		D0FDBD8927270B4900E3982B /* MiProjectoModular.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiProjectoModular.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0FDBD8C27270B4900E3982B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0FDBD8E27270B4900E3982B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +93,8 @@
 		D0FDBDA927270B4C00E3982B /* MiProjectoModularUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiProjectoModularUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0FDBDAD27270B4C00E3982B /* MiProjectoModularUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiProjectoModularUITests.swift; sourceTree = "<group>"; };
 		D0FDBDAF27270B4C00E3982B /* MiProjectoModularUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiProjectoModularUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D0FE0BE9273ECDA900CB481A /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		D0FE0BEB273ED02000CB481A /* bensound-ukulele.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bensound-ukulele.mp3"; sourceTree = "<group>"; };
 		D35DCE1EF7550EA8818B30BE /* Pods-MiProjectoModularTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiProjectoModularTests.debug.xcconfig"; path = "Target Support Files/Pods-MiProjectoModularTests/Pods-MiProjectoModularTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DB2DEA42953A4EDF66E6A959 /* Pods_MiProjectoModularTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiProjectoModularTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1E79829CAEC82F0D8E0619C /* Pods_MiProjectoModular_MiProjectoModularUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiProjectoModular_MiProjectoModularUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,7 +139,6 @@
 				D35DCE1EF7550EA8818B30BE /* Pods-MiProjectoModularTests.debug.xcconfig */,
 				722B95FA83589C5550306616 /* Pods-MiProjectoModularTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -193,6 +200,10 @@
 				D00CDD67273D78E000C24A8C /* MiProjectoModular-Bridging-Header.h */,
 				D00CDD6B273D7B2000C24A8C /* stegosaurus-studio.gif */,
 				D00CDD6D273DB68300C24A8C /* ConstraintsSetter.swift */,
+				D0FE0BE9273ECDA900CB481A /* AudioPlayer.swift */,
+				D0FE0BEB273ED02000CB481A /* bensound-ukulele.mp3 */,
+				D0F2E98A27429C7D006966D0 /* ImageManager.swift */,
+				D0F2E98C2742B17F006966D0 /* Resources.swift */,
 			);
 			path = MiProjectoModular;
 			sourceTree = "<group>";
@@ -326,6 +337,7 @@
 			files = (
 				D00CDD6C273D7B2000C24A8C /* stegosaurus-studio.gif in Resources */,
 				D0FDBD9927270B4B00E3982B /* LaunchScreen.storyboard in Resources */,
+				D0FE0BEC273ED02000CB481A /* bensound-ukulele.mp3 in Resources */,
 				D0FDBD9627270B4B00E3982B /* Assets.xcassets in Resources */,
 				D0FDBD9427270B4900E3982B /* Main.storyboard in Resources */,
 			);
@@ -458,6 +470,8 @@
 				D0C90B0C27331324000FDC9F /* TrackerTableViewController.swift in Sources */,
 				D00CDD6E273DB68300C24A8C /* ConstraintsSetter.swift in Sources */,
 				D0891AF8272B38E70085F8D5 /* LoginValidator.swift in Sources */,
+				D0F2E98B27429C7D006966D0 /* ImageManager.swift in Sources */,
+				D0F2E98D2742B17F006966D0 /* Resources.swift in Sources */,
 				D0A35CCE272C213200F88788 /* WelcomeViewController.swift in Sources */,
 				D0A7D84D273443BD00980BFF /* Protocols.swift in Sources */,
 				D0891AFA272B3A790085F8D5 /* StringValidator.swift in Sources */,
@@ -465,6 +479,7 @@
 				D0FDBD8D27270B4900E3982B /* AppDelegate.swift in Sources */,
 				D0A7D84F2734446D00980BFF /* TrackTableViewCell.swift in Sources */,
 				D0891AFC272B3C2E0085F8D5 /* RegisterValidator.swift in Sources */,
+				D0FE0BEA273ECDA900CB481A /* AudioPlayer.swift in Sources */,
 				D0A35CD0272C31C200F88788 /* Models.swift in Sources */,
 				D0D53DC2273567DC000F1BB7 /* AudioPlayerViewController.swift in Sources */,
 				D0FDBD8F27270B4900E3982B /* SceneDelegate.swift in Sources */,
@@ -657,6 +672,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -689,6 +706,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

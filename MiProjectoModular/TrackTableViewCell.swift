@@ -35,7 +35,7 @@ class TrackTableViewCell: UITableViewCell{
     }
     
     private func setAudioTrackImage(){
-        self.audioTrackImage.image = UIImage(named: "AudioTrackIcon")
+        self.audioTrackImage.image = UIImage(named: Resource.audioTrackIcon)
         self.audioTrackImage.backgroundColor = .white
         //self.audioTrackImage.autoresizingMask = .flexibleWidth
         self.audioTrackImage.translatesAutoresizingMaskIntoConstraints=false
@@ -86,7 +86,7 @@ class TrackTableViewCell: UITableViewCell{
     }
     
     private func setPlayButton(){
-        let buttonImage = UIImage(named: "PlayCircleIcon")
+        let buttonImage = UIImage(named: Resource.playCircleIcon)
         playButton.setImage(buttonImage, for: .normal)
         //playButton.autoresizingMask = .flexibleWidth
         playButton.translatesAutoresizingMaskIntoConstraints=false

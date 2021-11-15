@@ -19,8 +19,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let backgroundColorName = "BackgroundColor"
-        let labelColorName = "LabelColor"
+        let backgroundColorName = Resource.backgroundColor
+        let labelColorName = Resource.labelColor
         
         signInLabel.textColor = UIColor(named: labelColorName)
         self.view.backgroundColor = UIColor(named: backgroundColorName)

@@ -55,10 +55,10 @@ class AudioPlayer{
             return ""
         }
         if(sound.playing){
-            return "PauseCircleOutline"
+            return Resource.pauseCircleOutline
         }
         else{
-            return "PlayCircleOutline"
+            return Resource.playCircleIcon
         }
     }
     
@@ -67,10 +67,10 @@ class AudioPlayer{
             return nil
         }
         if(sound.playing){
-            return ImageGif(resource: "stegosaurus-studio")
+            return ImageGif(resource: Resource.imagePlayingGif)
         }
         else{
-            return ImageAsset(named: "AudioPlayingImage")
+            return ImageAsset(named: Resource.audioPlayingImage)
         }
     }
     

@@ -13,7 +13,7 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var logoutButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        imagenLogo.image = UIImage(named: "WelcomeImage")
+        imagenLogo.image = UIImage(named: Resource.welcomeImage)
         logoutButton.layer.cornerRadius = 10.0
         // Do any additional setup after loading the view.
     }
