@@ -62,4 +62,16 @@ class AudioPlayer{
         }
     }
     
+    func getImagePlaying() -> Image?{
+        guard let sound = self.sound else{
+            return nil
+        }
+        if(sound.playing){
+            return ImageGif(resource: "stegosaurus-studio")
+        }
+        else{
+            return ImageAsset(named: "AudioPlayingImage")
+        }
+    }
+    
 }

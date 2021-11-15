@@ -81,6 +81,7 @@ class AudioPlayerViewController: UIViewController {
         self.audioPlayer.changePlayingState()
         let image = UIImage(named: self.audioPlayer.getActionImageName())
         self.playButton.setImage(image, for: .normal)
+        self.playingImage.image = self.audioPlayer.getImagePlaying()?.getImage()
     }
     
     private func setPlaySlider(){
@@ -126,12 +127,7 @@ class AudioPlayerViewController: UIViewController {
     }
     
     private func setPlayingImage(){
-        let possibleUrlImage = Bundle.main.url(forResource: "stegosaurus-studio", withExtension: "gif")
-        guard let urlImage = possibleUrlImage else {
-            return
-        }
-        let animatedImage = UIImage.animatedImage(withAnimatedGIFURL: urlImage)
-        self.playingImage.image = animatedImage
+        self.playingImage.image = self.audioPlayer.getImagePlaying()?.getImage()
         
         self.view.addSubview(self.playingImage)
         
