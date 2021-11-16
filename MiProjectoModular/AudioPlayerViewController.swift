@@ -18,8 +18,6 @@ class AudioPlayerViewController: UIViewController {
     private var playingImage: UIImageView = UIImageView()
     private var audioPlayer: AudioPlayer = AudioPlayer(file: Resource.audio, fileExtension: "mp3")
     
-    private var isPlaying: Bool = false
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
