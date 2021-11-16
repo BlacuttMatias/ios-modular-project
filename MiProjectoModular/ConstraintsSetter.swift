@@ -65,4 +65,9 @@ class ConstraintsSetter{
         constraint.isActive = true
     }
     
+    func setBottomEqualContraint(referenceAnchorView: NSLayoutAnchor<NSLayoutYAxisAnchor>, distance: CGFloat, priority: Float = 500){
+        let constraint = uiView.bottomAnchor.constraint(equalTo: referenceAnchorView, constant: distance)
+        self.setPriorityAndActivate(constraint: constraint, priority: priority)
+    }
+    
 }
