@@ -37,7 +37,6 @@ class AudioPlayerViewController: UIViewController {
         self.setVolumeLabel()
         self.setVolumeSlider()
         self.setPlayingImage()
-        
     }
     
     private func setAudioPlayerLabel(){

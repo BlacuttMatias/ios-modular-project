@@ -10,8 +10,10 @@ import SwiftySound
 
 class AudioPlayer{
     private var sound: Sound?
+    private var audioState: AudioState
     
     init(file: String, fileExtension: String){
+        self.audioState = PausedState()
         let possibleUrl = Bundle.main.url(forResource: file, withExtension: fileExtension)
         guard let url = possibleUrl else{
             return
@@ -21,10 +23,15 @@ class AudioPlayer{
     
     func play(){
         self.sound?.play()
+        self.audioState = PlayingState(audioPlayer: self)
     }
     
-    func stop(){
-        self.sound?.stop()
+    func pause(){
+        self.sound?.pause()
+    }
+    
+    func resume(){
+        self.sound?.resume()
     }
     
     func getVolume() -> Float{
@@ -39,39 +46,19 @@ class AudioPlayer{
     }
     
     func changePlayingState(){
-        guard let sound = self.sound else{
-            return
-        }
-        if(sound.playing){
-            sound.pause()
-        }
-        else{
-            sound.resume()
-        }
+        self.audioState.changePlayingState()
     }
     
     func getActionImageName() -> String{
-        guard let sound = self.sound else{
-            return ""
-        }
-        if(sound.playing){
-            return Resource.pauseCircleOutline
-        }
-        else{
-            return Resource.playCircleIcon
-        }
+        self.audioState.getEnabledActionImageName()
     }
     
     func getImagePlaying() -> Image?{
-        guard let sound = self.sound else{
-            return nil
-        }
-        if(sound.playing){
-            return ImageGif(resource: Resource.imagePlayingGif)
-        }
-        else{
-            return ImageAsset(named: Resource.audioPlayingImage)
-        }
+        self.audioState.getImagePlaying()
     }
     
+    func changeTo(audioState: AudioState){
+        self.audioState = audioState
+    }
+
 }
