@@ -17,6 +17,7 @@ class AudioPlayerViewController: UIViewController {
     private var stopButton: UIButton = UIButton(type: .system)
     private var playingImage: UIImageView = UIImageView()
     private var audioPlayer: AudioPlayer = AudioPlayer(file: Resource.audio, fileExtension: "mp3")
+    private var titleTrack: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,7 @@ class AudioPlayerViewController: UIViewController {
     }
     
     private func setAudioPlayerLabel(){
-        audioPlayerLabel.text = "AudioPlayer"
+        audioPlayerLabel.text = self.titleTrack ?? "AudioPlayer"
         audioPlayerLabel.font = UIFont.systemFont(ofSize: 30)
         
         //audioPlayerLabel.autoresizingMask = .flexibleWidth
@@ -134,6 +135,10 @@ class AudioPlayerViewController: UIViewController {
         constraintSetter.setRightEqualContraint(referenceAnchorView: self.view.trailingAnchor, distance: 0, priority: 1000)
         constraintSetter.setHeightConstraint(height: 150)
         
+    }
+    
+    func setTitleTrack(titleTrack: String){
+        self.titleTrack = titleTrack
     }
     
     override func viewWillLayoutSubviews() {

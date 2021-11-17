@@ -88,6 +88,10 @@ class TrackTableViewCell: UITableViewCell{
         self.parent.buttonTouchedOnCell(tableViewCell: self)
     }
     
+    func getTitleTrack() -> String{
+        return self.track.title
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -50,10 +50,11 @@ class TrackerTableViewController: UITableViewController, ButtonOnCellDelegate {
         return cell
     }
     
-    func buttonTouchedOnCell(tableViewCell: UITableViewCell) {
+    func buttonTouchedOnCell(tableViewCell: TrackTableViewCell) {
         //let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "AudioPlayerViewController") as? AudioPlayerViewController
         //vc!.modalPresentationStyle = .automatic
         let vc = AudioPlayerViewController()
+        vc.setTitleTrack(titleTrack: tableViewCell.getTitleTrack())
         self.present(vc, animated: true)
     }
     

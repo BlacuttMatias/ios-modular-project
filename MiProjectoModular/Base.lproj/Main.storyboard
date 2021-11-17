@@ -390,7 +390,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="WelcomeImage" width="75" height="75"/>
+        <image name="WelcomeImage" width="64" height="64"/>
         <image name="homekit" catalog="system" width="128" height="106"/>
         <image name="play.rectangle.fill" catalog="system" width="128" height="93"/>
         <namedColor name="BackgroundColor">

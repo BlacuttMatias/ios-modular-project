@@ -9,5 +9,5 @@ import Foundation
 import UIKit
 
 protocol ButtonOnCellDelegate{
-    func buttonTouchedOnCell(tableViewCell: UITableViewCell)
+    func buttonTouchedOnCell(tableViewCell: TrackTableViewCell)
 }
