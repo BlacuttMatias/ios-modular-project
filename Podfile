@@ -6,7 +6,7 @@ target 'MiProjectoModular' do
   use_frameworks!
 
   # Pods for MiProjectoModular
-	pod 'SwiftySound'
+	pod 'AudioPlayerSwift'
 
   target 'MiProjectoModularTests' do
     inherit! :search_paths

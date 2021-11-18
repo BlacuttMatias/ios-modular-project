@@ -6,10 +6,10 @@
 //
 
 import Foundation
-import SwiftySound
+import AudioPlayer
 
-class AudioPlayer{
-    private var sound: Sound?
+class AudioPlayerManager{
+    private var sound: AudioPlayer?
     private var audioState: AudioState
     
     init(file: String, fileExtension: String){
@@ -18,7 +18,12 @@ class AudioPlayer{
         guard let url = possibleUrl else{
             return
         }
-        self.sound = Sound(url: url)
+        do{
+            self.sound = try AudioPlayer(contentsOf: url)
+        }
+        catch{
+            print("Error al cargar el sonido: \(error.localizedDescription)")
+        }
     }
     
     func play(){
@@ -27,11 +32,11 @@ class AudioPlayer{
     }
     
     func pause(){
-        self.sound?.pause()
+        self.sound?.stop()
     }
     
     func resume(){
-        self.sound?.resume()
+        self.sound?.play()
     }
     
     func getVolume() -> Float{

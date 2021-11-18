@@ -16,7 +16,7 @@ class AudioPlayerViewController: UIViewController {
     private var volumeSlider: UISlider = UISlider ()
     private var stopButton: UIButton = UIButton(type: .system)
     private var playingImage: UIImageView = UIImageView()
-    private var audioPlayer: AudioPlayer = AudioPlayer(file: Resource.audio, fileExtension: "mp3")
+    private var audioPlayer: AudioPlayerManager = AudioPlayerManager(file: Resource.audio, fileExtension: "mp3")
     private var titleTrack: String?
     
     override func viewDidLoad() {

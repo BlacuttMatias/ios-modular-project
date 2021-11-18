@@ -9,9 +9,9 @@ import Foundation
 
 class PlayingState: AudioState{
     
-    weak var audioPlayer: AudioPlayer?
+    weak var audioPlayer: AudioPlayerManager?
 
-    required init(audioPlayer: AudioPlayer) {
+    required init(audioPlayer: AudioPlayerManager) {
         self.audioPlayer = audioPlayer
     }
     
@@ -19,7 +19,7 @@ class PlayingState: AudioState{
         
     }
     
-    func setAudioPlayer(audioPlayer: AudioPlayer){
+    func setAudioPlayer(audioPlayer: AudioPlayerManager){
         self.audioPlayer = audioPlayer
     }
     

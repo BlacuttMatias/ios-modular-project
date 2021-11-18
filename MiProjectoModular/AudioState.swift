@@ -13,7 +13,7 @@ protocol AudioState{
     func getEnabledActionImageName() -> String
     func getImagePlaying() -> Image
     
-    init(audioPlayer: AudioPlayer)
+    init(audioPlayer: AudioPlayerManager)
     init()
     
 }
