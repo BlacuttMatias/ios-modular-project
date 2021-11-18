@@ -21,20 +21,23 @@ struct Registered {
     }
 }
 
-struct Track {
+struct Track: Codable{
     let title: String
-    let artist: String
-    let album: String
+    let artist: String?
+    let album: String?
+    let song_id: String
+    let genre: String?
+    let duration: String?
 }
 
 struct Tracks{
     let myTracks = [
-        Track(title: "cancion1", artist: "artista1", album: "album1"),
-        Track(title: "cancion2", artist: "artista2", album: "album2"),
-        Track(title: "cancion3", artist: "artista3", album: "album3"),
-        Track(title: "cancion4", artist: "artista4", album: "album4"),
-        Track(title: "cancion5", artist: "artista5", album: "album5"),
-        Track(title: "cancion6", artist: "artista6", album: "album6"),
-        Track(title: "cancion7", artist: "artista7", album: "album7")
+        Track(title: "cancion1", artist: "artista1", album: "album1", song_id: "bensound-ukulele", genre: nil, duration: "146.42"),
+        Track(title: "cancion2", artist: "artista2", album: "album2", song_id: "bensound-ukulele", genre: nil, duration: "146.42"),
+        Track(title: "cancion3", artist: "artista3", album: "album3", song_id: "bensound-ukulele", genre: nil, duration: "146.42"),
+        Track(title: "cancion4", artist: "artista4", album: "album4", song_id: "bensound-ukulele", genre: nil, duration: "146.42"),
+        Track(title: "cancion5", artist: "artista5", album: "album5", song_id: "bensound-ukulele", genre: nil, duration: "146.42"),
+        Track(title: "cancion6", artist: "artista6", album: "album6", song_id: "bensound-ukulele", genre: nil, duration: "146.42"),
+        Track(title: "cancion7", artist: "artista7", album: "album7", song_id: "bensound-ukulele", genre: nil, duration: "146.42")
     ]
 }
