@@ -54,7 +54,7 @@ class TrackerTableViewController: UITableViewController, ButtonOnCellDelegate {
         //let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "AudioPlayerViewController") as? AudioPlayerViewController
         //vc!.modalPresentationStyle = .automatic
         let vc = AudioPlayerViewController()
-        vc.setTitleTrack(titleTrack: tableViewCell.getTitleTrack())
+        vc.setTrack(track: tableViewCell.getTrack())
         self.present(vc, animated: true)
     }
     

@@ -26,6 +26,12 @@
 		D0D53DC2273567DC000F1BB7 /* AudioPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D53DC1273567DC000F1BB7 /* AudioPlayerViewController.swift */; };
 		D0F2E98B27429C7D006966D0 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2E98A27429C7D006966D0 /* ImageManager.swift */; };
 		D0F2E98D2742B17F006966D0 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2E98C2742B17F006966D0 /* Resources.swift */; };
+		D0F2E98F2742C436006966D0 /* PlayingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2E98E2742C436006966D0 /* PlayingState.swift */; };
+		D0F2E9912742C497006966D0 /* PausedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2E9902742C497006966D0 /* PausedState.swift */; };
+		D0F2E9932742C4AB006966D0 /* AudioState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2E9922742C4AB006966D0 /* AudioState.swift */; };
+		D0F2E9952742EE30006966D0 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2E9942742EE30006966D0 /* Errors.swift */; };
+		D0F407512746D1DB00FD8CA0 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F407502746D1DB00FD8CA0 /* DataManager.swift */; };
+		D0F407532746DD9900FD8CA0 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F407522746DD9900FD8CA0 /* ApiManager.swift */; };
 		D0FDBD8D27270B4900E3982B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FDBD8C27270B4900E3982B /* AppDelegate.swift */; };
 		D0FDBD8F27270B4900E3982B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FDBD8E27270B4900E3982B /* SceneDelegate.swift */; };
 		D0FDBD9127270B4900E3982B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FDBD9027270B4900E3982B /* LoginViewController.swift */; };
@@ -35,7 +41,7 @@
 		D0FDBDA427270B4C00E3982B /* MiProjectoModularTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FDBDA327270B4C00E3982B /* MiProjectoModularTests.swift */; };
 		D0FDBDAE27270B4C00E3982B /* MiProjectoModularUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FDBDAD27270B4C00E3982B /* MiProjectoModularUITests.swift */; };
 		D0FDBDB027270B4C00E3982B /* MiProjectoModularUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FDBDAF27270B4C00E3982B /* MiProjectoModularUITestsLaunchTests.swift */; };
-		D0FE0BEA273ECDA900CB481A /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FE0BE9273ECDA900CB481A /* AudioPlayer.swift */; };
+		D0FE0BEA273ECDA900CB481A /* AudioPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FE0BE9273ECDA900CB481A /* AudioPlayerManager.swift */; };
 		D0FE0BEC273ED02000CB481A /* bensound-ukulele.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D0FE0BEB273ED02000CB481A /* bensound-ukulele.mp3 */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +86,12 @@
 		D0D53DC1273567DC000F1BB7 /* AudioPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewController.swift; sourceTree = "<group>"; };
 		D0F2E98A27429C7D006966D0 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		D0F2E98C2742B17F006966D0 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
+		D0F2E98E2742C436006966D0 /* PlayingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingState.swift; sourceTree = "<group>"; };
+		D0F2E9902742C497006966D0 /* PausedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausedState.swift; sourceTree = "<group>"; };
+		D0F2E9922742C4AB006966D0 /* AudioState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioState.swift; sourceTree = "<group>"; };
+		D0F2E9942742EE30006966D0 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		D0F407502746D1DB00FD8CA0 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		D0F407522746DD9900FD8CA0 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		D0FDBD8927270B4900E3982B /* MiProjectoModular.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiProjectoModular.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0FDBD8C27270B4900E3982B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0FDBD8E27270B4900E3982B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,7 +105,7 @@
 		D0FDBDA927270B4C00E3982B /* MiProjectoModularUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiProjectoModularUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0FDBDAD27270B4C00E3982B /* MiProjectoModularUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiProjectoModularUITests.swift; sourceTree = "<group>"; };
 		D0FDBDAF27270B4C00E3982B /* MiProjectoModularUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiProjectoModularUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		D0FE0BE9273ECDA900CB481A /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		D0FE0BE9273ECDA900CB481A /* AudioPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerManager.swift; sourceTree = "<group>"; };
 		D0FE0BEB273ED02000CB481A /* bensound-ukulele.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bensound-ukulele.mp3"; sourceTree = "<group>"; };
 		D35DCE1EF7550EA8818B30BE /* Pods-MiProjectoModularTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiProjectoModularTests.debug.xcconfig"; path = "Target Support Files/Pods-MiProjectoModularTests/Pods-MiProjectoModularTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DB2DEA42953A4EDF66E6A959 /* Pods_MiProjectoModularTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiProjectoModularTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +164,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D0F407542746DDC200FD8CA0 /* Utlis */ = {
+			isa = PBXGroup;
+			children = (
+				D0F407522746DD9900FD8CA0 /* ApiManager.swift */,
+			);
+			path = Utlis;
+			sourceTree = "<group>";
+		};
 		D0FDBD8027270B4900E3982B = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +197,7 @@
 		D0FDBD8B27270B4900E3982B /* MiProjectoModular */ = {
 			isa = PBXGroup;
 			children = (
+				D0F407542746DDC200FD8CA0 /* Utlis */,
 				D0FDBD8C27270B4900E3982B /* AppDelegate.swift */,
 				D0FDBD8E27270B4900E3982B /* SceneDelegate.swift */,
 				D0FDBD9027270B4900E3982B /* LoginViewController.swift */,
@@ -200,10 +221,15 @@
 				D00CDD67273D78E000C24A8C /* MiProjectoModular-Bridging-Header.h */,
 				D00CDD6B273D7B2000C24A8C /* stegosaurus-studio.gif */,
 				D00CDD6D273DB68300C24A8C /* ConstraintsSetter.swift */,
-				D0FE0BE9273ECDA900CB481A /* AudioPlayer.swift */,
+				D0FE0BE9273ECDA900CB481A /* AudioPlayerManager.swift */,
 				D0FE0BEB273ED02000CB481A /* bensound-ukulele.mp3 */,
 				D0F2E98A27429C7D006966D0 /* ImageManager.swift */,
 				D0F2E98C2742B17F006966D0 /* Resources.swift */,
+				D0F2E98E2742C436006966D0 /* PlayingState.swift */,
+				D0F2E9902742C497006966D0 /* PausedState.swift */,
+				D0F2E9922742C4AB006966D0 /* AudioState.swift */,
+				D0F2E9942742EE30006966D0 /* Errors.swift */,
+				D0F407502746D1DB00FD8CA0 /* DataManager.swift */,
 			);
 			path = MiProjectoModular;
 			sourceTree = "<group>";
@@ -467,24 +493,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0F2E9932742C4AB006966D0 /* AudioState.swift in Sources */,
+				D0F407512746D1DB00FD8CA0 /* DataManager.swift in Sources */,
 				D0C90B0C27331324000FDC9F /* TrackerTableViewController.swift in Sources */,
 				D00CDD6E273DB68300C24A8C /* ConstraintsSetter.swift in Sources */,
 				D0891AF8272B38E70085F8D5 /* LoginValidator.swift in Sources */,
 				D0F2E98B27429C7D006966D0 /* ImageManager.swift in Sources */,
 				D0F2E98D2742B17F006966D0 /* Resources.swift in Sources */,
 				D0A35CCE272C213200F88788 /* WelcomeViewController.swift in Sources */,
+				D0F2E9912742C497006966D0 /* PausedState.swift in Sources */,
 				D0A7D84D273443BD00980BFF /* Protocols.swift in Sources */,
 				D0891AFA272B3A790085F8D5 /* StringValidator.swift in Sources */,
 				D0FDBD9127270B4900E3982B /* LoginViewController.swift in Sources */,
+				D0F407532746DD9900FD8CA0 /* ApiManager.swift in Sources */,
 				D0FDBD8D27270B4900E3982B /* AppDelegate.swift in Sources */,
 				D0A7D84F2734446D00980BFF /* TrackTableViewCell.swift in Sources */,
 				D0891AFC272B3C2E0085F8D5 /* RegisterValidator.swift in Sources */,
-				D0FE0BEA273ECDA900CB481A /* AudioPlayer.swift in Sources */,
+				D0FE0BEA273ECDA900CB481A /* AudioPlayerManager.swift in Sources */,
 				D0A35CD0272C31C200F88788 /* Models.swift in Sources */,
 				D0D53DC2273567DC000F1BB7 /* AudioPlayerViewController.swift in Sources */,
 				D0FDBD8F27270B4900E3982B /* SceneDelegate.swift in Sources */,
+				D0F2E9952742EE30006966D0 /* Errors.swift in Sources */,
 				D0193C4727398B61005A4B80 /* TabViewController.swift in Sources */,
 				D00CDD6A273D78E100C24A8C /* UIImage+animatedGIF.m in Sources */,
+				D0F2E98F2742C436006966D0 /* PlayingState.swift in Sources */,
 				D010F14F2729AF5E00D2AB03 /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -687,7 +719,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "MiProjectoModular/MiProjectoModular-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -720,7 +752,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "MiProjectoModular/MiProjectoModular-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

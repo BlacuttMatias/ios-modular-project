@@ -88,8 +88,8 @@ class TrackTableViewCell: UITableViewCell{
         self.parent.buttonTouchedOnCell(tableViewCell: self)
     }
     
-    func getTitleTrack() -> String{
-        return self.track.title
+    func getTrack() -> Track{
+        return self.track
     }
     
     required init?(coder: NSCoder) {
