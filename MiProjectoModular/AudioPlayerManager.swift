@@ -9,6 +9,7 @@ import Foundation
 import AudioPlayer
 
 class AudioPlayerManager{
+    
     private var sound: AudioPlayer?
     private var audioState: AudioState
     
@@ -64,6 +65,10 @@ class AudioPlayerManager{
     
     func changeTo(audioState: AudioState){
         self.audioState = audioState
+    }
+    
+    func setCurrentTime(currentTime: Float){
+        self.sound?.currentTime = TimeInterval(currentTime)
     }
 
 }

@@ -85,6 +85,9 @@ class AudioPlayerViewController: UIViewController {
     private func setPlaySlider(){
         self.view.addSubview(playSlider)
         
+        playSlider.addTarget(self, action: #selector(currentTimeSongChanged), for: .touchUpInside)
+
+        
         let constraintSetter = ConstraintsSetter(uiView: playSlider)
         constraintSetter.setTopEqualContraint(referenceAnchorView: playButton.bottomAnchor, distance: 20)
         constraintSetter.setRightEqualContraint(referenceAnchorView: self.view.trailingAnchor, distance: -20)
@@ -92,7 +95,11 @@ class AudioPlayerViewController: UIViewController {
         constraintSetter.setHeightConstraint(height: 50)
     
     }
-     
+    
+    @objc private func currentTimeSongChanged(){
+        self.audioPlayer.setCurrentTime(currentTime: playSlider.value)
+    }
+    
     private func setVolumeLabel(){
         volumeLabel.text = "Volume"
         volumeLabel.font = UIFont.systemFont(ofSize: 18)
