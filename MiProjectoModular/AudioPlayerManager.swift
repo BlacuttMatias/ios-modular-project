@@ -13,11 +13,12 @@ class AudioPlayerManager{
     private var sound: AudioPlayer?
     private var audioState: AudioState
     private var timer: Timer?
-    var audioDelegate: AudioDelegate?
+    var audioDelegate: AudioDelegate
     
-    init(file: String, fileExtension: String){
+    init(file: String, fileExtension: String, audioDelegate: AudioDelegate){
         self.audioState = PausedState()
         let possibleUrl = Bundle.main.url(forResource: file, withExtension: fileExtension)
+        self.audioDelegate = audioDelegate
         guard let url = possibleUrl else{
             return
         }
@@ -67,7 +68,7 @@ class AudioPlayerManager{
     
     func changePlayingState(){
         self.audioState.changePlayingState()
-        self.audioDelegate?.OnChangePlayingState()
+        self.audioDelegate.OnChangePlayingState()
     }
     
     func getActionImageName() -> String{
@@ -91,7 +92,7 @@ class AudioPlayerManager{
     }
     
     @objc private func updateCurrentTimeSong(){
-        self.audioDelegate?.OnChangeCurrentTimeSong(updatedCurrentTime: self.getCurrentTime())
+        self.audioDelegate.OnChangeCurrentTimeSong(updatedCurrentTime: self.getCurrentTime())
     }
 
 }

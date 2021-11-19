@@ -25,8 +25,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
         //obtiene el alto y ancho de la pantalla que se esta usando
         //let w = UIScreen.main.currentMode?.size.width
         //let h = UIScreen.main.currentMode?.size.height
-        self.audioPlayer = AudioPlayerManager(file: Resource.audio, fileExtension: "mp3")
-        self.audioPlayer!.audioDelegate = self
+        self.audioPlayer = AudioPlayerManager(file: Resource.audio, fileExtension: "mp3", audioDelegate: self)
         
         self.view.backgroundColor = .white
         
