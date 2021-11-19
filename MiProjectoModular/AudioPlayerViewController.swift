@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AudioPlayerViewController: UIViewController {
+class AudioPlayerViewController: UIViewController, AudioDelegate {
 
     private var audioPlayerLabel: UILabel = UILabel()
     private var playButton: UIButton = UIButton(type: .system)
@@ -25,6 +25,7 @@ class AudioPlayerViewController: UIViewController {
         //obtiene el alto y ancho de la pantalla que se esta usando
         //let w = UIScreen.main.currentMode?.size.width
         //let h = UIScreen.main.currentMode?.size.height
+        self.audioPlayer.audioDelegate = self
         
         self.view.backgroundColor = .white
         
@@ -77,9 +78,6 @@ class AudioPlayerViewController: UIViewController {
     
     private func changeStatePlaying(){
         self.audioPlayer.changePlayingState()
-        let image = UIImage(named: self.audioPlayer.getActionImageName())
-        self.playButton.setImage(image, for: .normal)
-        self.playingImage.image = self.audioPlayer.getImagePlaying()?.getImage()
     }
     
     private func getDurationTrack() -> Float{
@@ -151,6 +149,17 @@ class AudioPlayerViewController: UIViewController {
         constraintSetter.setHeightConstraint(height: 150)
         
     }
+    
+    func OnChangePlayingState() {
+        let image = UIImage(named: self.audioPlayer.getActionImageName())
+        self.playButton.setImage(image, for: .normal)
+        self.playingImage.image = self.audioPlayer.getImagePlaying()?.getImage()
+    }
+    
+    func OnChangeCurrentTimeSong(updatedCurrentTime: Float) {
+        self.playSlider.value = updatedCurrentTime
+    }
+    
     
     func setTrack(track: Track){
         self.track = track

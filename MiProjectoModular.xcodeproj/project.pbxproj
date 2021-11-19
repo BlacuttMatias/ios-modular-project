@@ -11,6 +11,7 @@
 		B54AFD5B0FD55087383DFC63 /* Pods_MiProjectoModular_MiProjectoModularUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1E79829CAEC82F0D8E0619C /* Pods_MiProjectoModular_MiProjectoModularUITests.framework */; };
 		B8FACA85942C6E196FD15C84 /* Pods_MiProjectoModularTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2DEA42953A4EDF66E6A959 /* Pods_MiProjectoModularTests.framework */; };
 		D0027B37274804F200971E82 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0027B36274804F200971E82 /* Network.framework */; };
+		D0027B392748301C00971E82 /* AudioDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0027B382748301C00971E82 /* AudioDelegate.swift */; };
 		D00CDD6A273D78E100C24A8C /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = D00CDD69273D78E100C24A8C /* UIImage+animatedGIF.m */; };
 		D00CDD6C273D7B2000C24A8C /* stegosaurus-studio.gif in Resources */ = {isa = PBXBuildFile; fileRef = D00CDD6B273D7B2000C24A8C /* stegosaurus-studio.gif */; };
 		D00CDD6E273DB68300C24A8C /* ConstraintsSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00CDD6D273DB68300C24A8C /* ConstraintsSetter.swift */; };
@@ -70,6 +71,7 @@
 		AEA58EA26A48C5323114D816 /* Pods-MiProjectoModular-MiProjectoModularUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiProjectoModular-MiProjectoModularUITests.release.xcconfig"; path = "Target Support Files/Pods-MiProjectoModular-MiProjectoModularUITests/Pods-MiProjectoModular-MiProjectoModularUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C57BB349F5DE961021467154 /* Pods_MiProjectoModular.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiProjectoModular.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0027B36274804F200971E82 /* Network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Network.framework; path = System/Library/Frameworks/Network.framework; sourceTree = SDKROOT; };
+		D0027B382748301C00971E82 /* AudioDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDelegate.swift; sourceTree = "<group>"; };
 		D00CDD67273D78E000C24A8C /* MiProjectoModular-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MiProjectoModular-Bridging-Header.h"; sourceTree = "<group>"; };
 		D00CDD68273D78E100C24A8C /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+animatedGIF.h"; sourceTree = "<group>"; };
 		D00CDD69273D78E100C24A8C /* UIImage+animatedGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+animatedGIF.m"; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				D0F2E9922742C4AB006966D0 /* AudioState.swift */,
 				D0F2E9942742EE30006966D0 /* Errors.swift */,
 				D0F407502746D1DB00FD8CA0 /* DataManager.swift */,
+				D0027B382748301C00971E82 /* AudioDelegate.swift */,
 			);
 			path = MiProjectoModular;
 			sourceTree = "<group>";
@@ -500,6 +503,7 @@
 				D0F2E9932742C4AB006966D0 /* AudioState.swift in Sources */,
 				D0F407512746D1DB00FD8CA0 /* DataManager.swift in Sources */,
 				D0C90B0C27331324000FDC9F /* TrackerTableViewController.swift in Sources */,
+				D0027B392748301C00971E82 /* AudioDelegate.swift in Sources */,
 				D00CDD6E273DB68300C24A8C /* ConstraintsSetter.swift in Sources */,
 				D0891AF8272B38E70085F8D5 /* LoginValidator.swift in Sources */,
 				D0F2E98B27429C7D006966D0 /* ImageManager.swift in Sources */,

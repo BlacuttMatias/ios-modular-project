@@ -13,6 +13,7 @@ class AudioPlayerManager{
     private var sound: AudioPlayer?
     private var audioState: AudioState
     private var timer: Timer?
+    var audioDelegate: AudioDelegate?
     
     init(file: String, fileExtension: String){
         self.audioState = PausedState()
@@ -66,6 +67,7 @@ class AudioPlayerManager{
     
     func changePlayingState(){
         self.audioState.changePlayingState()
+        self.audioDelegate?.OnChangePlayingState()
     }
     
     func getActionImageName() -> String{
@@ -84,8 +86,12 @@ class AudioPlayerManager{
         self.sound?.currentTime = TimeInterval(currentTime)
     }
     
+    func getCurrentTime() -> Float{
+        return Float(self.sound?.currentTime ?? 0)
+    }
+    
     @objc private func updateCurrentTimeSong(){
-        print(self.sound?.currentTime)
+        self.audioDelegate?.OnChangeCurrentTimeSong(updatedCurrentTime: self.getCurrentTime())
     }
 
 }
