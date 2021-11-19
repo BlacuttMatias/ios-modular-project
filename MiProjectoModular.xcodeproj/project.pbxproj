@@ -10,6 +10,7 @@
 		808586FBF6E5D187ABC5C417 /* Pods_MiProjectoModular.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57BB349F5DE961021467154 /* Pods_MiProjectoModular.framework */; };
 		B54AFD5B0FD55087383DFC63 /* Pods_MiProjectoModular_MiProjectoModularUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1E79829CAEC82F0D8E0619C /* Pods_MiProjectoModular_MiProjectoModularUITests.framework */; };
 		B8FACA85942C6E196FD15C84 /* Pods_MiProjectoModularTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2DEA42953A4EDF66E6A959 /* Pods_MiProjectoModularTests.framework */; };
+		D0027B37274804F200971E82 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0027B36274804F200971E82 /* Network.framework */; };
 		D00CDD6A273D78E100C24A8C /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = D00CDD69273D78E100C24A8C /* UIImage+animatedGIF.m */; };
 		D00CDD6C273D7B2000C24A8C /* stegosaurus-studio.gif in Resources */ = {isa = PBXBuildFile; fileRef = D00CDD6B273D7B2000C24A8C /* stegosaurus-studio.gif */; };
 		D00CDD6E273DB68300C24A8C /* ConstraintsSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00CDD6D273DB68300C24A8C /* ConstraintsSetter.swift */; };
@@ -68,6 +69,7 @@
 		84CCD30438AD0708693715EA /* Pods-MiProjectoModular.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiProjectoModular.debug.xcconfig"; path = "Target Support Files/Pods-MiProjectoModular/Pods-MiProjectoModular.debug.xcconfig"; sourceTree = "<group>"; };
 		AEA58EA26A48C5323114D816 /* Pods-MiProjectoModular-MiProjectoModularUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiProjectoModular-MiProjectoModularUITests.release.xcconfig"; path = "Target Support Files/Pods-MiProjectoModular-MiProjectoModularUITests/Pods-MiProjectoModular-MiProjectoModularUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C57BB349F5DE961021467154 /* Pods_MiProjectoModular.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiProjectoModular.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0027B36274804F200971E82 /* Network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Network.framework; path = System/Library/Frameworks/Network.framework; sourceTree = SDKROOT; };
 		D00CDD67273D78E000C24A8C /* MiProjectoModular-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MiProjectoModular-Bridging-Header.h"; sourceTree = "<group>"; };
 		D00CDD68273D78E100C24A8C /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+animatedGIF.h"; sourceTree = "<group>"; };
 		D00CDD69273D78E100C24A8C /* UIImage+animatedGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+animatedGIF.m"; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				808586FBF6E5D187ABC5C417 /* Pods_MiProjectoModular.framework in Frameworks */,
+				D0027B37274804F200971E82 /* Network.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +160,7 @@
 		A0514FB24A1F53396DC2FFD6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D0027B36274804F200971E82 /* Network.framework */,
 				C57BB349F5DE961021467154 /* Pods_MiProjectoModular.framework */,
 				F1E79829CAEC82F0D8E0619C /* Pods_MiProjectoModular_MiProjectoModularUITests.framework */,
 				DB2DEA42953A4EDF66E6A959 /* Pods_MiProjectoModularTests.framework */,
