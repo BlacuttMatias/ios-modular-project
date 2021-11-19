@@ -157,7 +157,9 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     }
     
     func OnChangeCurrentTimeSong(updatedCurrentTime: Float) {
-        self.playSlider.value = updatedCurrentTime
+        if(!playSlider.isTouchInside){
+            self.playSlider.value = updatedCurrentTime
+        }
     }
     
     
