@@ -82,7 +82,14 @@ class AudioPlayerViewController: UIViewController {
         self.playingImage.image = self.audioPlayer.getImagePlaying()?.getImage()
     }
     
+    private func getDurationTrack() -> Float{
+        let duration = self.track?.duration ?? "3000"
+        return Float(duration) ?? 3000
+    }
+    
     private func setPlaySlider(){
+        self.playSlider.maximumValue = self.getDurationTrack()
+        
         self.view.addSubview(playSlider)
         
         playSlider.addTarget(self, action: #selector(currentTimeSongChanged), for: .touchUpInside)
@@ -97,6 +104,7 @@ class AudioPlayerViewController: UIViewController {
     }
     
     @objc private func currentTimeSongChanged(){
+        print(playSlider.value)
         self.audioPlayer.setCurrentTime(currentTime: playSlider.value)
     }
     
@@ -150,6 +158,10 @@ class AudioPlayerViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        audioPlayer.pause()
     }
     
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {

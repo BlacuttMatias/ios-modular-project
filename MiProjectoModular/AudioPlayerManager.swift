@@ -12,6 +12,7 @@ class AudioPlayerManager{
     
     private var sound: AudioPlayer?
     private var audioState: AudioState
+    private var timer: Timer?
     
     init(file: String, fileExtension: String){
         self.audioState = PausedState()
@@ -21,23 +22,35 @@ class AudioPlayerManager{
         }
         do{
             self.sound = try AudioPlayer(contentsOf: url)
+            self.sound?.completionHandler = {finished in
+                if(finished){
+                    self.changePlayingState()
+                }
+            }
         }
         catch{
             print("Error al cargar el sonido: \(error.localizedDescription)")
         }
     }
     
+    deinit{
+        timer?.invalidate()
+    }
+    
     func play(){
         self.sound?.play()
         self.audioState = PlayingState(audioPlayer: self)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateCurrentTimeSong), userInfo: nil, repeats: true)
     }
     
     func pause(){
         self.sound?.stop()
+        timer?.invalidate()
     }
     
     func resume(){
         self.sound?.play()
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateCurrentTimeSong), userInfo: nil, repeats: true)
     }
     
     func getVolume() -> Float{
@@ -69,6 +82,10 @@ class AudioPlayerManager{
     
     func setCurrentTime(currentTime: Float){
         self.sound?.currentTime = TimeInterval(currentTime)
+    }
+    
+    @objc private func updateCurrentTimeSong(){
+        print(self.sound?.currentTime)
     }
 
 }
