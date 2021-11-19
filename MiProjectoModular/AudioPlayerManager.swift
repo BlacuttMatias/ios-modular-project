@@ -39,10 +39,14 @@ class AudioPlayerManager{
         timer?.invalidate()
     }
     
+    private func setTimer(){
+        timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.updateCurrentTimeSong), userInfo: nil, repeats: true)
+    }
+    
     func play(){
         self.sound?.play()
         self.audioState = PlayingState(audioPlayer: self)
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateCurrentTimeSong), userInfo: nil, repeats: true)
+        self.setTimer()
     }
     
     func pause(){
@@ -52,7 +56,7 @@ class AudioPlayerManager{
     
     func resume(){
         self.sound?.play()
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateCurrentTimeSong), userInfo: nil, repeats: true)
+        self.setTimer()
     }
     
     func getVolume() -> Float{
