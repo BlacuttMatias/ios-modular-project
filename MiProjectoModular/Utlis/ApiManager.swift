@@ -11,20 +11,20 @@ import Network
 
 class ApiManager{
     
-    let baseURL = "https://jsonplaceholder.typicode.com/"
+    let baseURL = "https://raw.githubusercontent.com/beduExpert/Swift-Proyecto/main/API/db.json"
     
     private static var instance: ApiManager?
-    let musicEndPoint = "songs/"
+    let musicEndPoint = ""
     var pathMonitor: NWPathMonitor
     var path: NWPath?
     
     init(){
         pathMonitor = NWPathMonitor()
-        pathMonitor.pathUpdateHandler = { Path in
+       /* pathMonitor.pathUpdateHandler = { Path in
             self.path = Path
         }
         let elKiu = DispatchQueue (label: "NetworkMonitor")
-        pathMonitor.start(queue: elKiu)
+        pathMonitor.start(queue: elKiu)*/
     }
     
     static func getInstance() -> ApiManager{
@@ -35,22 +35,32 @@ class ApiManager{
     }
     
     func getMusic(completion: @escaping ([Track]?, Error?) -> ()) {
-        let url : String = baseURL + self.musicEndPoint
-        let request : NSMutableURLRequest = NSMutableURLRequest(url: NSURL(string:  url)! as URL)
-        request.httpMethod = "GET"
-        let session = URLSession.shared
-        let task = session.dataTask(with: request as URLRequest) { (data, response, error) -> Void in
-            if error != nil {
-                completion(nil, error!)
-            }
-            else {
-                if let data = data {
-                    let result = try? JSONDecoder().decode([Track].self, from: data)
-                    completion (result, nil)
+        let session = URLSession(configuration: .default)
+        var tarea: URLSessionTask?
+        
+        if let laUrl = URL(string: self.baseURL) {
+            var elRequest = URLRequest(url: laUrl)
+            elRequest.httpMethod = "GET"  // "POST" get es el método predeterminado
+            elRequest.addValue("application/json", forHTTPHeaderField: "Accept")  // si el contenido es text/html, no se tiene que especificar
+            tarea = session.dataTask(with: elRequest) { datos, response, error in
+                guard error == nil else {
+                    print ("Algo salio mal, error \(String(describing: error?.localizedDescription))")
+                    return
+                }
+                guard let data = datos else {
+                    print ("Algo salio mal, no se recibieron datos")
+                    return
+                }
+                do {
+                    let mascotas = try JSONDecoder().decode(SongsApi.self, from: data)
+                    print(mascotas)
+                }
+                catch {
+                    print ("ERRORR: "+String(describing: error))
                 }
             }
+            tarea?.resume()
         }
-        task.resume()
     }
     
     func checkConnectivity() -> Bool {

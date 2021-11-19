@@ -30,13 +30,45 @@ struct Track: Codable{
     let duration: String?
     
     enum CodingKeys:String, CodingKey{
-        case title
+        case title = "name"
         case artist
         case album
         case songId = "song_id"
         case genre
         case duration
     }
+    
+    init(title: String, artist: String? = nil, album: String? = nil, songId: String, genre: String? = nil, duration: String? = nil) {
+        self.title = title
+        self.artist = artist
+        self.album = album
+        self.songId = songId
+        self.genre = genre
+        self.duration = duration
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        title = try container.decode(String.self, forKey: .title)
+        songId = try container.decode(String.self, forKey: .songId)
+        genre = try container.decode(String.self, forKey: .genre)
+        artist = try container.decode(String.self, forKey: .artist)
+        do{
+            album = try container.decode(String.self, forKey: .album)
+        }
+        catch{
+            album = nil
+        }
+        do {
+            duration = try String(container.decode(Float.self, forKey: .duration))
+        } catch DecodingError.typeMismatch {
+            duration = try container.decode(String.self, forKey: .duration)
+        }
+    }
+}
+
+struct SongsApi: Codable{
+    let songs:[Track]
 }
 
 struct Tracks{
