@@ -16,7 +16,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     private var volumeSlider: UISlider = UISlider ()
     private var stopButton: UIButton = UIButton(type: .system)
     private var playingImage: UIImageView = UIImageView()
-    private var audioPlayer: AudioPlayerManager = AudioPlayerManager(file: Resource.audio, fileExtension: "mp3")
+    private weak var audioPlayer: AudioPlayerManager?
     private var track: Track?
     
     override func viewDidLoad() {
@@ -25,11 +25,12 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
         //obtiene el alto y ancho de la pantalla que se esta usando
         //let w = UIScreen.main.currentMode?.size.width
         //let h = UIScreen.main.currentMode?.size.height
-        self.audioPlayer.audioDelegate = self
+        self.audioPlayer = AudioPlayerManager(file: Resource.audio, fileExtension: "mp3")
+        self.audioPlayer!.audioDelegate = self
         
         self.view.backgroundColor = .white
         
-        self.audioPlayer.play()
+        self.audioPlayer?.play()
 
         self.setAudioPlayerLabel()
         self.setPlayButton()
@@ -56,7 +57,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     }
     
     private func setPlayButton(){
-        let image = UIImage(named: self.audioPlayer.getActionImageName())
+        let image = UIImage(named: self.audioPlayer?.getActionImageName() ?? Resource.welcomeImage)
         playButton.setImage(image, for: .normal)
         playButton.setTitleColor(UIColor.blue, for: .normal)
         
@@ -77,7 +78,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     }
     
     private func changeStatePlaying(){
-        self.audioPlayer.changePlayingState()
+        self.audioPlayer?.changePlayingState()
     }
     
     private func getDurationTrack() -> Float{
@@ -103,7 +104,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     
     @objc private func currentTimeSongChanged(){
         print(playSlider.value)
-        self.audioPlayer.setCurrentTime(currentTime: playSlider.value)
+        self.audioPlayer?.setCurrentTime(currentTime: playSlider.value)
     }
     
     private func setVolumeLabel(){
@@ -119,7 +120,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     }
     
     private func setVolumeSlider(){
-        volumeSlider.value = self.audioPlayer.getVolume()
+        volumeSlider.value = self.audioPlayer?.getVolume() ?? 1
         self.view.addSubview(volumeSlider)
         
         volumeSlider.addTarget(self, action: #selector(volumeChanged), for: .valueChanged)
@@ -134,11 +135,11 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     
     @objc func volumeChanged(){
         let volume = volumeSlider.value
-        self.audioPlayer.setVolume(volume: volume)
+        self.audioPlayer?.setVolume(volume: volume)
     }
     
     private func setPlayingImage(){
-        self.playingImage.image = self.audioPlayer.getImagePlaying()?.getImage()
+        self.playingImage.image = self.audioPlayer?.getImagePlaying()?.getImage()
         
         self.view.addSubview(self.playingImage)
         
@@ -151,9 +152,9 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     }
     
     func OnChangePlayingState() {
-        let image = UIImage(named: self.audioPlayer.getActionImageName())
+        let image = UIImage(named: self.audioPlayer?.getActionImageName() ?? Resource.welcomeImage)
         self.playButton.setImage(image, for: .normal)
-        self.playingImage.image = self.audioPlayer.getImagePlaying()?.getImage()
+        self.playingImage.image = self.audioPlayer?.getImagePlaying()?.getImage()
     }
     
     func OnChangeCurrentTimeSong(updatedCurrentTime: Float) {
@@ -172,7 +173,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        audioPlayer.pause()
+        audioPlayer?.pause()
     }
     
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
