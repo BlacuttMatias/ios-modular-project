@@ -9,10 +9,11 @@ import UIKit
 
 class TrackerTableViewController: UITableViewController, ButtonOnCellDelegate {
 
-    let tracks = Tracks().myTracks
+    var tracks: [Track] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tracks = Tracks.tracks
 
         //self.tableView.register(TrackTableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
         // Uncomment the following line to preserve selection between presentations

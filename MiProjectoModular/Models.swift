@@ -43,8 +43,8 @@ struct SongsApi: Codable{
     let songs:[Track]
 }
 
-struct Tracks{
-    let myTracks = [
+class Tracks{
+    static var tracks = [
         Track(title: "cancion1", artist: "artista1", album: "album1", songId: "bensound-ukulele", genre: nil, duration: 146.42),
         Track(title: "cancion2", artist: "artista2", album: "album2", songId: "bensound-ukulele", genre: nil, duration: 146.42),
         Track(title: "cancion3", artist: "artista3", album: "album3", songId: "bensound-ukulele", genre: nil, duration: 146.42),

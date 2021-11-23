@@ -54,7 +54,7 @@ class ApiManager{
                 }
                 do {
                     let mascotas = try JSONDecoder().decode(SongsApi.self, from: data)
-                    print(mascotas)
+                    Tracks.tracks = mascotas.songs
                 }
                 catch {
                     print ("ERRORR: "+String(describing: error))
