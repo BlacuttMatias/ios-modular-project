@@ -16,7 +16,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     private var volumeSlider: UISlider = UISlider ()
     private var stopButton: UIButton = UIButton(type: .system)
     private var playingImage: UIImageView = UIImageView()
-    private weak var audioPlayer: AudioPlayerManager?
+    private var audioPlayer: AudioPlayerManager?
     private var track: Track?
     
     override func viewDidLoad() {
