@@ -27,10 +27,10 @@ struct Track: Codable{
     let album: String?
     let songId: String
     let genre: String?
-    let duration: String?
+    let duration: Double?
     
     enum CodingKeys:String, CodingKey{
-        case title = "name"
+        case title
         case artist
         case album
         case songId = "song_id"
@@ -38,7 +38,7 @@ struct Track: Codable{
         case duration
     }
     
-    init(title: String, artist: String? = nil, album: String? = nil, songId: String, genre: String? = nil, duration: String? = nil) {
+    init(title: String, artist: String? = nil, album: String? = nil, songId: String, genre: String? = nil, duration: Double? = nil) {
         self.title = title
         self.artist = artist
         self.album = album
@@ -60,9 +60,9 @@ struct Track: Codable{
             album = nil
         }
         do {
-            duration = try String(container.decode(Float.self, forKey: .duration))
+            duration = try Double(container.decode(String.self, forKey: .duration))
         } catch DecodingError.typeMismatch {
-            duration = try container.decode(String.self, forKey: .duration)
+            duration = try container.decode(Double.self, forKey: .duration)
         }
     }
 }
@@ -73,12 +73,19 @@ struct SongsApi: Codable{
 
 struct Tracks{
     let myTracks = [
-        Track(title: "cancion1", artist: "artista1", album: "album1", songId: "bensound-ukulele", genre: nil, duration: "146.42"),
-        Track(title: "cancion2", artist: "artista2", album: "album2", songId: "bensound-ukulele", genre: nil, duration: "146.42"),
-        Track(title: "cancion3", artist: "artista3", album: "album3", songId: "bensound-ukulele", genre: nil, duration: "146.42"),
-        Track(title: "cancion4", artist: "artista4", album: "album4", songId: "bensound-ukulele", genre: nil, duration: "146.42"),
-        Track(title: "cancion5", artist: "artista5", album: "album5", songId: "bensound-ukulele", genre: nil, duration: "146.42"),
-        Track(title: "cancion6", artist: "artista6", album: "album6", songId: "bensound-ukulele", genre: nil, duration: "146.42"),
-        Track(title: "cancion7", artist: "artista7", album: "album7", songId: "bensound-ukulele", genre: nil, duration: "146.42")
+        Track(title: "cancion1", artist: "artista1", album: "album1", songId: "bensound-ukulele", genre: nil, duration: 146.42),
+        Track(title: "cancion2", artist: "artista2", album: "album2", songId: "bensound-ukulele", genre: nil, duration: 146.42),
+        Track(title: "cancion3", artist: "artista3", album: "album3", songId: "bensound-ukulele", genre: nil, duration: 146.42),
+        Track(title: "cancion4", artist: "artista4", album: "album4", songId: "bensound-ukulele", genre: nil, duration: 146.42),
+        Track(title: "cancion5", artist: "artista5", album: "album5", songId: "bensound-ukulele", genre: nil, duration: 146.42),
+        Track(title: "cancion6", artist: "artista6", album: "album6", songId: "bensound-ukulele", genre: nil, duration: 146.42),
+        Track(title: "cancion7", artist: "artista7", album: "album7", songId: "bensound-ukulele", genre: nil, duration: 146.42)
     ]
+}
+
+enum PlayerStates {
+    case play
+    case pause
+    case next
+    case previous
 }

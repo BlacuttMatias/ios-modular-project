@@ -81,8 +81,8 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     }
     
     private func getDurationTrack() -> Float{
-        let duration = self.track?.duration ?? "3000"
-        return Float(duration) ?? 3000
+        let duration = self.track?.duration ?? 3000
+        return Float(duration)
     }
     
     private func setPlaySlider(){
