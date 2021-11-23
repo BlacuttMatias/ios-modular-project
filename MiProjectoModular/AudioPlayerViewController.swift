@@ -171,8 +171,8 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
         
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        audioPlayer?.pause()
+    override func viewDidDisappear(_ animated: Bool) {
+        self.audioPlayer?.pause()
     }
     
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
