@@ -15,7 +15,6 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
         imagenLogo.image = UIImage(named: Resource.welcomeImage)
         logoutButton.layer.cornerRadius = 10.0
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func Logout(_ sender: UIButton) {

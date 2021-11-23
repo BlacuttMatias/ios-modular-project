@@ -16,12 +16,13 @@ class ApiManager{
     private static var instance: ApiManager?
     let musicEndPoint = ""
     var pathMonitor: NWPathMonitor
-    var path: NWPath?
+    var thereIsInternetConnection: Bool
     
     init(){
         pathMonitor = NWPathMonitor()
+        thereIsInternetConnection = false
         pathMonitor.pathUpdateHandler = { Path in
-            self.path = Path
+            self.thereIsInternetConnection = Path.status == NWPath.Status.satisfied
         }
         let elKiu = DispatchQueue (label: "NetworkMonitor")
         pathMonitor.start(queue: elKiu)
@@ -64,9 +65,6 @@ class ApiManager{
     }
     
     func checkConnectivity() -> Bool {
-        if let path = self.path {
-            return path.status == NWPath.Status.satisfied
-        }
-       return false
+        return thereIsInternetConnection
     }
 }
