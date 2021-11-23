@@ -37,34 +37,6 @@ struct Track: Codable{
         case genre
         case duration
     }
-    
-    init(title: String, artist: String? = nil, album: String? = nil, songId: String, genre: String? = nil, duration: Double? = nil) {
-        self.title = title
-        self.artist = artist
-        self.album = album
-        self.songId = songId
-        self.genre = genre
-        self.duration = duration
-    }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        title = try container.decode(String.self, forKey: .title)
-        songId = try container.decode(String.self, forKey: .songId)
-        genre = try container.decode(String.self, forKey: .genre)
-        artist = try container.decode(String.self, forKey: .artist)
-        do{
-            album = try container.decode(String.self, forKey: .album)
-        }
-        catch{
-            album = nil
-        }
-        do {
-            duration = try Double(container.decode(String.self, forKey: .duration))
-        } catch DecodingError.typeMismatch {
-            duration = try container.decode(Double.self, forKey: .duration)
-        }
-    }
 }
 
 struct SongsApi: Codable{
