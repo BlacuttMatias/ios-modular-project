@@ -20,11 +20,11 @@ class ApiManager{
     
     init(){
         pathMonitor = NWPathMonitor()
-       /* pathMonitor.pathUpdateHandler = { Path in
+        pathMonitor.pathUpdateHandler = { Path in
             self.path = Path
         }
         let elKiu = DispatchQueue (label: "NetworkMonitor")
-        pathMonitor.start(queue: elKiu)*/
+        pathMonitor.start(queue: elKiu)
     }
     
     static func getInstance() -> ApiManager{
