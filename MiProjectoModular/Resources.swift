@@ -19,4 +19,5 @@ struct Resource{
     static let welcomeImage = "WelcomeImage"
     static let imagePlayingGif = "stegosaurus-studio"
     static let audio = "bensound-ukulele"
+    static let pauseCircleFilled = "PauseCircleFilled"
 }
