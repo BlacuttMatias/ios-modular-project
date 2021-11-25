@@ -19,8 +19,8 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        signUpButton.layer.cornerRadius = 10.0
-        signUpFacebbokButton.layer.cornerRadius = 10.0
+        signUpButton.roundedBorder()
+        signUpFacebbokButton.roundedBorder()
     }
     
     

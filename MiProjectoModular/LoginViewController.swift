@@ -25,7 +25,7 @@ class LoginViewController: UIViewController {
         signInLabel.textColor = UIColor(named: labelColorName)
         self.view.backgroundColor = UIColor(named: backgroundColorName)
         
-        signInButton.layer.cornerRadius = 10.0
+        signInButton.roundedBorder()
     }
 
 

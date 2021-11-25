@@ -24,6 +24,8 @@
 		D0A35CD0272C31C200F88788 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A35CCF272C31C200F88788 /* Models.swift */; };
 		D0A7D84D273443BD00980BFF /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A7D84C273443BD00980BFF /* Protocols.swift */; };
 		D0A7D84F2734446D00980BFF /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A7D84E2734446D00980BFF /* TrackTableViewCell.swift */; };
+		D0B7A4BE274FF0800016589B /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B7A4BD274FF0800016589B /* UIButton+Extension.swift */; };
+		D0B7A4C0274FF09A0016589B /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B7A4BF274FF09A0016589B /* UILabel+Extension.swift */; };
 		D0C3B749274D523D00F1C833 /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C3B748274D523D00F1C833 /* PlayButton.swift */; };
 		D0C90B0C27331324000FDC9F /* TrackerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C90B0B27331324000FDC9F /* TrackerTableViewController.swift */; };
 		D0D53DC2273567DC000F1BB7 /* AudioPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D53DC1273567DC000F1BB7 /* AudioPlayerViewController.swift */; };
@@ -87,6 +89,8 @@
 		D0A35CCF272C31C200F88788 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		D0A7D84C273443BD00980BFF /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		D0A7D84E2734446D00980BFF /* TrackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
+		D0B7A4BD274FF0800016589B /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		D0B7A4BF274FF09A0016589B /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		D0C3B748274D523D00F1C833 /* PlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
 		D0C90B0B27331324000FDC9F /* TrackerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerTableViewController.swift; sourceTree = "<group>"; };
 		D0D53DC1273567DC000F1BB7 /* AudioPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +180,8 @@
 			isa = PBXGroup;
 			children = (
 				D0F407522746DD9900FD8CA0 /* ApiManager.swift */,
+				D0B7A4BD274FF0800016589B /* UIButton+Extension.swift */,
+				D0B7A4BF274FF09A0016589B /* UILabel+Extension.swift */,
 			);
 			path = Utlis;
 			sourceTree = "<group>";
@@ -509,6 +515,7 @@
 				D0C90B0C27331324000FDC9F /* TrackerTableViewController.swift in Sources */,
 				D0027B392748301C00971E82 /* AudioDelegate.swift in Sources */,
 				D00CDD6E273DB68300C24A8C /* ConstraintsSetter.swift in Sources */,
+				D0B7A4C0274FF09A0016589B /* UILabel+Extension.swift in Sources */,
 				D0891AF8272B38E70085F8D5 /* LoginValidator.swift in Sources */,
 				D0F2E98B27429C7D006966D0 /* ImageManager.swift in Sources */,
 				D0F2E98D2742B17F006966D0 /* Resources.swift in Sources */,
@@ -516,6 +523,7 @@
 				D0F2E9912742C497006966D0 /* PausedState.swift in Sources */,
 				D0A7D84D273443BD00980BFF /* Protocols.swift in Sources */,
 				D0891AFA272B3A790085F8D5 /* StringValidator.swift in Sources */,
+				D0B7A4BE274FF0800016589B /* UIButton+Extension.swift in Sources */,
 				D0FDBD9127270B4900E3982B /* LoginViewController.swift in Sources */,
 				D0F407532746DD9900FD8CA0 /* ApiManager.swift in Sources */,
 				D0FDBD8D27270B4900E3982B /* AppDelegate.swift in Sources */,
