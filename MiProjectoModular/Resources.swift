@@ -22,5 +22,7 @@ struct Resource{
     static let pauseCircleFilled = "PauseCircleFilled"
     static let skipNext = "SkipNext"
     static let skipPrevious = "SkipPrevious"
-    static let volumeIcon = "VolumeIcon"
+    static let volumeMute = "VolumeMute"
+    static let volumeDowm = "VolumeDown"
+    static let volumeUp = "VolumeUp"
 }

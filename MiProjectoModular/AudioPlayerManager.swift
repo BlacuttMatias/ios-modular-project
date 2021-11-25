@@ -98,5 +98,20 @@ class AudioPlayerManager{
     @objc private func updateCurrentTimeSong(){
         self.audioDelegate.OnChangeCurrentTimeSong(updatedCurrentTime: self.getCurrentTime())
     }
+    
+    func getNameImageVolume() -> String{
+        guard let volume = sound?.volume else{
+            return Resource.volumeDowm
+        }
+        if volume == 0 {
+            return Resource.volumeMute
+        }
+        else if volume < 0.5{
+            return Resource.volumeDowm
+        }
+        else{
+            return Resource.volumeUp
+        }
+    }
 
 }

@@ -110,8 +110,8 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     }
     
     private func setVolumeLabel(){
-        volumeImage.image = UIImage(named: Resource.volumeIcon)?.withRenderingMode(.alwaysTemplate)
-        volumeImage.image?.withTintColor(.blue)
+        volumeImage.image = UIImage(named: audioPlayer?.getNameImageVolume() ?? Resource.volumeDowm)?.withRenderingMode(.alwaysTemplate)
+        volumeImage.image?.setBlueIcon()
         
         self.view.addSubview(volumeImage)
                 
@@ -138,6 +138,8 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     @objc func volumeChanged(){
         let volume = volumeSlider.value
         self.audioPlayer?.setVolume(volume: volume)
+        self.volumeImage.image = UIImage(named: audioPlayer?.getNameImageVolume() ?? Resource.volumeDowm)?.withRenderingMode(.alwaysTemplate)
+        self.volumeImage.image?.setBlueIcon()
     }
     
     private func setPlayingImage(){
