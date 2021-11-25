@@ -20,4 +20,6 @@ struct Resource{
     static let imagePlayingGif = "stegosaurus-studio"
     static let audio = "bensound-ukulele"
     static let pauseCircleFilled = "PauseCircleFilled"
+    static let skipNext = "SkipNext"
+    static let skipPrevious = "SkipPrevious"
 }
