@@ -28,6 +28,9 @@ class TrackerTableViewController: UITableViewController, ButtonOnCellDelegate {
         
         loadTracksCallback = { tracks, error in
             if error != nil {
+                DispatchQueue.main.async {
+                    self.dismiss(animated: false, completion: nil)
+                }
                 print("Error to load songs")
             }
             else{
