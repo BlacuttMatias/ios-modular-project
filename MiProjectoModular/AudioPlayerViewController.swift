@@ -12,7 +12,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     private var audioPlayerLabel: UILabel = UILabel()
     private var playButton: UIButton = UIButton(type: .system)
     private var playSlider: UISlider = UISlider()
-    private var volumeLabel: UILabel = UILabel()
+    private var volumeImage: UIImageView = UIImageView()
     private var volumeSlider: UISlider = UISlider ()
     private var stopButton: UIButton = UIButton(type: .system)
     private var playingImage: UIImageView = UIImageView()
@@ -110,13 +110,13 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     }
     
     private func setVolumeLabel(){
-        volumeLabel.text = "Volume"
-        volumeLabel.setFontSizeIn18()
+        volumeImage.image = UIImage(named: Resource.volumeIcon)?.withRenderingMode(.alwaysTemplate)
+        volumeImage.image?.withTintColor(.blue)
         
-        self.view.addSubview(volumeLabel)
+        self.view.addSubview(volumeImage)
                 
-        let constraintSetter = ConstraintsSetter(uiView: volumeLabel)
-        constraintSetter.setTopEqualContraint(referenceAnchorView: playSlider.bottomAnchor, distance: 25)
+        let constraintSetter = ConstraintsSetter(uiView: volumeImage)
+        constraintSetter.setTopEqualContraint(referenceAnchorView: playSlider.bottomAnchor, distance: 35)
         constraintSetter.setLeftEqualContraint(referenceAnchorView: self.view.leadingAnchor, distance: 20)
         
     }
@@ -128,8 +128,8 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
         volumeSlider.addTarget(self, action: #selector(volumeChanged), for: .valueChanged)
         
         let constraintSetter = ConstraintsSetter(uiView: volumeSlider)
-        constraintSetter.setTopEqualContraint(referenceAnchorView: volumeLabel.bottomAnchor, distance: 20)
-        constraintSetter.setLeftEqualContraint(referenceAnchorView: self.view.leadingAnchor, distance: 20)
+        constraintSetter.setTopEqualContraint(referenceAnchorView: playSlider.bottomAnchor, distance: 35)
+        constraintSetter.setLeftEqualContraint(referenceAnchorView: volumeImage.trailingAnchor, distance: 10)
         constraintSetter.setWidthConstraint(width: self.view.frame.width/2)
         constraintSetter.setHeightConstraint(height: 50)
         
