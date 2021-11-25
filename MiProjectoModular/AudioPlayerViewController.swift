@@ -58,6 +58,8 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     private func setPlayButton(){
         let image = UIImage(named: self.audioPlayer?.getActionImageName() ?? Resource.welcomeImage)
         playButton.setImage(image, for: .normal)
+        playButton.contentVerticalAlignment = .fill
+        playButton.contentHorizontalAlignment = .fill
         playButton.setTitleColor(UIColor.blue, for: .normal)
         
         self.playButton.addTarget(self, action: #selector(playButtonTouch), for: .touchUpInside)
@@ -67,8 +69,8 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
         let constraintSetter = ConstraintsSetter(uiView: playButton)
         constraintSetter.setTopEqualContraint(referenceAnchorView: audioPlayerLabel.bottomAnchor, distance: 20)
         constraintSetter.setCenterXContraint(referenceAnchorView: self.view.centerXAnchor)
-        constraintSetter.setHeightConstraint(height: 50)
-        constraintSetter.setWidthConstraint(width: 50)
+        constraintSetter.setHeightConstraint(height: 60)
+        constraintSetter.setWidthConstraint(width: 60)
         
     }
     
