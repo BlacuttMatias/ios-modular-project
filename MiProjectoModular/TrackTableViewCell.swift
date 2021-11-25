@@ -49,7 +49,7 @@ class TrackTableViewCell: UITableViewCell{
     
     private func setTitleLabel(){
         titleLabel.text = self.track.title
-        titleLabel.font = UIFont.systemFont(ofSize: 18)
+        titleLabel.setFontSizeIn18()
         titleLabel.textColor = .white
         self.contentView.addSubview(titleLabel)
         
@@ -61,7 +61,7 @@ class TrackTableViewCell: UITableViewCell{
     
     private func setArtistLabel(){
         artistLabel.text = self.track.artist
-        artistLabel.font = UIFont.systemFont(ofSize: 18)
+        artistLabel.setFontSizeIn18()
         artistLabel.textColor = .gray
         self.contentView.addSubview(artistLabel)
         

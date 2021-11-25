@@ -41,7 +41,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     
     private func setAudioPlayerLabel(){
         audioPlayerLabel.text = self.track?.title ?? "AudioPlayer"
-        audioPlayerLabel.font = UIFont.systemFont(ofSize: 30)
+        audioPlayerLabel.setFontSize(30)
         
         //audioPlayerLabel.autoresizingMask = .flexibleWidth
         //audioPlayerLabel.translatesAutoresizingMaskIntoConstraints=false
@@ -109,7 +109,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     
     private func setVolumeLabel(){
         volumeLabel.text = "Volume"
-        volumeLabel.font = UIFont.systemFont(ofSize: 18)
+        volumeLabel.setFontSizeIn18()
         
         self.view.addSubview(volumeLabel)
                 
