@@ -14,8 +14,18 @@ class TrackerTableViewController: UITableViewController, ButtonOnCellDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tracks = Tracks.tracks
+        
+        let alert = UIAlertController(title: nil, message: "Loading...", preferredStyle: .alert)
 
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
+        
+        
         loadTracksCallback = { tracks, error in
             if error != nil {
                 print("Error to load songs")
@@ -24,6 +34,7 @@ class TrackerTableViewController: UITableViewController, ButtonOnCellDelegate {
                 self.tracks = tracks ?? []
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
+                    self.dismiss(animated: false, completion: nil)
                 }
             }
         }
