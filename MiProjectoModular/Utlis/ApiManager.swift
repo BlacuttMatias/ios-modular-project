@@ -46,6 +46,7 @@ class ApiManager{
             tarea = session.dataTask(with: elRequest) { datos, response, error in
                 guard error == nil else {
                     print ("Algo salio mal, error \(String(describing: error?.localizedDescription))")
+                    completion(nil, error)
                     return
                 }
                 guard let data = datos else {
@@ -54,7 +55,7 @@ class ApiManager{
                 }
                 do {
                     let mascotas = try JSONDecoder().decode(SongsApi.self, from: data)
-                    Tracks.tracks = mascotas.songs
+                    completion(mascotas.songs, nil)
                 }
                 catch {
                     print ("ERRORR: "+String(describing: error))

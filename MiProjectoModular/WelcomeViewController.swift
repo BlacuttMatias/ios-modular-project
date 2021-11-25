@@ -17,9 +17,6 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
         imagenLogo.image = UIImage(named: Resource.welcomeImage)
         logoutButton.layer.cornerRadius = 10.0
-        ApiManager.getInstance().getMusic { Tracks, Error in
-            return
-        }
     }
     
     @IBAction func Logout(_ sender: UIButton) {

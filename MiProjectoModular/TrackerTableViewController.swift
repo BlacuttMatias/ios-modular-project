@@ -10,11 +10,26 @@ import UIKit
 class TrackerTableViewController: UITableViewController, ButtonOnCellDelegate {
 
     var tracks: [Track] = []
+    var loadTracksCallback: (([Track]?, Error?) -> ()) = {_,_ in }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tracks = Tracks.tracks
 
+        loadTracksCallback = { tracks, error in
+            if error != nil {
+                print("Error to load songs")
+            }
+            else{
+                self.tracks = tracks ?? []
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }
+        
+        ApiManager.getInstance().getMusic(completion: loadTracksCallback)
+        
         //self.tableView.register(TrackTableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
