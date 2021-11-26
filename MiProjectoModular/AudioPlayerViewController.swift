@@ -20,6 +20,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     private var playingImage: UIImageView = UIImageView()
     private var audioPlayer: AudioPlayerManager?
     private var track: Track?
+    private var tracks: [Track] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,10 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
         self.setVolumeLabel()
         self.setVolumeSlider()
         self.setPlayingImage()
+    }
+    
+    func setTracks(tracks: [Track]){
+        self.tracks = tracks
     }
     
     private func setAudioPlayerLabel(){
@@ -100,7 +105,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
         previousButton.contentHorizontalAlignment = .fill
         previousButton.setTitleColor(UIColor.blue, for: .normal)
         
-        //self.previousButton.addTarget(self, action: #selector(playButtonTouch), for: .touchUpInside)
+        self.previousButton.addTarget(self, action: #selector(previousButtonTouch), for: .touchUpInside)
         
         self.view.addSubview(previousButton)
         
@@ -111,6 +116,12 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
         constraintSetter.setWidthConstraint(width: 60)
     }
     
+    @objc private func previousButtonTouch(){
+        let indiceTrackActual = self.tracks.firstIndex(where: { $0.songId == self.track?.songId }) ?? 1
+        self.track = self.tracks[indiceTrackActual-1]
+        self.refreshUiNewTrack()
+    }
+    
     private func setNextButton(){
         let image = UIImage(named: Resource.skipNext)
         nextButton.setImage(image, for: .normal)
@@ -118,7 +129,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
         nextButton.contentHorizontalAlignment = .fill
         nextButton.setTitleColor(UIColor.blue, for: .normal)
         
-        //self.previousButton.addTarget(self, action: #selector(playButtonTouch), for: .touchUpInside)
+        self.nextButton.addTarget(self, action: #selector(nextButtonTouch), for: .touchUpInside)
         
         self.view.addSubview(nextButton)
         
@@ -127,6 +138,25 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
         constraintSetter.setLeftEqualContraint(referenceAnchorView: playButton.trailingAnchor, distance: 20)
         constraintSetter.setHeightConstraint(height: 60)
         constraintSetter.setWidthConstraint(width: 60)
+    }
+    
+    @objc private func nextButtonTouch(){
+        let indiceTrackActual = self.tracks.firstIndex(where: { $0.songId == self.track?.songId }) ?? -1
+        self.track = self.tracks[indiceTrackActual+1]
+        self.refreshUiNewTrack()
+    }
+    
+    func refreshUiNewTrack(){
+        let indexCurrentTrack = self.tracks.firstIndex(where: { $0.songId == self.track?.songId }) ?? 0
+        self.previousButton.isHidden = false
+        self.nextButton.isHidden = false
+        if(indexCurrentTrack == 0){
+            self.previousButton.isHidden = true
+        }
+        else if(indexCurrentTrack == self.tracks.count-1){
+            self.nextButton.isHidden = true
+        }
+        self.audioPlayerLabel.text = self.track?.title
     }
     
     private func setPlaySlider(){
