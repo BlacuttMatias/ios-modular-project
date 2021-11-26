@@ -11,4 +11,10 @@ extension UIButton{
     func roundedBorder(){
         self.layer.cornerRadius = 10.0
     }
+    
+    func setBlueIcon(){
+        self.contentVerticalAlignment = .fill
+        self.contentHorizontalAlignment = .fill
+        self.setTitleColor(UIColor.blue, for: .normal)
+    }
 }

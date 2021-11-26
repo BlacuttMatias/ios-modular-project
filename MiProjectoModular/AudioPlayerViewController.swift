@@ -72,9 +72,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     private func setPlayButton(){
         let image = UIImage(named: self.audioPlayer?.getActionImageName() ?? Resource.welcomeImage)
         playButton.setImage(image, for: .normal)
-        playButton.contentVerticalAlignment = .fill
-        playButton.contentHorizontalAlignment = .fill
-        playButton.setTitleColor(UIColor.blue, for: .normal)
+        playButton.setBlueIcon()
         
         self.playButton.addTarget(self, action: #selector(playButtonTouch), for: .touchUpInside)
         
@@ -106,9 +104,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     private func setPreviousButton(){
         let image = UIImage(named: Resource.skipPrevious)
         previousButton.setImage(image, for: .normal)
-        previousButton.contentVerticalAlignment = .fill
-        previousButton.contentHorizontalAlignment = .fill
-        previousButton.setTitleColor(UIColor.blue, for: .normal)
+        previousButton.setBlueIcon()
         
         self.previousButton.addTarget(self, action: #selector(previousButtonTouch), for: .touchUpInside)
         
@@ -131,9 +127,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     private func setNextButton(){
         let image = UIImage(named: Resource.skipNext)
         nextButton.setImage(image, for: .normal)
-        nextButton.contentVerticalAlignment = .fill
-        nextButton.contentHorizontalAlignment = .fill
-        nextButton.setTitleColor(UIColor.blue, for: .normal)
+        nextButton.setBlueIcon()
         
         self.nextButton.addTarget(self, action: #selector(nextButtonTouch), for: .touchUpInside)
         
