@@ -42,6 +42,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
         self.setVolumeLabel()
         self.setVolumeSlider()
         self.setPlayingImage()
+        self.refreshUiNewTrack()
     }
     
     func setTracks(tracks: [Track]){
@@ -176,7 +177,6 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     }
     
     @objc private func currentTimeSongChanged(){
-        print(playSlider.value)
         self.audioPlayer?.setCurrentTime(currentTime: playSlider.value)
     }
     
