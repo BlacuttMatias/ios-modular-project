@@ -28,7 +28,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
         //obtiene el alto y ancho de la pantalla que se esta usando
         //let w = UIScreen.main.currentMode?.size.width
         //let h = UIScreen.main.currentMode?.size.height
-        self.audioPlayer = AudioPlayerManager(file: Resource.audio, fileExtension: "mp3", audioDelegate: self)
+        self.audioPlayer = AudioPlayerManager(file: self.getNameSoundFileWithoutExtension(), fileExtension: "mp3", audioDelegate: self)
         
         self.view.backgroundColor = .white
         
@@ -47,6 +47,10 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     
     func setTracks(tracks: [Track]){
         self.tracks = tracks
+    }
+    
+    private func getNameSoundFileWithoutExtension() -> String{
+        return Resource.audio
     }
     
     private func setAudioPlayerLabel(){
@@ -121,6 +125,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
         let indiceTrackActual = self.tracks.firstIndex(where: { $0.songId == self.track?.songId }) ?? 1
         self.track = self.tracks[indiceTrackActual-1]
         self.refreshUiNewTrack()
+        self.audioPlayer?.setSound(file: Resource.audio, fileExtension: "mp3")
     }
     
     private func setNextButton(){
@@ -145,6 +150,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
         let indiceTrackActual = self.tracks.firstIndex(where: { $0.songId == self.track?.songId }) ?? -1
         self.track = self.tracks[indiceTrackActual+1]
         self.refreshUiNewTrack()
+        self.audioPlayer?.setSound(file: self.getNameSoundFileWithoutExtension(), fileExtension: "mp3")
     }
     
     func refreshUiNewTrack(){
