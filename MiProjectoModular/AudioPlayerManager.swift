@@ -58,7 +58,7 @@ class AudioPlayerManager{
     
     func changePlayingState(){
         self.audioState.changePlayingState()
-        self.audioDelegate.OnChangePlayingState()
+        self.audioDelegate.onChangePlayingState()
     }
     
     func getActionImageName() -> String{
@@ -82,7 +82,7 @@ class AudioPlayerManager{
     }
     
     @objc private func updateCurrentTimeSong(){
-        self.audioDelegate.OnChangeCurrentTimeSong(updatedCurrentTime: self.getCurrentTime())
+        self.audioDelegate.onChangeCurrentTimeSong(updatedCurrentTime: self.getCurrentTime())
     }
     
     func getNameImageVolume() -> String{

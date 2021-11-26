@@ -232,13 +232,13 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
         
     }
     
-    func OnChangePlayingState() {
+    func onChangePlayingState() {
         let image = UIImage(named: self.audioPlayer?.getActionImageName() ?? Resource.welcomeImage)
         self.playButton.setImage(image, for: .normal)
         self.playingImage.image = self.audioPlayer?.getImagePlaying()?.getImage()
     }
     
-    func OnChangeCurrentTimeSong(updatedCurrentTime: Float) {
+    func onChangeCurrentTimeSong(updatedCurrentTime: Float) {
         if(!playSlider.isTouchInside){
             self.playSlider.value = updatedCurrentTime
         }
