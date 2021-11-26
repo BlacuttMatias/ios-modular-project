@@ -54,7 +54,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
         self.view.addSubview(audioPlayerLabel)
         
         let constraintSetter = ConstraintsSetter(uiView: audioPlayerLabel)
-        constraintSetter.setTopEqualContraint(referenceAnchorView: self.view.topAnchor, distance: 50)
+        constraintSetter.setTopEqualContraint(referenceAnchorView: self.view.topAnchor, distance: 25)
         constraintSetter.setCenterXContraint(referenceAnchorView: self.view.centerXAnchor)
 
     }
@@ -71,7 +71,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
         self.view.addSubview(playButton)
         
         let constraintSetter = ConstraintsSetter(uiView: playButton)
-        constraintSetter.setTopEqualContraint(referenceAnchorView: audioPlayerLabel.bottomAnchor, distance: 20)
+        constraintSetter.setTopEqualContraint(referenceAnchorView: audioPlayerLabel.bottomAnchor, distance: 40)
         constraintSetter.setCenterXContraint(referenceAnchorView: self.view.centerXAnchor)
         constraintSetter.setHeightConstraint(height: 60)
         constraintSetter.setWidthConstraint(width: 60)
@@ -105,7 +105,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
         self.view.addSubview(previousButton)
         
         let constraintSetter = ConstraintsSetter(uiView: previousButton)
-        constraintSetter.setTopEqualContraint(referenceAnchorView: audioPlayerLabel.bottomAnchor, distance: 20)
+        constraintSetter.setTopEqualContraint(referenceAnchorView: audioPlayerLabel.bottomAnchor, distance: 40)
         constraintSetter.setRightEqualContraint(referenceAnchorView: playButton.leadingAnchor, distance: -20)
         constraintSetter.setHeightConstraint(height: 60)
         constraintSetter.setWidthConstraint(width: 60)
@@ -123,7 +123,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
         self.view.addSubview(nextButton)
         
         let constraintSetter = ConstraintsSetter(uiView: nextButton)
-        constraintSetter.setTopEqualContraint(referenceAnchorView: audioPlayerLabel.bottomAnchor, distance: 20)
+        constraintSetter.setTopEqualContraint(referenceAnchorView: audioPlayerLabel.bottomAnchor, distance: 40)
         constraintSetter.setLeftEqualContraint(referenceAnchorView: playButton.trailingAnchor, distance: 20)
         constraintSetter.setHeightConstraint(height: 60)
         constraintSetter.setWidthConstraint(width: 60)
@@ -138,7 +138,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
 
         
         let constraintSetter = ConstraintsSetter(uiView: playSlider)
-        constraintSetter.setTopEqualContraint(referenceAnchorView: playButton.bottomAnchor, distance: 20)
+        constraintSetter.setTopEqualContraint(referenceAnchorView: playButton.bottomAnchor, distance: 40)
         constraintSetter.setRightEqualContraint(referenceAnchorView: self.view.trailingAnchor, distance: -20)
         constraintSetter.setLeftEqualContraint(referenceAnchorView: self.view.leadingAnchor, distance: 20)
         constraintSetter.setHeightConstraint(height: 50)
