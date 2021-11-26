@@ -109,7 +109,7 @@ class AudioPlayerManager{
             self.sound = try AudioPlayer(contentsOf: url)
             self.sound?.completionHandler = {finished in
                 if(finished){
-                    self.changePlayingState()
+                    self.audioDelegate.onSongFinished()
                 }
             }
             self.audioState.newSoundSetted()

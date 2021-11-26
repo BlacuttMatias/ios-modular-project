@@ -245,6 +245,17 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     }
     
     
+    func onSongFinished() {
+        let indexCurrentTrack = self.tracks.firstIndex(where: { $0.songId == self.track?.songId }) ?? 0
+        if(indexCurrentTrack != self.tracks.count-1){
+            self.nextButtonTouch()
+        }
+        else{
+            self.audioPlayer?.changePlayingState()
+        }
+    }
+    
+    
     func setTrack(track: Track){
         self.track = track
     }

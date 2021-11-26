@@ -10,4 +10,5 @@ import Foundation
 protocol AudioDelegate{
     func OnChangePlayingState()
     func OnChangeCurrentTimeSong(updatedCurrentTime: Float)
+    func onSongFinished()
 }
