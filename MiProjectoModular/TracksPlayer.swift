@@ -20,14 +20,12 @@ class TracksPlayer{
         return self.tracks.firstIndex(where: { $0.songId == self.currentTrack.songId }) ?? 0
     }
     
-    func nextTrack() -> Track{
+    func nextTrack(){
         self.currentTrack = self.tracks[self.indexCurrentTrack()+1]
-        return self.currentTrack
     }
     
-    func previousTrack() -> Track{
+    func previousTrack(){
         self.currentTrack = self.tracks[self.indexCurrentTrack()-1]
-        return currentTrack
     }
     
     func areInTheFirstTrack() -> Bool{
@@ -36,5 +34,9 @@ class TracksPlayer{
     
     func areInTheLastTrack() -> Bool{
         return self.indexCurrentTrack() == (self.tracks.count-1)
+    }
+    
+    func areNotInTheLastTrack() -> Bool{
+        return !self.areInTheLastTrack()
     }
 }

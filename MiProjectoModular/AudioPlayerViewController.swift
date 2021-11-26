@@ -19,8 +19,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     private var stopButton: UIButton = UIButton(type: .system)
     private var playingImage: UIImageView = UIImageView()
     private var audioPlayer: AudioPlayerManager?
-    private var track: Track?
-    private var tracks: [Track] = []
+    private var tracksPlayer: TracksPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,8 +44,12 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
         self.refreshUiNewTrack()
     }
     
-    func setTracks(tracks: [Track]){
-        self.tracks = tracks
+    func setTracks(currentTrack: Track, tracks: [Track]){
+        self.tracksPlayer = TracksPlayer(currentTrack: currentTrack, tracks: tracks)
+    }
+    
+    private func track() -> Track?{
+        return self.tracksPlayer?.currentTrack
     }
     
     private func getNameSoundFileWithoutExtension() -> String{
@@ -54,7 +57,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     }
     
     private func setAudioPlayerLabel(){
-        audioPlayerLabel.text = self.track?.title ?? "AudioPlayer"
+        audioPlayerLabel.text = self.track()?.title ?? "AudioPlayer"
         audioPlayerLabel.setFontSize(30)
         
         //audioPlayerLabel.autoresizingMask = .flexibleWidth
@@ -118,8 +121,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     }
     
     @objc private func previousButtonTouch(){
-        let indiceTrackActual = self.tracks.firstIndex(where: { $0.songId == self.track?.songId }) ?? 1
-        self.track = self.tracks[indiceTrackActual-1]
+        self.tracksPlayer?.previousTrack()
         self.refreshUiNewTrack()
         self.audioPlayer?.setSound(file: Resource.audio, fileExtension: "mp3")
     }
@@ -141,23 +143,24 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     }
     
     @objc private func nextButtonTouch(){
-        let indiceTrackActual = self.tracks.firstIndex(where: { $0.songId == self.track?.songId }) ?? -1
-        self.track = self.tracks[indiceTrackActual+1]
+        self.tracksPlayer?.nextTrack()
         self.refreshUiNewTrack()
         self.audioPlayer?.setSound(file: self.getNameSoundFileWithoutExtension(), fileExtension: "mp3")
     }
     
     func refreshUiNewTrack(){
-        let indexCurrentTrack = self.tracks.firstIndex(where: { $0.songId == self.track?.songId }) ?? 0
         self.previousButton.isHidden = false
         self.nextButton.isHidden = false
-        if(indexCurrentTrack == 0){
+        guard let tracksPlayer = self.tracksPlayer else{
+            return
+        }
+        if(tracksPlayer.areInTheFirstTrack()){
             self.previousButton.isHidden = true
         }
-        else if(indexCurrentTrack == self.tracks.count-1){
+           else if(tracksPlayer.areInTheLastTrack()){
             self.nextButton.isHidden = true
         }
-        self.audioPlayerLabel.text = self.track?.title
+        self.audioPlayerLabel.text = self.track()?.title
     }
     
     private func setPlaySlider(){
@@ -240,18 +243,15 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     
     
     func onSongFinished() {
-        let indexCurrentTrack = self.tracks.firstIndex(where: { $0.songId == self.track?.songId }) ?? 0
-        if(indexCurrentTrack != self.tracks.count-1){
+        guard let tracksPlayer = self.tracksPlayer else{
+            return
+        }
+        if(tracksPlayer.areNotInTheLastTrack()){
             self.nextButtonTouch()
         }
         else{
             self.audioPlayer?.changePlayingState()
         }
-    }
-    
-    
-    func setTrack(track: Track){
-        self.track = track
     }
     
     override func viewWillLayoutSubviews() {
