@@ -39,4 +39,8 @@ class PausedState: AudioState{
         return ImageAsset(named: Resource.audioPlayingImage)
     }
 
+    func newSoundSetted() {
+        self.audioPlayer?.pause()
+    }
+    
 }

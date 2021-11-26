@@ -112,6 +112,7 @@ class AudioPlayerManager{
                     self.changePlayingState()
                 }
             }
+            self.audioState.newSoundSetted()
         }
         catch{
             print("Error al cargar el sonido: \(error.localizedDescription)")

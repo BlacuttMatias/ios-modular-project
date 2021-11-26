@@ -42,5 +42,9 @@ class PlayingState: AudioState{
     func getImagePlaying() -> Image {
         return ImageGif(resource: Resource.imagePlayingGif)
     }
+    
+    func newSoundSetted() {
+        self.audioPlayer?.play()
+    }
 
 }
