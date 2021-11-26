@@ -11,6 +11,8 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
 
     private var audioPlayerLabel: UILabel = UILabel()
     private var playButton: UIButton = UIButton(type: .system)
+    private var previousButton: UIButton = UIButton(type: .system)
+    private var nextButton : UIButton = UIButton(type: .system)
     private var playSlider: UISlider = UISlider()
     private var volumeImage: UIImageView = UIImageView()
     private var volumeSlider: UISlider = UISlider ()
@@ -33,6 +35,8 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
 
         self.setAudioPlayerLabel()
         self.setPlayButton()
+        self.setPreviousButton()
+        self.setNextButton()
         self.setPlaySlider()
         self.setVolumeLabel()
         self.setVolumeSlider()
@@ -86,6 +90,43 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
         //let duration = self.track?.duration ?? 3000
         //return Float(duration)
         return 146.42
+    }
+    
+    
+    private func setPreviousButton(){
+        let image = UIImage(named: Resource.skipPrevious)
+        previousButton.setImage(image, for: .normal)
+        previousButton.contentVerticalAlignment = .fill
+        previousButton.contentHorizontalAlignment = .fill
+        previousButton.setTitleColor(UIColor.blue, for: .normal)
+        
+        //self.previousButton.addTarget(self, action: #selector(playButtonTouch), for: .touchUpInside)
+        
+        self.view.addSubview(previousButton)
+        
+        let constraintSetter = ConstraintsSetter(uiView: previousButton)
+        constraintSetter.setTopEqualContraint(referenceAnchorView: audioPlayerLabel.bottomAnchor, distance: 20)
+        constraintSetter.setRightEqualContraint(referenceAnchorView: playButton.leadingAnchor, distance: -20)
+        constraintSetter.setHeightConstraint(height: 60)
+        constraintSetter.setWidthConstraint(width: 60)
+    }
+    
+    private func setNextButton(){
+        let image = UIImage(named: Resource.skipNext)
+        nextButton.setImage(image, for: .normal)
+        nextButton.contentVerticalAlignment = .fill
+        nextButton.contentHorizontalAlignment = .fill
+        nextButton.setTitleColor(UIColor.blue, for: .normal)
+        
+        //self.previousButton.addTarget(self, action: #selector(playButtonTouch), for: .touchUpInside)
+        
+        self.view.addSubview(nextButton)
+        
+        let constraintSetter = ConstraintsSetter(uiView: nextButton)
+        constraintSetter.setTopEqualContraint(referenceAnchorView: audioPlayerLabel.bottomAnchor, distance: 20)
+        constraintSetter.setLeftEqualContraint(referenceAnchorView: playButton.trailingAnchor, distance: 20)
+        constraintSetter.setHeightConstraint(height: 60)
+        constraintSetter.setWidthConstraint(width: 60)
     }
     
     private func setPlaySlider(){
