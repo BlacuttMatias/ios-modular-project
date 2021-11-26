@@ -10,29 +10,15 @@ import AudioPlayer
 
 class AudioPlayerManager{
     
-    private var sound: AudioPlayer?
+    private var sound: AudioPlayer? = nil
     private var audioState: AudioState
     private var timer: Timer?
     var audioDelegate: AudioDelegate
     
     init(file: String, fileExtension: String, audioDelegate: AudioDelegate){
         self.audioState = PausedState()
-        let possibleUrl = Bundle.main.url(forResource: file, withExtension: fileExtension)
         self.audioDelegate = audioDelegate
-        guard let url = possibleUrl else{
-            return
-        }
-        do{
-            self.sound = try AudioPlayer(contentsOf: url)
-            self.sound?.completionHandler = {finished in
-                if(finished){
-                    self.changePlayingState()
-                }
-            }
-        }
-        catch{
-            print("Error al cargar el sonido: \(error.localizedDescription)")
-        }
+        self.setSound(file: file, fileExtension: fileExtension)
     }
     
     deinit{
@@ -111,6 +97,24 @@ class AudioPlayerManager{
         }
         else{
             return Resource.volumeUp
+        }
+    }
+    
+    func setSound(file: String, fileExtension: String){
+        let possibleUrl = Bundle.main.url(forResource: file, withExtension: fileExtension)
+        guard let url = possibleUrl else{
+            return
+        }
+        do{
+            self.sound = try AudioPlayer(contentsOf: url)
+            self.sound?.completionHandler = {finished in
+                if(finished){
+                    self.changePlayingState()
+                }
+            }
+        }
+        catch{
+            print("Error al cargar el sonido: \(error.localizedDescription)")
         }
     }
 
