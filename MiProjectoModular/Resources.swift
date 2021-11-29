@@ -25,4 +25,5 @@ struct Resource{
     static let volumeMute = "VolumeMute"
     static let volumeDowm = "VolumeDown"
     static let volumeUp = "VolumeUp"
+    static let playlistAddIcon = "PlaylistAddIcon"
 }
