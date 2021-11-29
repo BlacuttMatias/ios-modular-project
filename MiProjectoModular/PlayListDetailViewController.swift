@@ -14,6 +14,8 @@ class PlayListDetailViewController: UIViewController{
     var playlistTableView: UITableView = UITableView()
     var playlistPickerView: UIPickerView = UIPickerView()
     var tracks: [Track] = []
+    var playlist: [Track] = []
+    var trackToAdd: Track?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,12 +72,25 @@ class PlayListDetailViewController: UIViewController{
         
         self.view.addSubview(addSongButton)
         
+        self.addSongButton.addTarget(self, action: #selector(addSongButtonTouch), for: .touchUpInside)
+        
         let constraintSetter = ConstraintsSetter(uiView: addSongButton)
         constraintSetter.setTopEqualContraint(referenceAnchorView: self.view.topAnchor, distance: 50)
         constraintSetter.setRightEqualContraint(referenceAnchorView: self.view.trailingAnchor, distance: -20)
         constraintSetter.setHeightConstraint(height: 50)
         constraintSetter.setWidthConstraint(width: 50)
 
+    }
+    
+    @objc private func addSongButtonTouch(){
+        guard let track = self.trackToAdd else {
+            return
+        }
+        self.playlist.append(track)
+        self.playlistTableView.reloadData()
+        self.trackToAdd = nil
+        self.songTextField.text = ""
+        self.view.endEditing(true)
     }
     
     private func setPlaylistTableView(){
@@ -106,14 +121,17 @@ class PlayListDetailViewController: UIViewController{
 }
 
 extension PlayListDetailViewController: UITableViewDelegate{
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.view.endEditing(true)
     }
+    
 }
 
 extension PlayListDetailViewController: UITableViewDataSource{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return playlist.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -121,7 +139,7 @@ extension PlayListDetailViewController: UITableViewDataSource{
         let cell:UITableViewCell = (self.playlistTableView.dequeueReusableCell(withIdentifier: "cellPlaylist") as UITableViewCell?)!
         
         // set the text from the data model
-        cell.textLabel?.text = "self.animals[indexPath.row]"
+        cell.textLabel?.text = self.playlist[indexPath.row].title
         
         return cell
     }
@@ -131,6 +149,7 @@ extension PlayListDetailViewController: UIPickerViewDelegate{
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let indice = pickerView.selectedRow(inComponent: 0)
+        self.trackToAdd = tracks[indice]
         self.songTextField.text = tracks[indice].title
     }
 }
