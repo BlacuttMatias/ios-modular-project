@@ -18,6 +18,20 @@ class PlayListDetailViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let loadTracksCallback: (([Track]?, Error?) -> ()) = { tracks, error in
+            if error != nil {
+                print("Error to load songs")
+            }
+            else{
+                self.tracks = tracks ?? []
+                DispatchQueue.main.async {
+                    self.playlistTableView.reloadData()
+                }
+            }
+        }
+        
+        ApiManager.getInstance().getMusic(completion: loadTracksCallback)
+        
         self.playlistTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellPlaylist")
 
         self.setAddSongButton()
