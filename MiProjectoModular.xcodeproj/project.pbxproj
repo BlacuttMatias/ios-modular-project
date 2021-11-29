@@ -12,6 +12,7 @@
 		B8FACA85942C6E196FD15C84 /* Pods_MiProjectoModularTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB2DEA42953A4EDF66E6A959 /* Pods_MiProjectoModularTests.framework */; };
 		D0027B37274804F200971E82 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0027B36274804F200971E82 /* Network.framework */; };
 		D0027B392748301C00971E82 /* AudioDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0027B382748301C00971E82 /* AudioDelegate.swift */; };
+		D0039CB02755182600F764A8 /* PlayListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0039CAF2755182600F764A8 /* PlayListDetailViewController.swift */; };
 		D00CDD6A273D78E100C24A8C /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = D00CDD69273D78E100C24A8C /* UIImage+animatedGIF.m */; };
 		D00CDD6C273D7B2000C24A8C /* stegosaurus-studio.gif in Resources */ = {isa = PBXBuildFile; fileRef = D00CDD6B273D7B2000C24A8C /* stegosaurus-studio.gif */; };
 		D00CDD6E273DB68300C24A8C /* ConstraintsSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00CDD6D273DB68300C24A8C /* ConstraintsSetter.swift */; };
@@ -77,6 +78,7 @@
 		C57BB349F5DE961021467154 /* Pods_MiProjectoModular.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiProjectoModular.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0027B36274804F200971E82 /* Network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Network.framework; path = System/Library/Frameworks/Network.framework; sourceTree = SDKROOT; };
 		D0027B382748301C00971E82 /* AudioDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDelegate.swift; sourceTree = "<group>"; };
+		D0039CAF2755182600F764A8 /* PlayListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListDetailViewController.swift; sourceTree = "<group>"; };
 		D00CDD67273D78E000C24A8C /* MiProjectoModular-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MiProjectoModular-Bridging-Header.h"; sourceTree = "<group>"; };
 		D00CDD68273D78E100C24A8C /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+animatedGIF.h"; sourceTree = "<group>"; };
 		D00CDD69273D78E100C24A8C /* UIImage+animatedGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+animatedGIF.m"; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				D0027B382748301C00971E82 /* AudioDelegate.swift */,
 				D0C3B748274D523D00F1C833 /* PlayButton.swift */,
 				D0F2274E27517E7600BAC8B0 /* TracksPlayer.swift */,
+				D0039CAF2755182600F764A8 /* PlayListDetailViewController.swift */,
 			);
 			path = MiProjectoModular;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				D0C3B749274D523D00F1C833 /* PlayButton.swift in Sources */,
 				D0C90B0C27331324000FDC9F /* TrackerTableViewController.swift in Sources */,
 				D0027B392748301C00971E82 /* AudioDelegate.swift in Sources */,
+				D0039CB02755182600F764A8 /* PlayListDetailViewController.swift in Sources */,
 				D00CDD6E273DB68300C24A8C /* ConstraintsSetter.swift in Sources */,
 				D0B7A4C0274FF09A0016589B /* UILabel+Extension.swift in Sources */,
 				D0891AF8272B38E70085F8D5 /* LoginValidator.swift in Sources */,
