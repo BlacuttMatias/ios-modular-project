@@ -49,11 +49,35 @@ class PlayListDetailViewController: UIViewController{
         
     }
     
+    private func toolBarPickerView() -> UIToolbar{
+        let toolBar: UIToolbar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.sizeToFit()
+        
+        let confirmButton = UIBarButtonItem()
+        let cancelButton = UIBarButtonItem()
+        
+        confirmButton.image = UIImage(named: Resource.confirmIcon)
+        confirmButton.tintColor = .blue
+        cancelButton.image = UIImage(named: Resource.cancelIcon)
+        cancelButton.tintColor = .red
+
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+
+        toolBar.setItems([cancelButton, spaceButton, confirmButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
+        return toolBar
+    }
+    
     private func setSongTextField(){
         songTextField.placeholder = "Add a song..."
         songTextField.borderStyle = .roundedRect
         songTextField.font = UIFont.systemFont(ofSize: 20)
         songTextField.inputView = self.playlistPickerView
+        songTextField.inputAccessoryView = self.playlistPickerView
+        songTextField.inputAccessoryView = toolBarPickerView()
         
         self.view.addSubview(songTextField)
         
@@ -64,6 +88,8 @@ class PlayListDetailViewController: UIViewController{
         constraintSetter.setHeightConstraint(height: 50)
 
     }
+    
+    @objc private func donePicker(){}
     
     private func setAddSongButton(){
         let imageButton = UIImage(named: Resource.playlistAddIcon)
