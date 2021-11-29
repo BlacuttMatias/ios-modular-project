@@ -12,6 +12,8 @@ class PlayListDetailViewController: UIViewController{
     var songTextField: UITextField = UITextField()
     var addSongButton: UIButton = UIButton(type: .system)
     var playlistTableView: UITableView = UITableView()
+    var playlistPickerView: UIPickerView = UIPickerView()
+    var tracks: [Track] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,9 @@ class PlayListDetailViewController: UIViewController{
         
         playlistTableView.delegate = self
         playlistTableView.dataSource = self
+        
+        self.playlistPickerView.delegate = self
+        self.playlistPickerView.dataSource = self
         
         self.setPlaylistTableView()
         
@@ -101,6 +106,24 @@ extension PlayListDetailViewController: UITableViewDataSource{
         cell.textLabel?.text = "self.animals[indexPath.row]"
         
         return cell
+    }
+}
+
+extension PlayListDetailViewController: UIPickerViewDelegate{
+    
+}
+
+extension PlayListDetailViewController: UIPickerViewDataSource{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.tracks.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return self.tracks[row].title
     }
     
     
