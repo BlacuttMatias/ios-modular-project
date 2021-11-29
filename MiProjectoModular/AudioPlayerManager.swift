@@ -47,7 +47,7 @@ class AudioPlayerManager{
     
     func getVolume() -> Float{
         guard let sound = self.sound else{
-            return 0
+            return 1
         }
         return sound.volume
     }
@@ -106,6 +106,7 @@ class AudioPlayerManager{
             return
         }
         do{
+            let currentVolume = self.getVolume()
             self.sound = try AudioPlayer(contentsOf: url)
             self.sound?.completionHandler = {finished in
                 if(finished){
@@ -113,6 +114,7 @@ class AudioPlayerManager{
                 }
             }
             self.audioState.newSoundSetted()
+            self.setVolume(volume: currentVolume)
         }
         catch{
             print("Error al cargar el sonido: \(error.localizedDescription)")
