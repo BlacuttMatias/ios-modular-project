@@ -129,6 +129,10 @@ extension PlayListDetailViewController: UITableViewDataSource{
 
 extension PlayListDetailViewController: UIPickerViewDelegate{
     
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let indice = pickerView.selectedRow(inComponent: 0)
+        self.songTextField.text = tracks[indice].title
+    }
 }
 
 extension PlayListDetailViewController: UIPickerViewDataSource{
