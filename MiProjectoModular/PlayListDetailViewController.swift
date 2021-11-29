@@ -25,7 +25,7 @@ class PlayListDetailViewController: UIViewController{
             else{
                 self.tracks = tracks ?? []
                 DispatchQueue.main.async {
-                    self.playlistTableView.reloadData()
+                    self.playlistPickerView.reloadAllComponents()
                 }
             }
         }
