@@ -51,6 +51,7 @@ class PlayListDetailViewController: UIViewController{
         songTextField.placeholder = "Add a song..."
         songTextField.borderStyle = .roundedRect
         songTextField.font = UIFont.systemFont(ofSize: 20)
+        songTextField.inputView = self.playlistPickerView
         
         self.view.addSubview(songTextField)
         
@@ -88,8 +89,9 @@ class PlayListDetailViewController: UIViewController{
         constraintSetter.setLeftEqualContraint(referenceAnchorView: self.view.leadingAnchor, distance: 20)
     }
     
-
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+       self.view.endEditing(true)
+    }
 
     /*
     // MARK: - Navigation
@@ -104,7 +106,9 @@ class PlayListDetailViewController: UIViewController{
 }
 
 extension PlayListDetailViewController: UITableViewDelegate{
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.view.endEditing(true)
+    }
 }
 
 extension PlayListDetailViewController: UITableViewDataSource{
