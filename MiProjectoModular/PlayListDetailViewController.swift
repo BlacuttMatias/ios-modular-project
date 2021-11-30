@@ -145,7 +145,7 @@ class PlayListDetailViewController: UIViewController{
         let constraintSetter = ConstraintsSetter(uiView: playlistTableView)
         constraintSetter.setTopEqualContraint(referenceAnchorView: self.songTextField.bottomAnchor, distance: 50)
         constraintSetter.setRightEqualContraint(referenceAnchorView: self.view.trailingAnchor, distance: 0)
-        constraintSetter.setBottomEqualContraint(referenceAnchorView: self.view.bottomAnchor, distance: 5)
+        constraintSetter.setBottomEqualContraint(referenceAnchorView: self.view.bottomAnchor, distance: 50)
         constraintSetter.setLeftEqualContraint(referenceAnchorView: self.view.leadingAnchor, distance: 0)
     }
     

@@ -254,11 +254,28 @@
                     <connections>
                         <segue destination="o2Q-uM-JrY" kind="relationship" relationship="viewControllers" id="kQ3-UK-NUq"/>
                         <segue destination="qGG-l6-R5L" kind="relationship" relationship="viewControllers" id="Q2z-CN-tFh"/>
+                        <segue destination="JZT-TF-hLN" kind="relationship" relationship="viewControllers" id="dvJ-VC-ca0"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8PM-jf-4Oa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1674" y="1090"/>
+            <point key="canvasLocation" x="1672" y="1103"/>
+        </scene>
+        <!--Add Playlist-->
+        <scene sceneID="hea-Hq-BcB">
+            <objects>
+                <viewController id="JZT-TF-hLN" customClass="PlayListDetailViewController" customModule="MiProjectoModular" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="beO-AW-kNb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="l4I-Oz-rhM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Add Playlist" image="AddPlaylistIcon" selectedImage="AddPlaylistIcon" id="tIp-1C-AlB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eTQ-2c-fAh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2658" y="2156"/>
         </scene>
         <!--Home-->
         <scene sceneID="ny2-eu-tJW">
@@ -323,7 +340,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DVC-YS-o9n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2755" y="1463"/>
+            <point key="canvasLocation" x="2753.6231884057975" y="1462.5"/>
         </scene>
         <!--Playlist-->
         <scene sceneID="fvu-AH-EhC">
@@ -390,6 +407,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AddPlaylistIcon" width="48" height="48"/>
         <image name="WelcomeImage" width="64" height="64"/>
         <image name="homekit" catalog="system" width="128" height="106"/>
         <image name="play.rectangle.fill" catalog="system" width="128" height="93"/>
