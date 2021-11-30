@@ -52,6 +52,7 @@ class PlayListDetailViewController: UIViewController{
     private func toolBarPickerView() -> UIToolbar{
         let toolBar: UIToolbar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
+        toolBar.barTintColor = UIColor(named: Resource.pickerBackgroundColor)
         toolBar.isTranslucent = true
         toolBar.sizeToFit()
         
@@ -59,9 +60,9 @@ class PlayListDetailViewController: UIViewController{
         let cancelButton = UIBarButtonItem()
         
         confirmButton.image = UIImage(named: Resource.confirmIcon)
-        confirmButton.tintColor = .blue
+        confirmButton.tintColor = UIColor(named: Resource.confirmColor)
         cancelButton.image = UIImage(named: Resource.cancelIcon)
-        cancelButton.tintColor = .red
+        cancelButton.tintColor = UIColor(named: Resource.cancelColor)
 
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
 

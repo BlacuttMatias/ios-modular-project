@@ -28,4 +28,7 @@ struct Resource{
     static let playlistAddIcon = "PlaylistAddIcon"
     static let confirmIcon = "ConfirmIcon"
     static let cancelIcon = "CancelIcon"
+    static let confirmColor = "ConfirmColor"
+    static let cancelColor = "CancelColor"
+    static let pickerBackgroundColor = "PickerBackgroundColor"
 }
