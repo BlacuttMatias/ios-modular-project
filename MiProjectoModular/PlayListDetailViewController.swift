@@ -75,7 +75,7 @@ class PlayListDetailViewController: UIViewController{
     private func setSongTextField(){
         songTextField.placeholder = "Add a song..."
         songTextField.borderStyle = .roundedRect
-        songTextField.font = UIFont.systemFont(ofSize: 20)
+        songTextField.font = UIFont.systemFont(ofSize: 18)
         songTextField.inputView = self.playlistPickerView
         songTextField.inputAccessoryView = self.playlistPickerView
         songTextField.inputAccessoryView = toolBarPickerView()
@@ -84,7 +84,7 @@ class PlayListDetailViewController: UIViewController{
         
         let constraintSetter = ConstraintsSetter(uiView: songTextField)
         constraintSetter.setTopEqualContraint(referenceAnchorView: self.view.topAnchor, distance: 50)
-        constraintSetter.setLeftEqualContraint(referenceAnchorView: self.view.leadingAnchor, distance: 30)
+        constraintSetter.setLeftEqualContraint(referenceAnchorView: self.view.leadingAnchor, distance: 20)
         constraintSetter.setRightEqualContraint(referenceAnchorView: self.addSongButton.leadingAnchor, distance: -20)
         constraintSetter.setHeightConstraint(height: 50)
 
