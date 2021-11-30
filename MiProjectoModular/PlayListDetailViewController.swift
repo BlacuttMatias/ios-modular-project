@@ -132,14 +132,13 @@ class PlayListDetailViewController: UIViewController{
     }
     
     private func setPlaylistTableView(){
-        self.playlistTableView.backgroundColor = .cyan
         self.view.addSubview(playlistTableView)
         
         let constraintSetter = ConstraintsSetter(uiView: playlistTableView)
         constraintSetter.setTopEqualContraint(referenceAnchorView: self.songTextField.bottomAnchor, distance: 50)
-        constraintSetter.setRightEqualContraint(referenceAnchorView: self.view.trailingAnchor, distance: -20)
-        constraintSetter.setBottomEqualContraint(referenceAnchorView: self.view.bottomAnchor, distance: -20)
-        constraintSetter.setLeftEqualContraint(referenceAnchorView: self.view.leadingAnchor, distance: 20)
+        constraintSetter.setRightEqualContraint(referenceAnchorView: self.view.trailingAnchor, distance: 0)
+        constraintSetter.setBottomEqualContraint(referenceAnchorView: self.view.bottomAnchor, distance: 5)
+        constraintSetter.setLeftEqualContraint(referenceAnchorView: self.view.leadingAnchor, distance: 0)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -164,6 +163,9 @@ extension PlayListDetailViewController: UITableViewDelegate{
         self.cancelSongAction()
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 65
+    }
 }
 
 extension PlayListDetailViewController: UITableViewDataSource{
@@ -174,10 +176,7 @@ extension PlayListDetailViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // create a new cell if needed or reuse an old one
-        let cell:UITableViewCell = (self.playlistTableView.dequeueReusableCell(withIdentifier: "cellPlaylist") as UITableViewCell?)!
-        
-        // set the text from the data model
-        cell.textLabel?.text = self.playlist[indexPath.row].title
+        let cell = PlaylistTrackViewCell(track: self.playlist[indexPath.row], reuseIdentifier: "cellPlaylist")
         
         return cell
     }
@@ -190,6 +189,7 @@ extension PlayListDetailViewController: UIPickerViewDelegate{
         self.trackToAdd = tracks[indice]
         self.songTextField.text = tracks[indice].title
     }
+    
 }
 
 extension PlayListDetailViewController: UIPickerViewDataSource{
