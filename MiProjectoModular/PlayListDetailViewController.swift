@@ -85,12 +85,20 @@ class PlayListDetailViewController: UIViewController{
         
         self.view.addSubview(songTextField)
         
+        self.songTextField.addTarget(self, action: #selector(SongTextFieldTouchUpInside), for: .editingDidBegin)
+        
         let constraintSetter = ConstraintsSetter(uiView: songTextField)
         constraintSetter.setTopEqualContraint(referenceAnchorView: self.view.topAnchor, distance: 50)
         constraintSetter.setLeftEqualContraint(referenceAnchorView: self.view.leadingAnchor, distance: 20)
         constraintSetter.setRightEqualContraint(referenceAnchorView: self.addSongButton.leadingAnchor, distance: -20)
         constraintSetter.setHeightConstraint(height: 50)
 
+    }
+    
+    @objc private func SongTextFieldTouchUpInside(){
+        let indice = self.playlistPickerView.selectedRow(inComponent: 0)
+        self.trackToAdd = tracks[indice]
+        self.songTextField.text = tracks[indice].title
     }
     
     @objc private func confirmSongAction(){
