@@ -61,8 +61,11 @@ class PlayListDetailViewController: UIViewController{
         
         confirmButton.image = UIImage(named: Resource.confirmIcon)
         confirmButton.tintColor = UIColor(named: Resource.confirmColor)
+        confirmButton.action = #selector(self.confirmSongAction)
+        
         cancelButton.image = UIImage(named: Resource.cancelIcon)
         cancelButton.tintColor = UIColor(named: Resource.cancelColor)
+        cancelButton.action = #selector(self.cancelSongAction)
 
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
 
@@ -90,7 +93,15 @@ class PlayListDetailViewController: UIViewController{
 
     }
     
-    @objc private func donePicker(){}
+    @objc private func confirmSongAction(){
+        self.view.endEditing(true)
+    }
+    
+    @objc private func cancelSongAction(){
+        self.songTextField.text = ""
+        self.trackToAdd = nil
+        self.view.endEditing(true)
+    }
     
     private func setAddSongButton(){
         let imageButton = UIImage(named: Resource.playlistAddIcon)
@@ -132,7 +143,7 @@ class PlayListDetailViewController: UIViewController{
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-       self.view.endEditing(true)
+        self.cancelSongAction()
     }
 
     /*
@@ -150,7 +161,7 @@ class PlayListDetailViewController: UIViewController{
 extension PlayListDetailViewController: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.view.endEditing(true)
+        self.cancelSongAction()
     }
     
 }
