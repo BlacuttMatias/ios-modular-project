@@ -13,6 +13,8 @@ class PlayListDetailViewController: UIViewController{
     var addSongButton: UIButton = UIButton(type: .system)
     var playlistTableView: UITableView = UITableView()
     var playlistPickerView: UIPickerView = UIPickerView()
+    var namePlaylistTextField: UITextField = UITextField()
+    var addPlaylistButton: UIButton = UIButton(type: .system)
     var tracks: [Track] = []
     var playlist: [Track] = []
     var trackToAdd: Track?
@@ -36,6 +38,9 @@ class PlayListDetailViewController: UIViewController{
         
         self.playlistTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellPlaylist")
 
+        self.setAddPlaylistButton()
+        self.setNamePlaylistTextField()
+        
         self.setAddSongButton()
         self.setSongTextField()
         
@@ -88,7 +93,7 @@ class PlayListDetailViewController: UIViewController{
         self.songTextField.addTarget(self, action: #selector(SongTextFieldTouchUpInside), for: .editingDidBegin)
         
         let constraintSetter = ConstraintsSetter(uiView: songTextField)
-        constraintSetter.setTopEqualContraint(referenceAnchorView: self.view.topAnchor, distance: 50)
+        constraintSetter.setTopEqualContraint(referenceAnchorView: self.namePlaylistTextField.bottomAnchor, distance: 40)
         constraintSetter.setLeftEqualContraint(referenceAnchorView: self.view.leadingAnchor, distance: 20)
         constraintSetter.setRightEqualContraint(referenceAnchorView: self.addSongButton.leadingAnchor, distance: -20)
         constraintSetter.setHeightConstraint(height: 50)
@@ -121,7 +126,7 @@ class PlayListDetailViewController: UIViewController{
         self.addSongButton.addTarget(self, action: #selector(addSongButtonTouch), for: .touchUpInside)
         
         let constraintSetter = ConstraintsSetter(uiView: addSongButton)
-        constraintSetter.setTopEqualContraint(referenceAnchorView: self.view.topAnchor, distance: 50)
+        constraintSetter.setTopEqualContraint(referenceAnchorView: self.namePlaylistTextField.bottomAnchor, distance: 40)
         constraintSetter.setRightEqualContraint(referenceAnchorView: self.view.trailingAnchor, distance: -20)
         constraintSetter.setHeightConstraint(height: 50)
         constraintSetter.setWidthConstraint(width: 50)
@@ -143,14 +148,43 @@ class PlayListDetailViewController: UIViewController{
         self.view.addSubview(playlistTableView)
         
         let constraintSetter = ConstraintsSetter(uiView: playlistTableView)
-        constraintSetter.setTopEqualContraint(referenceAnchorView: self.songTextField.bottomAnchor, distance: 50)
+        constraintSetter.setTopEqualContraint(referenceAnchorView: self.songTextField.bottomAnchor, distance: 40)
         constraintSetter.setRightEqualContraint(referenceAnchorView: self.view.trailingAnchor, distance: 0)
-        constraintSetter.setBottomEqualContraint(referenceAnchorView: self.view.bottomAnchor, distance: 50)
+        constraintSetter.setBottomEqualContraint(referenceAnchorView: self.view.bottomAnchor, distance: -60)
         constraintSetter.setLeftEqualContraint(referenceAnchorView: self.view.leadingAnchor, distance: 0)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.cancelSongAction()
+    }
+    
+    private func setNamePlaylistTextField(){
+        namePlaylistTextField.placeholder = "Name Playlist"
+        namePlaylistTextField.borderStyle = .roundedRect
+        namePlaylistTextField.font = UIFont.systemFont(ofSize: 18)
+        
+        self.view.addSubview(namePlaylistTextField)
+        
+        let constraintSetter = ConstraintsSetter(uiView: namePlaylistTextField)
+        constraintSetter.setTopEqualContraint(referenceAnchorView: self.view.topAnchor, distance: 40)
+        constraintSetter.setLeftEqualContraint(referenceAnchorView: self.view.leadingAnchor, distance: 20)
+        constraintSetter.setRightEqualContraint(referenceAnchorView: self.addPlaylistButton.leadingAnchor, distance: -20)
+        constraintSetter.setHeightConstraint(height: 40)
+
+    }
+    
+    private func setAddPlaylistButton(){
+        addPlaylistButton.setTitle("Add", for: .normal)
+        addPlaylistButton.setActionButtonText(sizeFont: 24)
+        
+        self.view.addSubview(addPlaylistButton)
+        
+        let constraintSetter = ConstraintsSetter(uiView: addPlaylistButton)
+        constraintSetter.setTopEqualContraint(referenceAnchorView: self.view.topAnchor, distance: 40)
+        constraintSetter.setRightEqualContraint(referenceAnchorView: self.view.trailingAnchor, distance: -20)
+        constraintSetter.setHeightConstraint(height: 40)
+        constraintSetter.setWidthConstraint(width: 80)
+
     }
 
     /*

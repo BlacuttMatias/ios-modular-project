@@ -17,4 +17,12 @@ extension UIButton{
         self.contentHorizontalAlignment = .fill
         self.setTitleColor(UIColor.blue, for: .normal)
     }
+    
+    func setActionButtonText(sizeFont: CGFloat){
+        self.roundedBorder()
+        self.titleLabel?.font = UIFont.boldSystemFont(ofSize: sizeFont)
+        self.tintColor = .white
+        self.backgroundColor = UIColor(named: Resource.buttonColor)
+        
+    }
 }
