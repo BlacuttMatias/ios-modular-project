@@ -86,7 +86,7 @@ class TrackTableViewCell: UITableViewCell{
     }
     
     @objc private func playButtonTouch(){
-        self.playButton.performTwoStateSelection()
+        //self.playButton.performTwoStateSelection()
         self.parent.buttonTouchedOnCell(tableViewCell: self)
     }
     
