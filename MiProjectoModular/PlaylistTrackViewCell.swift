@@ -40,8 +40,11 @@ class PlaylistTrackViewCell: UITableViewCell {
     }
     
     private func setArtistLabel(){
-        artistLabel.text = self.track.artist
-        artistLabel.setFontSizeIn18()
+        artistLabel.text = self.track.artist ?? ""
+        if(artistLabel.text!.isEmpty){
+            artistLabel.text = "Unknown"
+        }
+        artistLabel.setFontSize(16)
         artistLabel.textColor = .darkGray
         self.contentView.addSubview(artistLabel)
         
