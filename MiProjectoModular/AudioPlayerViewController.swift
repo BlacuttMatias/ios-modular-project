@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AudioPlayerViewController: UIViewController, AudioDelegate {
+class AudioPlayerViewController: UIViewController {
 
     private var audioPlayerLabel: UILabel = UILabel()
     private var playButton: UIButton = UIButton(type: .system)
@@ -230,31 +230,6 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
         
     }
     
-    func onChangePlayingState() {
-        let image = UIImage(named: self.audioPlayer?.getActionImageName() ?? Resource.welcomeImage)
-        self.playButton.setImage(image, for: .normal)
-        self.playingImage.image = self.audioPlayer?.getImagePlaying()?.getImage()
-    }
-    
-    func onChangeCurrentTimeSong(updatedCurrentTime: Float) {
-        if(!playSlider.isTouchInside){
-            self.playSlider.value = updatedCurrentTime
-        }
-    }
-    
-    
-    func onSongFinished() {
-        guard let tracksPlayer = self.tracksPlayer else{
-            return
-        }
-        if(tracksPlayer.areNotInTheLastTrack()){
-            self.nextButtonTouch()
-        }
-        else{
-            self.audioPlayer?.changePlayingState()
-        }
-    }
-    
     override func viewWillLayoutSubviews() {
         
     }
@@ -277,4 +252,31 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
     }
     */
 
+}
+
+extension AudioPlayerViewController: AudioDelegate {
+    
+    func onChangePlayingState() {
+        let image = UIImage(named: self.audioPlayer?.getActionImageName() ?? Resource.welcomeImage)
+        self.playButton.setImage(image, for: .normal)
+        self.playingImage.image = self.audioPlayer?.getImagePlaying()?.getImage()
+    }
+    
+    func onChangeCurrentTimeSong(updatedCurrentTime: Float) {
+        if(!playSlider.isTouchInside){
+            self.playSlider.value = updatedCurrentTime
+        }
+    }
+    
+    func onSongFinished() {
+        guard let tracksPlayer = self.tracksPlayer else{
+            return
+        }
+        if(tracksPlayer.areNotInTheLastTrack()){
+            self.nextButtonTouch()
+        }
+        else{
+            self.audioPlayer?.changePlayingState()
+        }
+    }
 }

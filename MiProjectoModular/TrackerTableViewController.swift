@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TrackerTableViewController: UITableViewController, ButtonOnCellDelegate {
+class TrackerTableViewController: UITableViewController {
 
     var tracks: [Track] = []
     var loadTracksCallback: (([Track]?, Error?) -> ()) = {_,_ in }
@@ -80,16 +80,6 @@ class TrackerTableViewController: UITableViewController, ButtonOnCellDelegate {
         return cell
     }
     
-    func buttonTouchedOnCell(tableViewCell: TrackTableViewCell) {
-        //let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "AudioPlayerViewController") as? AudioPlayerViewController
-        //vc!.modalPresentationStyle = .automatic
-        let vc = AudioPlayerViewController()
-        vc.setTracks(currentTrack: tableViewCell.getTrack(), tracks: self.tracks)
-        self.present(vc, animated: true)
-    }
-    
-    
-
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -135,4 +125,14 @@ class TrackerTableViewController: UITableViewController, ButtonOnCellDelegate {
     }
     */
 
+}
+
+extension TrackerTableViewController: ButtonOnCellDelegate {
+    func buttonTouchedOnCell(tableViewCell: TrackTableViewCell) {
+        //let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "AudioPlayerViewController") as? AudioPlayerViewController
+        //vc!.modalPresentationStyle = .automatic
+        let vc = AudioPlayerViewController()
+        vc.setTracks(currentTrack: tableViewCell.getTrack(), tracks: self.tracks)
+        self.present(vc, animated: true)
+    }
 }
