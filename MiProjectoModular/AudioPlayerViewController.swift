@@ -161,6 +161,7 @@ class AudioPlayerViewController: UIViewController, AudioDelegate {
             self.nextButton.isHidden = true
         }
         self.audioPlayerLabel.text = self.track()?.title
+        self.playSlider.value = 0.0
     }
     
     private func setPlaySlider(){
