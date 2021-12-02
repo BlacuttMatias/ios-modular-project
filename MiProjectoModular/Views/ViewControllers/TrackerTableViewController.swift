@@ -9,7 +9,6 @@ import UIKit
 
 class TrackerTableViewController: UITableViewController {
 
-    var tracks: [Track] = []
     var trackerViewModel: TrackerViewModel?
     
     override func viewDidLoad() {
