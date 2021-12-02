@@ -16,7 +16,6 @@ class PlayListDetailViewController: UIViewController{
     var addPlaylistButton: UIButton = UIButton(type: .system)
     var tracks: [Track] = []
     var playlist: [Track] = []
-    var trackToAdd: Track?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,25 +98,18 @@ class PlayListDetailViewController: UIViewController{
     }
     
     @objc private func SongTextFieldTouchUpInside(){
-        let indice = self.playlistPickerView.selectedRow(inComponent: 0)
-        self.trackToAdd = tracks[indice]
-        self.songTextField.text = tracks[indice].title
+        self.songTextField.text = self.getSelectedTrackOfPicker().title
     }
     
     @objc private func addSongAction(){
         self.view.endEditing(true)
-        guard let track = self.trackToAdd else {
-            return
-        }
-        self.playlist.append(track)
+        self.playlist.append(self.getSelectedTrackOfPicker())
         self.playlistTableView.reloadData()
-        self.trackToAdd = nil
         self.songTextField.text = ""
     }
     
     @objc private func cancelSongAction(){
         self.songTextField.text = ""
-        self.trackToAdd = nil
         self.view.endEditing(true)
     }
     
@@ -168,6 +160,11 @@ class PlayListDetailViewController: UIViewController{
         constraintSetter.setWidthConstraint(width: 80)
 
     }
+    
+    private func getSelectedTrackOfPicker() -> Track{
+        let indice = self.playlistPickerView.selectedRow(inComponent: 0)
+        return tracks[indice]
+    }
 
     /*
     // MARK: - Navigation
@@ -209,9 +206,7 @@ extension PlayListDetailViewController: UITableViewDataSource{
 extension PlayListDetailViewController: UIPickerViewDelegate{
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let indice = pickerView.selectedRow(inComponent: 0)
-        self.trackToAdd = tracks[indice]
-        self.songTextField.text = tracks[indice].title
+        self.songTextField.text = self.getSelectedTrackOfPicker().title
     }
     
 }
