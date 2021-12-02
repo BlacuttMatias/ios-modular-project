@@ -52,7 +52,7 @@
 		D0FDBDA427270B4C00E3982B /* MiProjectoModularTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FDBDA327270B4C00E3982B /* MiProjectoModularTests.swift */; };
 		D0FDBDAE27270B4C00E3982B /* MiProjectoModularUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FDBDAD27270B4C00E3982B /* MiProjectoModularUITests.swift */; };
 		D0FDBDB027270B4C00E3982B /* MiProjectoModularUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FDBDAF27270B4C00E3982B /* MiProjectoModularUITestsLaunchTests.swift */; };
-		D0FE0BEA273ECDA900CB481A /* AudioPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FE0BE9273ECDA900CB481A /* AudioPlayerManager.swift */; };
+		D0FE0BEA273ECDA900CB481A /* AudioPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FE0BE9273ECDA900CB481A /* AudioPlayerViewModel.swift */; };
 		D0FE0BEC273ED02000CB481A /* bensound-ukulele.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D0FE0BEB273ED02000CB481A /* bensound-ukulele.mp3 */; };
 /* End PBXBuildFile section */
 
@@ -127,7 +127,7 @@
 		D0FDBDA927270B4C00E3982B /* MiProjectoModularUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiProjectoModularUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0FDBDAD27270B4C00E3982B /* MiProjectoModularUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiProjectoModularUITests.swift; sourceTree = "<group>"; };
 		D0FDBDAF27270B4C00E3982B /* MiProjectoModularUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiProjectoModularUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		D0FE0BE9273ECDA900CB481A /* AudioPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerManager.swift; sourceTree = "<group>"; };
+		D0FE0BE9273ECDA900CB481A /* AudioPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewModel.swift; sourceTree = "<group>"; };
 		D0FE0BEB273ED02000CB481A /* bensound-ukulele.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "bensound-ukulele.mp3"; sourceTree = "<group>"; };
 		D35DCE1EF7550EA8818B30BE /* Pods-MiProjectoModularTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiProjectoModularTests.debug.xcconfig"; path = "Target Support Files/Pods-MiProjectoModularTests/Pods-MiProjectoModularTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DB2DEA42953A4EDF66E6A959 /* Pods_MiProjectoModularTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MiProjectoModularTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,6 +195,7 @@
 				D0C650AE27584EE400671370 /* LoginViewModel.swift */,
 				D0891AFB272B3C2E0085F8D5 /* RegisterViewModel.swift */,
 				D0C650B0275854D100671370 /* TrackerViewModel.swift */,
+				D0FE0BE9273ECDA900CB481A /* AudioPlayerViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -302,7 +303,6 @@
 				D0891AF9272B3A790085F8D5 /* StringValidator.swift */,
 				D00CDD6D273DB68300C24A8C /* ConstraintsSetter.swift */,
 				D0A7D84C273443BD00980BFF /* ButtonOnCellDelegate.swift */,
-				D0FE0BE9273ECDA900CB481A /* AudioPlayerManager.swift */,
 				D0F2E98A27429C7D006966D0 /* ImageManager.swift */,
 				D0F2E98E2742C436006966D0 /* PlayingState.swift */,
 				D0F2E9902742C497006966D0 /* PausedState.swift */,
@@ -639,7 +639,7 @@
 				D0FDBD8D27270B4900E3982B /* AppDelegate.swift in Sources */,
 				D0A7D84F2734446D00980BFF /* TrackTableViewCell.swift in Sources */,
 				D0891AFC272B3C2E0085F8D5 /* RegisterViewModel.swift in Sources */,
-				D0FE0BEA273ECDA900CB481A /* AudioPlayerManager.swift in Sources */,
+				D0FE0BEA273ECDA900CB481A /* AudioPlayerViewModel.swift in Sources */,
 				D0A35CD0272C31C200F88788 /* Models.swift in Sources */,
 				D0D53DC2273567DC000F1BB7 /* AudioPlayerViewController.swift in Sources */,
 				D0F2274F27517E7600BAC8B0 /* TracksPlayer.swift in Sources */,

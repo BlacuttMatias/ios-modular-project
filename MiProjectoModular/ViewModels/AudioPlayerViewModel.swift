@@ -8,7 +8,7 @@
 import Foundation
 import AudioPlayer
 
-class AudioPlayerManager{
+class AudioPlayerViewModel{
     
     private var sound: AudioPlayer? = nil
     private var audioState: AudioState
