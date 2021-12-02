@@ -20,7 +20,7 @@
 		D0193C4727398B61005A4B80 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0193C4627398B61005A4B80 /* TabViewController.swift */; };
 		D0891AF8272B38E70085F8D5 /* LoginValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0891AF7272B38E60085F8D5 /* LoginValidator.swift */; };
 		D0891AFA272B3A790085F8D5 /* StringValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0891AF9272B3A790085F8D5 /* StringValidator.swift */; };
-		D0891AFC272B3C2E0085F8D5 /* RegisterValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0891AFB272B3C2E0085F8D5 /* RegisterValidator.swift */; };
+		D0891AFC272B3C2E0085F8D5 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0891AFB272B3C2E0085F8D5 /* RegisterViewModel.swift */; };
 		D0A35CCE272C213200F88788 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A35CCD272C213200F88788 /* WelcomeViewController.swift */; };
 		D0A35CD0272C31C200F88788 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A35CCF272C31C200F88788 /* Models.swift */; };
 		D0A7D84D273443BD00980BFF /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A7D84C273443BD00980BFF /* Protocols.swift */; };
@@ -90,7 +90,7 @@
 		D0193C4627398B61005A4B80 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		D0891AF7272B38E60085F8D5 /* LoginValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginValidator.swift; sourceTree = "<group>"; };
 		D0891AF9272B3A790085F8D5 /* StringValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringValidator.swift; sourceTree = "<group>"; };
-		D0891AFB272B3C2E0085F8D5 /* RegisterValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterValidator.swift; sourceTree = "<group>"; };
+		D0891AFB272B3C2E0085F8D5 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		D0A35CCD272C213200F88788 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		D0A35CCF272C31C200F88788 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		D0A7D84C273443BD00980BFF /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
@@ -190,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				D0C650AE27584EE400671370 /* LoginViewModel.swift */,
+				D0891AFB272B3C2E0085F8D5 /* RegisterViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -197,9 +198,9 @@
 		D0C650A42758471A00671370 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D0C650A72758481A00671370 /* ViewControllers */,
 				D0CF7F2F2756894A00C61498 /* PlaylistTrackViewCell.swift */,
 				D0A7D84E2734446D00980BFF /* TrackTableViewCell.swift */,
-				D0C650A72758481A00671370 /* ViewControllers */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -288,7 +289,6 @@
 				D0F407502746D1DB00FD8CA0 /* DataManager.swift */,
 				D0891AF7272B38E60085F8D5 /* LoginValidator.swift */,
 				D0891AF9272B3A790085F8D5 /* StringValidator.swift */,
-				D0891AFB272B3C2E0085F8D5 /* RegisterValidator.swift */,
 				D00CDD6D273DB68300C24A8C /* ConstraintsSetter.swift */,
 				D0A7D84C273443BD00980BFF /* Protocols.swift */,
 				D0FE0BE9273ECDA900CB481A /* AudioPlayerManager.swift */,
@@ -626,7 +626,7 @@
 				D0F407532746DD9900FD8CA0 /* ApiManager.swift in Sources */,
 				D0FDBD8D27270B4900E3982B /* AppDelegate.swift in Sources */,
 				D0A7D84F2734446D00980BFF /* TrackTableViewCell.swift in Sources */,
-				D0891AFC272B3C2E0085F8D5 /* RegisterValidator.swift in Sources */,
+				D0891AFC272B3C2E0085F8D5 /* RegisterViewModel.swift in Sources */,
 				D0FE0BEA273ECDA900CB481A /* AudioPlayerManager.swift in Sources */,
 				D0A35CD0272C31C200F88788 /* Models.swift in Sources */,
 				D0D53DC2273567DC000F1BB7 /* AudioPlayerViewController.swift in Sources */,
