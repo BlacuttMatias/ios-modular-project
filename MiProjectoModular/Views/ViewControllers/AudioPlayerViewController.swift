@@ -18,8 +18,7 @@ class AudioPlayerViewController: UIViewController {
     private var volumeSlider: UISlider = UISlider ()
     private var stopButton: UIButton = UIButton(type: .system)
     private var playingImage: UIImageView = UIImageView()
-    private weak var audioPlayerViewModel: AudioPlayerViewModel?
-    private var tracksPlayer: TracksPlayer?
+    private var audioPlayerViewModel: AudioPlayerViewModel? = AudioPlayerViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +26,8 @@ class AudioPlayerViewController: UIViewController {
         //obtiene el alto y ancho de la pantalla que se esta usando
         //let w = UIScreen.main.currentMode?.size.width
         //let h = UIScreen.main.currentMode?.size.height
-        self.audioPlayerViewModel = AudioPlayerViewModel(file: self.getNameSoundFileWithoutExtension(), fileExtension: "mp3", audioDelegate: self)
+        self.audioPlayerViewModel?.audioDelegate = self
+        self.audioPlayerViewModel?.setSound(file: self.getNameSoundFileWithoutExtension(), fileExtension: "mp3")
         
         self.view.backgroundColor = .white
         
@@ -45,11 +45,11 @@ class AudioPlayerViewController: UIViewController {
     }
     
     func setTracks(currentTrack: Track, tracks: [Track]){
-        self.tracksPlayer = TracksPlayer(currentTrack: currentTrack, tracks: tracks)
+        self.audioPlayerViewModel?.setTracks(currentTrack: currentTrack, tracks: tracks)
     }
     
     private func track() -> Track?{
-        return self.tracksPlayer?.currentTrack
+        return self.audioPlayerViewModel?.getCurrentTrack()
     }
     
     private func getNameSoundFileWithoutExtension() -> String{
@@ -121,7 +121,7 @@ class AudioPlayerViewController: UIViewController {
     }
     
     @objc private func previousButtonTouch(){
-        self.tracksPlayer?.previousTrack()
+        self.self.audioPlayerViewModel?.previousTrack()
         self.refreshUiNewTrack()
         self.audioPlayerViewModel?.setSound(file: Resource.audio, fileExtension: "mp3")
     }
@@ -143,7 +143,7 @@ class AudioPlayerViewController: UIViewController {
     }
     
     @objc private func nextButtonTouch(){
-        self.tracksPlayer?.nextTrack()
+        self.self.audioPlayerViewModel?.nextTrack()
         self.refreshUiNewTrack()
         self.audioPlayerViewModel?.setSound(file: self.getNameSoundFileWithoutExtension(), fileExtension: "mp3")
     }
@@ -151,7 +151,7 @@ class AudioPlayerViewController: UIViewController {
     func refreshUiNewTrack(){
         self.previousButton.isHidden = false
         self.nextButton.isHidden = false
-        guard let tracksPlayer = self.tracksPlayer else{
+        guard let tracksPlayer = self.self.audioPlayerViewModel else{
             return
         }
         if(tracksPlayer.areInTheFirstTrack()){
@@ -269,7 +269,7 @@ extension AudioPlayerViewController: AudioDelegate {
     }
     
     func onSongFinished() {
-        guard let tracksPlayer = self.tracksPlayer else{
+        guard let tracksPlayer = self.self.audioPlayerViewModel else{
             return
         }
         if(tracksPlayer.areNotInTheLastTrack()){
