@@ -15,15 +15,7 @@ class TrackerTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let alert = UIAlertController(title: nil, message: "Loading...", preferredStyle: .alert)
-
-        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = UIActivityIndicatorView.Style.medium
-        loadingIndicator.startAnimating();
-
-        alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
+        self.presentLoadingAlert()
         
         self.trackerViewModel = TrackerViewModel(apiManager: ApiManager.getInstance(), trackerDelegate: self)
          
@@ -33,6 +25,18 @@ class TrackerTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    private func presentLoadingAlert(){
+        let alert = UIAlertController(title: nil, message: "Loading...", preferredStyle: .alert)
+
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
     }
 
     // MARK: - Table view data source
