@@ -184,13 +184,121 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D0F407542746DDC200FD8CA0 /* Utlis */ = {
+		D0C650A32758470200671370 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D0C650A42758471A00671370 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D0CF7F2F2756894A00C61498 /* PlaylistTrackViewCell.swift */,
+				D0A7D84E2734446D00980BFF /* TrackTableViewCell.swift */,
+				D0C650A72758481A00671370 /* ViewControllers */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D0C650A52758474A00671370 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D0FDBD8C27270B4900E3982B /* AppDelegate.swift */,
+				D0FDBD8E27270B4900E3982B /* SceneDelegate.swift */,
+				D0FDBD9727270B4B00E3982B /* LaunchScreen.storyboard */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		D0C650A62758475600671370 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D0C650AA27584C3F00671370 /* Constants */,
+				D0FE0BEB273ED02000CB481A /* bensound-ukulele.mp3 */,
+				D00CDD6B273D7B2000C24A8C /* stegosaurus-studio.gif */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D0C650A72758481A00671370 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D0FDBD9027270B4900E3982B /* LoginViewController.swift */,
+				D010F14E2729AF5E00D2AB03 /* RegisterViewController.swift */,
+				D0A35CCD272C213200F88788 /* WelcomeViewController.swift */,
+				D0C90B0B27331324000FDC9F /* TrackerTableViewController.swift */,
+				D0D53DC1273567DC000F1BB7 /* AudioPlayerViewController.swift */,
+				D0193C4627398B61005A4B80 /* TabViewController.swift */,
+				D0039CAF2755182600F764A8 /* PlayListDetailViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D0C650A82758486300671370 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D0A35CCF272C31C200F88788 /* Models.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D0C650A9275849AE00671370 /* Lybraries */ = {
+			isa = PBXGroup;
+			children = (
+				D00CDD68273D78E100C24A8C /* UIImage+animatedGIF.h */,
+				D00CDD69273D78E100C24A8C /* UIImage+animatedGIF.m */,
+				D00CDD67273D78E000C24A8C /* MiProjectoModular-Bridging-Header.h */,
+			);
+			path = Lybraries;
+			sourceTree = "<group>";
+		};
+		D0C650AA27584C3F00671370 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				D0F2E98C2742B17F006966D0 /* Resources.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		D0C650AB27584C6200671370 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				D0F407522746DD9900FD8CA0 /* ApiManager.swift */,
-				D0B7A4BD274FF0800016589B /* UIButton+Extension.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D0C650AD27584D4A00671370 /* UiUtils */ = {
+			isa = PBXGroup;
+			children = (
+				D0C3B748274D523D00F1C833 /* PlayButton.swift */,
 				D0B7A4BF274FF09A0016589B /* UILabel+Extension.swift */,
 				D0B7A4C1275031920016589B /* UIImage+Extension.swift */,
+				D0B7A4BD274FF0800016589B /* UIButton+Extension.swift */,
+			);
+			path = UiUtils;
+			sourceTree = "<group>";
+		};
+		D0F407542746DDC200FD8CA0 /* Utlis */ = {
+			isa = PBXGroup;
+			children = (
+				D0C650AD27584D4A00671370 /* UiUtils */,
+				D0C650A9275849AE00671370 /* Lybraries */,
+				D0F407502746D1DB00FD8CA0 /* DataManager.swift */,
+				D0891AF7272B38E60085F8D5 /* LoginValidator.swift */,
+				D0891AF9272B3A790085F8D5 /* StringValidator.swift */,
+				D0891AFB272B3C2E0085F8D5 /* RegisterValidator.swift */,
+				D00CDD6D273DB68300C24A8C /* ConstraintsSetter.swift */,
+				D0A7D84C273443BD00980BFF /* Protocols.swift */,
+				D0FE0BE9273ECDA900CB481A /* AudioPlayerManager.swift */,
+				D0F2E98A27429C7D006966D0 /* ImageManager.swift */,
+				D0F2E98E2742C436006966D0 /* PlayingState.swift */,
+				D0F2E9902742C497006966D0 /* PausedState.swift */,
+				D0F2E9922742C4AB006966D0 /* AudioState.swift */,
+				D0F2E9942742EE30006966D0 /* Errors.swift */,
+				D0027B382748301C00971E82 /* AudioDelegate.swift */,
+				D0F2274E27517E7600BAC8B0 /* TracksPlayer.swift */,
 			);
 			path = Utlis;
 			sourceTree = "<group>";
@@ -220,44 +328,16 @@
 		D0FDBD8B27270B4900E3982B /* MiProjectoModular */ = {
 			isa = PBXGroup;
 			children = (
+				D0C650AB27584C6200671370 /* Services */,
+				D0C650A82758486300671370 /* Models */,
+				D0C650A62758475600671370 /* Resources */,
+				D0C650A52758474A00671370 /* Common */,
+				D0C650A42758471A00671370 /* Views */,
+				D0C650A32758470200671370 /* ViewModels */,
 				D0F407542746DDC200FD8CA0 /* Utlis */,
-				D0FDBD8C27270B4900E3982B /* AppDelegate.swift */,
-				D0FDBD8E27270B4900E3982B /* SceneDelegate.swift */,
-				D0FDBD9027270B4900E3982B /* LoginViewController.swift */,
 				D0FDBD9227270B4900E3982B /* Main.storyboard */,
 				D0FDBD9527270B4B00E3982B /* Assets.xcassets */,
-				D0FDBD9727270B4B00E3982B /* LaunchScreen.storyboard */,
 				D0FDBD9A27270B4B00E3982B /* Info.plist */,
-				D010F14E2729AF5E00D2AB03 /* RegisterViewController.swift */,
-				D0891AF7272B38E60085F8D5 /* LoginValidator.swift */,
-				D0891AF9272B3A790085F8D5 /* StringValidator.swift */,
-				D0891AFB272B3C2E0085F8D5 /* RegisterValidator.swift */,
-				D0A35CCD272C213200F88788 /* WelcomeViewController.swift */,
-				D0A35CCF272C31C200F88788 /* Models.swift */,
-				D0C90B0B27331324000FDC9F /* TrackerTableViewController.swift */,
-				D0A7D84C273443BD00980BFF /* Protocols.swift */,
-				D0A7D84E2734446D00980BFF /* TrackTableViewCell.swift */,
-				D0D53DC1273567DC000F1BB7 /* AudioPlayerViewController.swift */,
-				D0193C4627398B61005A4B80 /* TabViewController.swift */,
-				D00CDD68273D78E100C24A8C /* UIImage+animatedGIF.h */,
-				D00CDD69273D78E100C24A8C /* UIImage+animatedGIF.m */,
-				D00CDD67273D78E000C24A8C /* MiProjectoModular-Bridging-Header.h */,
-				D00CDD6B273D7B2000C24A8C /* stegosaurus-studio.gif */,
-				D00CDD6D273DB68300C24A8C /* ConstraintsSetter.swift */,
-				D0FE0BE9273ECDA900CB481A /* AudioPlayerManager.swift */,
-				D0FE0BEB273ED02000CB481A /* bensound-ukulele.mp3 */,
-				D0F2E98A27429C7D006966D0 /* ImageManager.swift */,
-				D0F2E98C2742B17F006966D0 /* Resources.swift */,
-				D0F2E98E2742C436006966D0 /* PlayingState.swift */,
-				D0F2E9902742C497006966D0 /* PausedState.swift */,
-				D0F2E9922742C4AB006966D0 /* AudioState.swift */,
-				D0F2E9942742EE30006966D0 /* Errors.swift */,
-				D0F407502746D1DB00FD8CA0 /* DataManager.swift */,
-				D0027B382748301C00971E82 /* AudioDelegate.swift */,
-				D0C3B748274D523D00F1C833 /* PlayButton.swift */,
-				D0F2274E27517E7600BAC8B0 /* TracksPlayer.swift */,
-				D0039CAF2755182600F764A8 /* PlayListDetailViewController.swift */,
-				D0CF7F2F2756894A00C61498 /* PlaylistTrackViewCell.swift */,
 			);
 			path = MiProjectoModular;
 			sourceTree = "<group>";
