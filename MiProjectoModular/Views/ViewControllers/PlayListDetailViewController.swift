@@ -14,27 +14,12 @@ class PlayListDetailViewController: UIViewController{
     var playlistPickerView: UIPickerView = UIPickerView()
     var namePlaylistTextField: UITextField = UITextField()
     var addPlaylistButton: UIButton = UIButton(type: .system)
-    var tracks: [Track] = []
-    var playlist: [Track] = []
+    var playlistDetailViewModel: PlaylistDetailViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let loadTracksCallback: (([Track]?, Error?) -> ()) = { tracks, error in
-            if error != nil {
-                print("Error to load songs")
-            }
-            else{
-                self.tracks = tracks ?? []
-                DispatchQueue.main.async {
-                    self.playlistPickerView.reloadAllComponents()
-                }
-            }
-        }
-        
-        ApiManager.getInstance().getMusic(completion: loadTracksCallback)
-        
-        self.playlistTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellPlaylist")
+        self.playlistDetailViewModel = PlaylistDetailViewModel(apiManager: ApiManager.getInstance(), playlistDetailDelegate: self)
 
         self.setAddPlaylistButton()
         self.setNamePlaylistTextField()
@@ -98,14 +83,15 @@ class PlayListDetailViewController: UIViewController{
     }
     
     @objc private func SongTextFieldTouchUpInside(){
-        self.songTextField.text = self.getSelectedTrackOfPicker().title
+        self.songTextField.text = self.getSelectedTrackOfPicker()?.title
     }
     
     @objc private func addSongAction(){
         self.view.endEditing(true)
-        self.playlist.append(self.getSelectedTrackOfPicker())
-        self.playlistTableView.reloadData()
-        self.songTextField.text = ""
+        guard let track = self.getSelectedTrackOfPicker() else{
+            return
+        }
+        self.playlistDetailViewModel?.addTrackToPlaylist(track: track)
     }
     
     @objc private func cancelSongAction(){
@@ -161,9 +147,9 @@ class PlayListDetailViewController: UIViewController{
 
     }
     
-    private func getSelectedTrackOfPicker() -> Track{
+    private func getSelectedTrackOfPicker() -> Track?{
         let indice = self.playlistPickerView.selectedRow(inComponent: 0)
-        return tracks[indice]
+        return self.playlistDetailViewModel?.getTracks()[indice]
     }
 
     /*
@@ -192,12 +178,12 @@ extension PlayListDetailViewController: UITableViewDelegate{
 extension PlayListDetailViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return playlist.count
+        return playlistDetailViewModel?.getNumberRowsInSection() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // create a new cell if needed or reuse an old one
-        let cell = PlaylistTrackViewCell(track: self.playlist[indexPath.row], reuseIdentifier: "cellPlaylist")
+        let cell = self.playlistDetailViewModel?.getCellPlaylist(index: indexPath.row) ?? UITableViewCell()
         
         return cell
     }
@@ -206,23 +192,35 @@ extension PlayListDetailViewController: UITableViewDataSource{
 extension PlayListDetailViewController: UIPickerViewDelegate{
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.songTextField.text = self.getSelectedTrackOfPicker().title
+        self.songTextField.text = self.getSelectedTrackOfPicker()?.title
     }
     
 }
 
 extension PlayListDetailViewController: UIPickerViewDataSource{
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        return self.playlistDetailViewModel?.getNumberComponentsPicker() ?? 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.tracks.count
+        return self.self.playlistDetailViewModel?.getNumberRowsPicker() ?? 0
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return self.tracks[row].title
+        return self.self.playlistDetailViewModel?.getTitleRowPicker(row: row)    }
+    
+}
+
+
+extension PlayListDetailViewController: PlaylistDetailDelegate{
+    
+    func reloadPicker() {
+        self.playlistPickerView.reloadAllComponents()
     }
     
+    func songAdded() {
+        self.playlistTableView.reloadData()
+        self.songTextField.text = ""
+    }
     
 }

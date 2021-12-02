@@ -7,4 +7,7 @@
 
 import Foundation
 
-protocol PlaylistDetailDelegate{}
+protocol PlaylistDetailDelegate: AnyObject{
+    func reloadPicker()
+    func songAdded()
+}
