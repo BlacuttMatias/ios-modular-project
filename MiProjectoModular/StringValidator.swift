@@ -7,7 +7,9 @@
 
 import Foundation
 
-class StringValidator{
+protocol StringValidator{}
+
+extension StringValidator{
     func lenghtGreaterThan(text: String, lenght: Int) -> Bool{
         return text.count > lenght
     }
