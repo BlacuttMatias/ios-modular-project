@@ -257,13 +257,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		D0C650A9275849AE00671370 /* Lybraries */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Lybraries;
-			sourceTree = "<group>";
-		};
 		D0C650AA27584C3F00671370 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,7 +298,6 @@
 			isa = PBXGroup;
 			children = (
 				D0C650AD27584D4A00671370 /* UiUtils */,
-				D0C650A9275849AE00671370 /* Lybraries */,
 				D0F407502746D1DB00FD8CA0 /* DataManager.swift */,
 				D0891AF9272B3A790085F8D5 /* StringValidator.swift */,
 				D00CDD6D273DB68300C24A8C /* ConstraintsSetter.swift */,
