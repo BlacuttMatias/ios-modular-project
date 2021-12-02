@@ -10,7 +10,6 @@ import UIKit
 class PlayListDetailViewController: UIViewController{
     
     var songTextField: UITextField = UITextField()
-    var addSongButton: UIButton = UIButton(type: .system)
     var playlistTableView: UITableView = UITableView()
     var playlistPickerView: UIPickerView = UIPickerView()
     var namePlaylistTextField: UITextField = UITextField()
@@ -41,7 +40,6 @@ class PlayListDetailViewController: UIViewController{
         self.setAddPlaylistButton()
         self.setNamePlaylistTextField()
         
-        self.setAddSongButton()
         self.setSongTextField()
         
         playlistTableView.delegate = self
@@ -61,12 +59,12 @@ class PlayListDetailViewController: UIViewController{
         toolBar.isTranslucent = true
         toolBar.sizeToFit()
         
-        let confirmButton = UIBarButtonItem()
+        let addButton = UIBarButtonItem()
         let cancelButton = UIBarButtonItem()
         
-        confirmButton.image = UIImage(named: Resource.confirmIcon)
-        confirmButton.tintColor = UIColor(named: Resource.confirmColor)
-        confirmButton.action = #selector(self.confirmSongAction)
+        addButton.image = UIImage(named: Resource.addIcon)
+        addButton.tintColor = UIColor(named: Resource.confirmColor)
+        addButton.action = #selector(self.addSongAction)
         
         cancelButton.image = UIImage(named: Resource.cancelIcon)
         cancelButton.tintColor = UIColor(named: Resource.cancelColor)
@@ -74,7 +72,7 @@ class PlayListDetailViewController: UIViewController{
 
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
 
-        toolBar.setItems([cancelButton, spaceButton, confirmButton], animated: false)
+        toolBar.setItems([cancelButton, spaceButton, addButton], animated: false)
         toolBar.isUserInteractionEnabled = true
         
         return toolBar
@@ -95,7 +93,7 @@ class PlayListDetailViewController: UIViewController{
         let constraintSetter = ConstraintsSetter(uiView: songTextField)
         constraintSetter.setTopEqualContraint(referenceAnchorView: self.namePlaylistTextField.bottomAnchor, distance: 40)
         constraintSetter.setLeftEqualContraint(referenceAnchorView: self.view.leadingAnchor, distance: 20)
-        constraintSetter.setRightEqualContraint(referenceAnchorView: self.addSongButton.leadingAnchor, distance: -20)
+        constraintSetter.setRightEqualContraint(referenceAnchorView: self.view.trailingAnchor, distance: -20)
         constraintSetter.setHeightConstraint(height: 50)
 
     }
@@ -106,8 +104,15 @@ class PlayListDetailViewController: UIViewController{
         self.songTextField.text = tracks[indice].title
     }
     
-    @objc private func confirmSongAction(){
+    @objc private func addSongAction(){
         self.view.endEditing(true)
+        guard let track = self.trackToAdd else {
+            return
+        }
+        self.playlist.append(track)
+        self.playlistTableView.reloadData()
+        self.trackToAdd = nil
+        self.songTextField.text = ""
     }
     
     @objc private func cancelSongAction(){
@@ -116,31 +121,8 @@ class PlayListDetailViewController: UIViewController{
         self.view.endEditing(true)
     }
     
-    private func setAddSongButton(){
-        let imageButton = UIImage(named: Resource.playlistAddIcon)
-        addSongButton.setImage(imageButton, for: .normal)
-        addSongButton.setBlueIcon()
-        
-        self.view.addSubview(addSongButton)
-        
-        self.addSongButton.addTarget(self, action: #selector(addSongButtonTouch), for: .touchUpInside)
-        
-        let constraintSetter = ConstraintsSetter(uiView: addSongButton)
-        constraintSetter.setTopEqualContraint(referenceAnchorView: self.namePlaylistTextField.bottomAnchor, distance: 40)
-        constraintSetter.setRightEqualContraint(referenceAnchorView: self.view.trailingAnchor, distance: -20)
-        constraintSetter.setHeightConstraint(height: 50)
-        constraintSetter.setWidthConstraint(width: 50)
-
-    }
-    
     @objc private func addSongButtonTouch(){
-        guard let track = self.trackToAdd else {
-            return
-        }
-        self.playlist.append(track)
-        self.playlistTableView.reloadData()
-        self.trackToAdd = nil
-        self.songTextField.text = ""
+
         self.view.endEditing(true)
     }
     
