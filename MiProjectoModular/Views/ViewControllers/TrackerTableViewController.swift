@@ -10,7 +10,7 @@ import UIKit
 class TrackerTableViewController: UITableViewController {
 
     var tracks: [Track] = []
-    var loadTracksCallback: (([Track]?, Error?) -> ()) = {_,_ in }
+    var trackerViewModel: TrackerViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,25 +25,8 @@ class TrackerTableViewController: UITableViewController {
         alert.view.addSubview(loadingIndicator)
         present(alert, animated: true, completion: nil)
         
-        
-        loadTracksCallback = { tracks, error in
-            if error != nil {
-                DispatchQueue.main.async {
-                    self.dismiss(animated: false, completion: nil)
-                }
-                print("Error to load songs")
-            }
-            else{
-                self.tracks = tracks ?? []
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                    self.dismiss(animated: false, completion: nil)
-                }
-            }
-        }
-        
-        ApiManager.getInstance().getMusic(completion: loadTracksCallback)
-        
+        self.trackerViewModel = TrackerViewModel(apiManager: ApiManager.getInstance(), trackerDelegate: self)
+         
         //self.tableView.register(TrackTableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -56,12 +39,12 @@ class TrackerTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return self.trackerViewModel?.getNumberOfSections() ?? 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return tracks.count
+        return self.trackerViewModel?.getNumberOfRows() ?? 0
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -70,7 +53,7 @@ class TrackerTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! TrackTableViewCell
-        let cell = TrackTableViewCell(track: tracks[indexPath.row], parent: self, reuseIdentifier: "reuseIdentifier")
+        let cell = trackerViewModel?.getTrackViewCell(index: indexPath.row) ?? UITableViewCell()
 
         //let track = tracks[indexPath.row]
         //cell.textLabel?.text = track.title
@@ -129,10 +112,22 @@ class TrackerTableViewController: UITableViewController {
 
 extension TrackerTableViewController: ButtonOnCellDelegate {
     func buttonTouchedOnCell(tableViewCell: TrackTableViewCell) {
-        //let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "AudioPlayerViewController") as? AudioPlayerViewController
-        //vc!.modalPresentationStyle = .automatic
-        let vc = AudioPlayerViewController()
-        vc.setTracks(currentTrack: tableViewCell.getTrack(), tracks: self.tracks)
-        self.present(vc, animated: true)
+        guard let trackerViewModel = self.trackerViewModel else{
+            return
+        }
+        self.present(trackerViewModel.getAudioPlayerViewController(currentTrack: tableViewCell.getTrack()), animated: true)
     }
 }
+
+extension TrackerTableViewController: TrackerDelegate {
+
+    func dismissLoadingAlert() {
+        self.dismiss(animated: false, completion: nil)
+    }
+    
+    func reloadDataTable() {
+        self.tableView.reloadData()
+    }
+    
+}
+
