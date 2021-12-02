@@ -22,7 +22,7 @@
 		D0891AFC272B3C2E0085F8D5 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0891AFB272B3C2E0085F8D5 /* RegisterViewModel.swift */; };
 		D0A35CCE272C213200F88788 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A35CCD272C213200F88788 /* WelcomeViewController.swift */; };
 		D0A35CD0272C31C200F88788 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A35CCF272C31C200F88788 /* Models.swift */; };
-		D0A7D84D273443BD00980BFF /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A7D84C273443BD00980BFF /* Protocols.swift */; };
+		D0A7D84D273443BD00980BFF /* ButtonOnCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A7D84C273443BD00980BFF /* ButtonOnCellDelegate.swift */; };
 		D0A7D84F2734446D00980BFF /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A7D84E2734446D00980BFF /* TrackTableViewCell.swift */; };
 		D0B7A4BE274FF0800016589B /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B7A4BD274FF0800016589B /* UIButton+Extension.swift */; };
 		D0B7A4C0274FF09A0016589B /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B7A4BF274FF09A0016589B /* UILabel+Extension.swift */; };
@@ -93,7 +93,7 @@
 		D0891AFB272B3C2E0085F8D5 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		D0A35CCD272C213200F88788 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		D0A35CCF272C31C200F88788 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		D0A7D84C273443BD00980BFF /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		D0A7D84C273443BD00980BFF /* ButtonOnCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonOnCellDelegate.swift; sourceTree = "<group>"; };
 		D0A7D84E2734446D00980BFF /* TrackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
 		D0B7A4BD274FF0800016589B /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		D0B7A4BF274FF09A0016589B /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
@@ -301,7 +301,7 @@
 				D0F407502746D1DB00FD8CA0 /* DataManager.swift */,
 				D0891AF9272B3A790085F8D5 /* StringValidator.swift */,
 				D00CDD6D273DB68300C24A8C /* ConstraintsSetter.swift */,
-				D0A7D84C273443BD00980BFF /* Protocols.swift */,
+				D0A7D84C273443BD00980BFF /* ButtonOnCellDelegate.swift */,
 				D0FE0BE9273ECDA900CB481A /* AudioPlayerManager.swift */,
 				D0F2E98A27429C7D006966D0 /* ImageManager.swift */,
 				D0F2E98E2742C436006966D0 /* PlayingState.swift */,
@@ -631,7 +631,7 @@
 				D0F2E98D2742B17F006966D0 /* Resources.swift in Sources */,
 				D0A35CCE272C213200F88788 /* WelcomeViewController.swift in Sources */,
 				D0F2E9912742C497006966D0 /* PausedState.swift in Sources */,
-				D0A7D84D273443BD00980BFF /* Protocols.swift in Sources */,
+				D0A7D84D273443BD00980BFF /* ButtonOnCellDelegate.swift in Sources */,
 				D0891AFA272B3A790085F8D5 /* StringValidator.swift in Sources */,
 				D0B7A4BE274FF0800016589B /* UIButton+Extension.swift in Sources */,
 				D0FDBD9127270B4900E3982B /* LoginViewController.swift in Sources */,
