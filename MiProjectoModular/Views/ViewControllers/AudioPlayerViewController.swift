@@ -9,6 +9,7 @@ import UIKit
 
 class AudioPlayerViewController: UIViewController {
 
+    private var menuButton: UIButton = UIButton(type: .system)
     private var audioPlayerLabel: UILabel = UILabel()
     private var playButton: UIButton = UIButton(type: .system)
     private var previousButton: UIButton = UIButton(type: .system)
@@ -33,6 +34,7 @@ class AudioPlayerViewController: UIViewController {
         
         self.audioPlayerViewModel?.play()
 
+        self.setMenuButton()
         self.setAudioPlayerLabel()
         self.setPlayButton()
         self.setPreviousButton()
@@ -67,7 +69,7 @@ class AudioPlayerViewController: UIViewController {
         self.view.addSubview(audioPlayerLabel)
         
         let constraintSetter = ConstraintsSetter(uiView: audioPlayerLabel)
-        constraintSetter.setTopEqualContraint(referenceAnchorView: self.view.topAnchor, distance: 25)
+        constraintSetter.setTopEqualContraint(referenceAnchorView: self.view.topAnchor, distance: 40)
         constraintSetter.setCenterXContraint(referenceAnchorView: self.view.centerXAnchor)
 
     }
@@ -240,6 +242,37 @@ class AudioPlayerViewController: UIViewController {
     
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         self.changeStatePlaying()
+    }
+    
+    func setMenuButton(){
+        var menuItems: [UIAction] {
+            return [
+                UIAction(title: "Standard item", image: UIImage(systemName: "sun.max"), handler: { (_) in
+                }),
+                UIAction(title: "Disabled item", image: UIImage(systemName: "moon"), attributes: .disabled, handler: { (_) in
+                }),
+                UIAction(title: "Delete..", image: UIImage(systemName: "trash"), attributes: .destructive, handler: { (_) in
+                })
+            ]
+        }
+
+        var demoMenu: UIMenu {
+            return UIMenu(title: "My menu", image: nil, identifier: nil, options: [], children: menuItems)
+        }
+        
+        let image = UIImage(named: Resource.menuIcon)
+        menuButton.setImage(image, for: .normal)
+        menuButton.tintColor = .lightGray
+        menuButton.menu = demoMenu
+        menuButton.showsMenuAsPrimaryAction = true
+        
+        self.view.addSubview(menuButton)
+        
+        let constraintSetter = ConstraintsSetter(uiView: menuButton)
+        constraintSetter.setTopEqualContraint(referenceAnchorView: self.view.topAnchor, distance: 15)
+        constraintSetter.setRightEqualContraint(referenceAnchorView: self.view.trailingAnchor, distance: -15)
+
+        
     }
 
     /*

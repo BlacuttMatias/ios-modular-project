@@ -34,4 +34,5 @@ struct Resource{
     static let addPlaylistIcon = "AddPlaylistIcon"
     static let buttonColor = "ButtonColor"
     static let addIcon = "AddIcon"
+    static let menuIcon = "MenuIcon"
 }
