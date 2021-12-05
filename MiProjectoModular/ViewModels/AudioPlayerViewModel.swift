@@ -17,6 +17,7 @@ class AudioPlayerViewModel{
     private var tracksPlayer: TracksPlayer?
     private var menuDelegate: MenuAudioPlayerDelegate?
     private var love: Bool = Bool()
+    private var wasDownloaded: Bool = Bool()
     
     init(file: String, fileExtension: String, audioDelegate: AudioDelegate){
         self.audioState = PausedState()
@@ -163,18 +164,22 @@ class AudioPlayerViewModel{
     func getActionsMenu() -> [ActionMenuButton]{
         var actions = [
             ActionMenuButton(title: "Remove from lybrary", imageName: Resource.deleteIcon, actionHandler: { self.menuDelegate?.deleteLybrary(action: $0) }, attributes: .destructive),
-            ActionMenuButton(title: "Download", imageName: Resource.downloadIcon, actionHandler: { self.menuDelegate?.downloadSong(action: $0) }),
             ActionMenuButton(title: "Add to a Playlist...", imageName: Resource.addPlaylistIcon, actionHandler: { self.menuDelegate?.addToPlaylist(action: $0) }),
             ActionMenuButton(title: "Share Song...", imageName: Resource.shareIcon, actionHandler: { self.menuDelegate?.shareSong(action: $0) }),
         ]
-        var actionLove: ActionMenuButton
+        if(!self.wasDownloaded){
+            let downloadAction = ActionMenuButton(title: "Download", imageName: Resource.downloadIcon, actionHandler: { self.menuDelegate?.downloadSong(action: $0) })
+            actions.insert(downloadAction, at: 1)
+        }
+        
+        var loveAction: ActionMenuButton
         if(self.love){
-            actionLove = ActionMenuButton(title: "Unlove", imageName: Resource.unloveIcon, actionHandler: { self.menuDelegate?.love(action: $0) })
+            loveAction = ActionMenuButton(title: "Unlove", imageName: Resource.unloveIcon, actionHandler: { self.menuDelegate?.love(action: $0) })
         }
         else{
-            actionLove = ActionMenuButton(title: "Love", imageName: Resource.loveIcon, actionHandler: { self.menuDelegate?.love(action: $0) })
+            loveAction = ActionMenuButton(title: "Love", imageName: Resource.loveIcon, actionHandler: { self.menuDelegate?.love(action: $0) })
         }
-        actions.append(actionLove)
+        actions.append(loveAction)
         return actions
     }
     
@@ -198,6 +203,21 @@ class AudioPlayerViewModel{
         else{
             return "We will NOT recommend more like this in Listen Now"
         }
+    }
+    
+    func doDownloadAction(){
+        self.wasDownloaded = true
+    }
+    
+    func getTitleDownloadAction() -> String{
+        return "Downloading song..."
+    }
+    
+    func getMessageDownloadAction() -> String{
+        let titleSong = tracksPlayer?.currentTrack.title ?? "Unknown"
+        let artistSong = tracksPlayer?.currentTrack.artist ?? "Unknown"
+        let albumSong = tracksPlayer?.currentTrack.album ?? "Unknown"
+        return "Title: \(titleSong)\n Artist: \(artistSong)\n Album: \(albumSong)"
     }
 
 }
