@@ -15,6 +15,7 @@ class AudioPlayerViewModel{
     private var timer: Timer?
     var audioDelegate: AudioDelegate?
     private var tracksPlayer: TracksPlayer?
+    private var menuDelegate: MenuAudioPlayerDelegate?
     
     init(file: String, fileExtension: String, audioDelegate: AudioDelegate){
         self.audioState = PausedState()
@@ -154,13 +155,17 @@ class AudioPlayerViewModel{
         return self.tracksPlayer?.currentTrack
     }
     
+    func setMenuDelegate(menuDelegate: MenuAudioPlayerDelegate){
+        self.menuDelegate = menuDelegate
+    }
+    
     func getActionsMenu() -> [ActionMenuButton]{
         return [
-            ActionMenuButton(title: "Remove from lybrary", imageName: Resource.deleteIcon, actionHandler: { _ in }, attributes: .destructive),
-            ActionMenuButton(title: "Download", imageName: Resource.downloadIcon, actionHandler: { _ in }),
-            ActionMenuButton(title: "Add to a Playlist...", imageName: Resource.addPlaylistIcon, actionHandler: { _ in }),
-            ActionMenuButton(title: "Share Song...", imageName: Resource.shareIcon, actionHandler: { _ in }),
-            ActionMenuButton(title: "Love", imageName: Resource.loveIcon, actionHandler: { _ in })
+            ActionMenuButton(title: "Remove from lybrary", imageName: Resource.deleteIcon, actionHandler: { self.menuDelegate?.deleteLybrary(action: $0) }, attributes: .destructive),
+            ActionMenuButton(title: "Download", imageName: Resource.downloadIcon, actionHandler: { self.menuDelegate?.downloadSong(action: $0) }),
+            ActionMenuButton(title: "Add to a Playlist...", imageName: Resource.addPlaylistIcon, actionHandler: { self.menuDelegate?.addToPlaylist(action: $0) }),
+            ActionMenuButton(title: "Share Song...", imageName: Resource.shareIcon, actionHandler: { self.menuDelegate?.shareSong(action: $0) }),
+            ActionMenuButton(title: "Love", imageName: Resource.loveIcon, actionHandler: { self.menuDelegate?.love(action: $0) })
         ]
     }
 

@@ -28,6 +28,7 @@ class AudioPlayerViewController: UIViewController {
         //let w = UIScreen.main.currentMode?.size.width
         //let h = UIScreen.main.currentMode?.size.height
         self.audioPlayerViewModel?.audioDelegate = self
+        self.audioPlayerViewModel?.setMenuDelegate(menuDelegate: self)
         self.audioPlayerViewModel?.setSound(file: self.getNameSoundFileWithoutExtension(), fileExtension: "mp3")
         
         self.view.backgroundColor = .white
@@ -300,5 +301,27 @@ extension AudioPlayerViewController: AudioDelegate {
         else{
             self.audioPlayerViewModel?.changePlayingState()
         }
+    }
+}
+
+extension AudioPlayerViewController: MenuAudioPlayerDelegate {
+    func deleteLybrary(action: UIAction) {
+        return
+    }
+    
+    func downloadSong(action: UIAction) {
+        return
+    }
+    
+    func addToPlaylist(action: UIAction) {
+        return
+    }
+    
+    func shareSong(action: UIAction) {
+        return
+    }
+    
+    func love(action: UIAction) {
+        return
     }
 }

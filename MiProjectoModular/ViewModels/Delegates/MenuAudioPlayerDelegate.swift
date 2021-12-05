@@ -8,9 +8,9 @@
 import Foundation
 
 protocol MenuAudioPlayerDelegate{
-    func deleteLybrary()
-    func downloadSong()
-    func addToPlaylist()
-    func shareSong()
-    func love()
+    func deleteLybrary(action: UIAction)
+    func downloadSong(action: UIAction)
+    func addToPlaylist(action: UIAction)
+    func shareSong(action: UIAction)
+    func love(action: UIAction)
 }
