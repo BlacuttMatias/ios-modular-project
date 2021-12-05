@@ -35,4 +35,8 @@ struct Resource{
     static let buttonColor = "ButtonColor"
     static let addIcon = "AddIcon"
     static let menuIcon = "MenuIcon"
+    static let deleteIcon = "DeleteIcon"
+    static let downloadIcon = "DownloadIcon"
+    static let shareIcon = "ShareIcon"
+    static let loveIcon = "LoveIcon"
 }
