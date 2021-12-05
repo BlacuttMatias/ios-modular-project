@@ -39,4 +39,5 @@ struct Resource{
     static let downloadIcon = "DownloadIcon"
     static let shareIcon = "ShareIcon"
     static let loveIcon = "LoveIcon"
+    static let unloveIcon = "UnloveIcon"
 }

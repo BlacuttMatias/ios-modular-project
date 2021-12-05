@@ -366,7 +366,7 @@
                             <outlet property="delegate" destination="qGG-l6-R5L" id="f1B-rt-F0X"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Playlist" image="play.rectangle.fill" catalog="system" selectedImage="play.rectangle.fill" id="0S1-pR-C3I"/>
+                    <tabBarItem key="tabBarItem" title="Playlist" image="play.rectangle.fill" catalog="system" id="0S1-pR-C3I"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AiM-aR-nYV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
