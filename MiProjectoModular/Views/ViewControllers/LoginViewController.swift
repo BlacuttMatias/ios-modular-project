@@ -14,7 +14,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var signInLabel: UILabel!
     @IBOutlet weak var signInButton: UIButton!
     var typeError: Int = 0
-    var validatorSignIn: LoginValidator = LoginValidator()
+    var loginViewModel: LoginViewModel = LoginViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,27 +37,27 @@ class LoginViewController: UIViewController {
             print("Hay nil")
             return
         }
-        guard validatorSignIn.isNotEmpty(usernameOrEmail) else{
+        guard loginViewModel.isNotEmpty(usernameOrEmail) else{
             typeError = 1
             print("Debe ingresar un Username o Email")
             return
         }
-        guard validatorSignIn.isNotTooLong(usernameOrEmail) else{
+        guard loginViewModel.isNotTooLong(usernameOrEmail) else{
             typeError = 2
             print ("el username o email debe tener menos de 10 caracteres")
             return
         }
-        guard validatorSignIn.isNotEmpty(password) else{
+        guard loginViewModel.isNotEmpty(password) else{
             typeError = 3
             print("Debes ingresar una password")
             return
         }
-        guard validatorSignIn.isNotTooLong(password) else{
+        guard loginViewModel.isNotTooLong(password) else{
             typeError = 4
             print("La password debe tener menos de 10 caracteres")
             return
         }
-        guard validatorSignIn.isRegistered(usernameOrEmail: usernameOrEmail, password: password) else{
+        guard loginViewModel.isRegistered(usernameOrEmail: usernameOrEmail, password: password) else{
             typeError = 10
             print("Usuario no registrado")
             return
@@ -71,7 +71,7 @@ class LoginViewController: UIViewController {
     }
     
     func goToWelcomeViewController() {
-      let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "TabViewController") as? TabViewController
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: loginViewModel.getNameWelcomeViewController()) as? TabViewController
       vc!.modalPresentationStyle = .fullScreen
       self.present(vc!, animated: true)
     }

@@ -1,13 +1,13 @@
 //
-//  ValidatorSingIn.swift
+//  LoginViewModel.swift
 //  MiProjectoModular
 //
-//  Created by Matias Blacutt on 28/10/2021.
+//  Created by Matias Blacutt on 01/12/2021.
 //
 
 import Foundation
 
-class LoginValidator: StringValidator{
+class LoginViewModel: StringValidator{
     
     let registered = Registered()
 
@@ -32,5 +32,9 @@ class LoginValidator: StringValidator{
             account = Account(username: usernameOrEmail, email: "", pass: password)
         }
         return registered.isRegistered(account: account)
+    }
+    
+    func getNameWelcomeViewController() -> String{
+        return "TabViewController"
     }
 }

@@ -9,9 +9,9 @@ import Foundation
 
 class PausedState: AudioState{
 
-    weak var audioPlayer: AudioPlayerManager?
+    weak var audioPlayer: AudioPlayerViewModel?
 
-    required init(audioPlayer: AudioPlayerManager) {
+    required init(audioPlayer: AudioPlayerViewModel) {
         self.audioPlayer = audioPlayer
     }
     

@@ -15,7 +15,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var signUpFacebbokButton: UIButton!
     var typeError: Int = 0
-    var registerValidator: RegisterValidator = RegisterValidator()
+    var registerViewModel: RegisterViewModel = RegisterViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,32 +34,32 @@ class RegisterViewController: UIViewController {
             print("Hay nil")
             return
         }
-        guard registerValidator.isNotEmpty(username) else{
+        guard registerViewModel.isNotEmpty(username) else{
             typeError = 5
             print("Debes ingresar un Username")
             return
         }
-        guard registerValidator.isNotTooLong(username) else{
+        guard registerViewModel.isNotTooLong(username) else{
             typeError = 6
             print ("El username debe tener menos de 10 caracteres")
             return
         }
-        guard registerValidator.isNotEmpty(email) else{
+        guard registerViewModel.isNotEmpty(email) else{
             typeError = 1
             print ("Debes ingresar un Email")
             return
         }
-        guard registerValidator.isValidEmail(email) else{
+        guard registerViewModel.isValidEmail(email) else{
             typeError = 2
             print("El email debe tener @ y menos de 10 caracteres")
             return
         }
-        guard registerValidator.isNotEmpty(password) else{
+        guard registerViewModel.isNotEmpty(password) else{
             typeError = 3
             print("Debes ingresar una password")
             return
         }
-        guard registerValidator.isNotTooLong(password) else{
+        guard registerViewModel.isNotTooLong(password) else{
             typeError = 4
             print("La password debe tener menos de 10 caracteres")
             return
@@ -70,7 +70,7 @@ class RegisterViewController: UIViewController {
     }
     
     func goToWelcomeViewController() {
-      let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "TabViewController") as? TabViewController
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: registerViewModel.getNameWelcomeViewController()) as? TabViewController
       vc!.modalPresentationStyle = .fullScreen
       self.present(vc!, animated: true)
     }

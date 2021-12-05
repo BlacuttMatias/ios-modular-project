@@ -18,8 +18,7 @@ class AudioPlayerViewController: UIViewController {
     private var volumeSlider: UISlider = UISlider ()
     private var stopButton: UIButton = UIButton(type: .system)
     private var playingImage: UIImageView = UIImageView()
-    private var audioPlayer: AudioPlayerManager?
-    private var tracksPlayer: TracksPlayer?
+    private var audioPlayerViewModel: AudioPlayerViewModel? = AudioPlayerViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,11 +26,12 @@ class AudioPlayerViewController: UIViewController {
         //obtiene el alto y ancho de la pantalla que se esta usando
         //let w = UIScreen.main.currentMode?.size.width
         //let h = UIScreen.main.currentMode?.size.height
-        self.audioPlayer = AudioPlayerManager(file: self.getNameSoundFileWithoutExtension(), fileExtension: "mp3", audioDelegate: self)
+        self.audioPlayerViewModel?.audioDelegate = self
+        self.audioPlayerViewModel?.setSound(file: self.getNameSoundFileWithoutExtension(), fileExtension: "mp3")
         
         self.view.backgroundColor = .white
         
-        self.audioPlayer?.play()
+        self.audioPlayerViewModel?.play()
 
         self.setAudioPlayerLabel()
         self.setPlayButton()
@@ -45,11 +45,11 @@ class AudioPlayerViewController: UIViewController {
     }
     
     func setTracks(currentTrack: Track, tracks: [Track]){
-        self.tracksPlayer = TracksPlayer(currentTrack: currentTrack, tracks: tracks)
+        self.audioPlayerViewModel?.setTracks(currentTrack: currentTrack, tracks: tracks)
     }
     
     private func track() -> Track?{
-        return self.tracksPlayer?.currentTrack
+        return self.audioPlayerViewModel?.getCurrentTrack()
     }
     
     private func getNameSoundFileWithoutExtension() -> String{
@@ -73,7 +73,7 @@ class AudioPlayerViewController: UIViewController {
     }
     
     private func setPlayButton(){
-        let image = UIImage(named: self.audioPlayer?.getActionImageName() ?? Resource.welcomeImage)
+        let image = UIImage(named: self.audioPlayerViewModel?.getActionImageName() ?? Resource.welcomeImage)
         playButton.setImage(image, for: .normal)
         playButton.setBlueIcon()
         
@@ -94,7 +94,7 @@ class AudioPlayerViewController: UIViewController {
     }
     
     private func changeStatePlaying(){
-        self.audioPlayer?.changePlayingState()
+        self.audioPlayerViewModel?.changePlayingState()
     }
     
     private func getDurationTrack() -> Float{
@@ -121,9 +121,9 @@ class AudioPlayerViewController: UIViewController {
     }
     
     @objc private func previousButtonTouch(){
-        self.tracksPlayer?.previousTrack()
+        self.self.audioPlayerViewModel?.previousTrack()
         self.refreshUiNewTrack()
-        self.audioPlayer?.setSound(file: Resource.audio, fileExtension: "mp3")
+        self.audioPlayerViewModel?.setSound(file: Resource.audio, fileExtension: "mp3")
     }
     
     private func setNextButton(){
@@ -143,15 +143,15 @@ class AudioPlayerViewController: UIViewController {
     }
     
     @objc private func nextButtonTouch(){
-        self.tracksPlayer?.nextTrack()
+        self.self.audioPlayerViewModel?.nextTrack()
         self.refreshUiNewTrack()
-        self.audioPlayer?.setSound(file: self.getNameSoundFileWithoutExtension(), fileExtension: "mp3")
+        self.audioPlayerViewModel?.setSound(file: self.getNameSoundFileWithoutExtension(), fileExtension: "mp3")
     }
     
     func refreshUiNewTrack(){
         self.previousButton.isHidden = false
         self.nextButton.isHidden = false
-        guard let tracksPlayer = self.tracksPlayer else{
+        guard let tracksPlayer = self.self.audioPlayerViewModel else{
             return
         }
         if(tracksPlayer.areInTheFirstTrack()){
@@ -181,11 +181,11 @@ class AudioPlayerViewController: UIViewController {
     }
     
     @objc private func currentTimeSongChanged(){
-        self.audioPlayer?.setCurrentTime(currentTime: playSlider.value)
+        self.audioPlayerViewModel?.setCurrentTime(currentTime: playSlider.value)
     }
     
     private func setVolumeLabel(){
-        volumeImage.image = UIImage(named: audioPlayer?.getNameImageVolume() ?? Resource.volumeDowm)?.withRenderingMode(.alwaysTemplate)
+        volumeImage.image = UIImage(named: audioPlayerViewModel?.getNameImageVolume() ?? Resource.volumeDowm)?.withRenderingMode(.alwaysTemplate)
         volumeImage.image?.setBlueIcon()
         
         self.view.addSubview(volumeImage)
@@ -197,7 +197,7 @@ class AudioPlayerViewController: UIViewController {
     }
     
     private func setVolumeSlider(){
-        volumeSlider.value = self.audioPlayer?.getVolume() ?? 1
+        volumeSlider.value = self.audioPlayerViewModel?.getVolume() ?? 1
         self.view.addSubview(volumeSlider)
         
         volumeSlider.addTarget(self, action: #selector(volumeChanged), for: .valueChanged)
@@ -212,13 +212,13 @@ class AudioPlayerViewController: UIViewController {
     
     @objc func volumeChanged(){
         let volume = volumeSlider.value
-        self.audioPlayer?.setVolume(volume: volume)
-        self.volumeImage.image = UIImage(named: audioPlayer?.getNameImageVolume() ?? Resource.volumeDowm)?.withRenderingMode(.alwaysTemplate)
+        self.audioPlayerViewModel?.setVolume(volume: volume)
+        self.volumeImage.image = UIImage(named: audioPlayerViewModel?.getNameImageVolume() ?? Resource.volumeDowm)?.withRenderingMode(.alwaysTemplate)
         self.volumeImage.image?.setBlueIcon()
     }
     
     private func setPlayingImage(){
-        self.playingImage.image = self.audioPlayer?.getImagePlaying()?.getImage()
+        self.playingImage.image = self.audioPlayerViewModel?.getImagePlaying()?.getImage()
         
         self.view.addSubview(self.playingImage)
         
@@ -235,7 +235,7 @@ class AudioPlayerViewController: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        self.audioPlayer?.pause()
+        self.audioPlayerViewModel?.pause()
     }
     
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
@@ -257,9 +257,9 @@ class AudioPlayerViewController: UIViewController {
 extension AudioPlayerViewController: AudioDelegate {
     
     func onChangePlayingState() {
-        let image = UIImage(named: self.audioPlayer?.getActionImageName() ?? Resource.welcomeImage)
+        let image = UIImage(named: self.audioPlayerViewModel?.getActionImageName() ?? Resource.welcomeImage)
         self.playButton.setImage(image, for: .normal)
-        self.playingImage.image = self.audioPlayer?.getImagePlaying()?.getImage()
+        self.playingImage.image = self.audioPlayerViewModel?.getImagePlaying()?.getImage()
     }
     
     func onChangeCurrentTimeSong(updatedCurrentTime: Float) {
@@ -269,14 +269,14 @@ extension AudioPlayerViewController: AudioDelegate {
     }
     
     func onSongFinished() {
-        guard let tracksPlayer = self.tracksPlayer else{
+        guard let tracksPlayer = self.self.audioPlayerViewModel else{
             return
         }
         if(tracksPlayer.areNotInTheLastTrack()){
             self.nextButtonTouch()
         }
         else{
-            self.audioPlayer?.changePlayingState()
+            self.audioPlayerViewModel?.changePlayingState()
         }
     }
 }

@@ -14,7 +14,7 @@ protocol AudioState{
     func getImagePlaying() -> Image
     func newSoundSetted()
     
-    init(audioPlayer: AudioPlayerManager)
+    init(audioPlayer: AudioPlayerViewModel)
     init()
     
 }

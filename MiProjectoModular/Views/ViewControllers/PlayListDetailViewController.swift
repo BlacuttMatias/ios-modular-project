@@ -10,38 +10,20 @@ import UIKit
 class PlayListDetailViewController: UIViewController{
     
     var songTextField: UITextField = UITextField()
-    var addSongButton: UIButton = UIButton(type: .system)
     var playlistTableView: UITableView = UITableView()
     var playlistPickerView: UIPickerView = UIPickerView()
     var namePlaylistTextField: UITextField = UITextField()
     var addPlaylistButton: UIButton = UIButton(type: .system)
-    var tracks: [Track] = []
-    var playlist: [Track] = []
-    var trackToAdd: Track?
+    var playlistDetailViewModel: PlaylistDetailViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let loadTracksCallback: (([Track]?, Error?) -> ()) = { tracks, error in
-            if error != nil {
-                print("Error to load songs")
-            }
-            else{
-                self.tracks = tracks ?? []
-                DispatchQueue.main.async {
-                    self.playlistPickerView.reloadAllComponents()
-                }
-            }
-        }
-        
-        ApiManager.getInstance().getMusic(completion: loadTracksCallback)
-        
-        self.playlistTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellPlaylist")
+        self.playlistDetailViewModel = PlaylistDetailViewModel(apiManager: ApiManager.getInstance(), playlistDetailDelegate: self)
 
         self.setAddPlaylistButton()
         self.setNamePlaylistTextField()
         
-        self.setAddSongButton()
         self.setSongTextField()
         
         playlistTableView.delegate = self
@@ -61,12 +43,12 @@ class PlayListDetailViewController: UIViewController{
         toolBar.isTranslucent = true
         toolBar.sizeToFit()
         
-        let confirmButton = UIBarButtonItem()
+        let addButton = UIBarButtonItem()
         let cancelButton = UIBarButtonItem()
         
-        confirmButton.image = UIImage(named: Resource.confirmIcon)
-        confirmButton.tintColor = UIColor(named: Resource.confirmColor)
-        confirmButton.action = #selector(self.confirmSongAction)
+        addButton.image = UIImage(named: Resource.addIcon)
+        addButton.tintColor = UIColor(named: Resource.confirmColor)
+        addButton.action = #selector(self.addSongAction)
         
         cancelButton.image = UIImage(named: Resource.cancelIcon)
         cancelButton.tintColor = UIColor(named: Resource.cancelColor)
@@ -74,7 +56,7 @@ class PlayListDetailViewController: UIViewController{
 
         let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
 
-        toolBar.setItems([cancelButton, spaceButton, confirmButton], animated: false)
+        toolBar.setItems([cancelButton, spaceButton, addButton], animated: false)
         toolBar.isUserInteractionEnabled = true
         
         return toolBar
@@ -95,52 +77,30 @@ class PlayListDetailViewController: UIViewController{
         let constraintSetter = ConstraintsSetter(uiView: songTextField)
         constraintSetter.setTopEqualContraint(referenceAnchorView: self.namePlaylistTextField.bottomAnchor, distance: 40)
         constraintSetter.setLeftEqualContraint(referenceAnchorView: self.view.leadingAnchor, distance: 20)
-        constraintSetter.setRightEqualContraint(referenceAnchorView: self.addSongButton.leadingAnchor, distance: -20)
+        constraintSetter.setRightEqualContraint(referenceAnchorView: self.view.trailingAnchor, distance: -20)
         constraintSetter.setHeightConstraint(height: 50)
 
     }
     
     @objc private func SongTextFieldTouchUpInside(){
-        let indice = self.playlistPickerView.selectedRow(inComponent: 0)
-        self.trackToAdd = tracks[indice]
-        self.songTextField.text = tracks[indice].title
+        self.songTextField.text = self.getSelectedTrackOfPicker()?.title
     }
     
-    @objc private func confirmSongAction(){
+    @objc private func addSongAction(){
         self.view.endEditing(true)
+        guard let track = self.getSelectedTrackOfPicker() else{
+            return
+        }
+        self.playlistDetailViewModel?.addTrackToPlaylist(track: track)
     }
     
     @objc private func cancelSongAction(){
         self.songTextField.text = ""
-        self.trackToAdd = nil
         self.view.endEditing(true)
     }
     
-    private func setAddSongButton(){
-        let imageButton = UIImage(named: Resource.playlistAddIcon)
-        addSongButton.setImage(imageButton, for: .normal)
-        addSongButton.setBlueIcon()
-        
-        self.view.addSubview(addSongButton)
-        
-        self.addSongButton.addTarget(self, action: #selector(addSongButtonTouch), for: .touchUpInside)
-        
-        let constraintSetter = ConstraintsSetter(uiView: addSongButton)
-        constraintSetter.setTopEqualContraint(referenceAnchorView: self.namePlaylistTextField.bottomAnchor, distance: 40)
-        constraintSetter.setRightEqualContraint(referenceAnchorView: self.view.trailingAnchor, distance: -20)
-        constraintSetter.setHeightConstraint(height: 50)
-        constraintSetter.setWidthConstraint(width: 50)
-
-    }
-    
     @objc private func addSongButtonTouch(){
-        guard let track = self.trackToAdd else {
-            return
-        }
-        self.playlist.append(track)
-        self.playlistTableView.reloadData()
-        self.trackToAdd = nil
-        self.songTextField.text = ""
+
         self.view.endEditing(true)
     }
     
@@ -186,6 +146,11 @@ class PlayListDetailViewController: UIViewController{
         constraintSetter.setWidthConstraint(width: 80)
 
     }
+    
+    private func getSelectedTrackOfPicker() -> Track?{
+        let indice = self.playlistPickerView.selectedRow(inComponent: 0)
+        return self.playlistDetailViewModel?.getTracks()[indice]
+    }
 
     /*
     // MARK: - Navigation
@@ -213,12 +178,12 @@ extension PlayListDetailViewController: UITableViewDelegate{
 extension PlayListDetailViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return playlist.count
+        return playlistDetailViewModel?.getNumberRowsInSection() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // create a new cell if needed or reuse an old one
-        let cell = PlaylistTrackViewCell(track: self.playlist[indexPath.row], reuseIdentifier: "cellPlaylist")
+        let cell = self.playlistDetailViewModel?.getCellPlaylist(index: indexPath.row) ?? UITableViewCell()
         
         return cell
     }
@@ -227,25 +192,35 @@ extension PlayListDetailViewController: UITableViewDataSource{
 extension PlayListDetailViewController: UIPickerViewDelegate{
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let indice = pickerView.selectedRow(inComponent: 0)
-        self.trackToAdd = tracks[indice]
-        self.songTextField.text = tracks[indice].title
+        self.songTextField.text = self.getSelectedTrackOfPicker()?.title
     }
     
 }
 
 extension PlayListDetailViewController: UIPickerViewDataSource{
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        return self.playlistDetailViewModel?.getNumberComponentsPicker() ?? 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.tracks.count
+        return self.self.playlistDetailViewModel?.getNumberRowsPicker() ?? 0
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return self.tracks[row].title
+        return self.self.playlistDetailViewModel?.getTitleRowPicker(row: row)    }
+    
+}
+
+
+extension PlayListDetailViewController: PlaylistDetailDelegate{
+    
+    func reloadPicker() {
+        self.playlistPickerView.reloadAllComponents()
     }
     
+    func songAdded() {
+        self.playlistTableView.reloadData()
+        self.songTextField.text = ""
+    }
     
 }

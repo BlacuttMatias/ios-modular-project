@@ -8,17 +8,22 @@
 import Foundation
 import AudioPlayer
 
-class AudioPlayerManager{
+class AudioPlayerViewModel{
     
     private var sound: AudioPlayer? = nil
     private var audioState: AudioState
     private var timer: Timer?
-    var audioDelegate: AudioDelegate
+    var audioDelegate: AudioDelegate?
+    private var tracksPlayer: TracksPlayer?
     
     init(file: String, fileExtension: String, audioDelegate: AudioDelegate){
         self.audioState = PausedState()
         self.audioDelegate = audioDelegate
         self.setSound(file: file, fileExtension: fileExtension)
+    }
+    
+    init(){
+        self.audioState = PausedState()
     }
     
     deinit{
@@ -58,7 +63,7 @@ class AudioPlayerManager{
     
     func changePlayingState(){
         self.audioState.changePlayingState()
-        self.audioDelegate.onChangePlayingState()
+        self.audioDelegate?.onChangePlayingState()
     }
     
     func getActionImageName() -> String{
@@ -82,7 +87,7 @@ class AudioPlayerManager{
     }
     
     @objc private func updateCurrentTimeSong(){
-        self.audioDelegate.onChangeCurrentTimeSong(updatedCurrentTime: self.getCurrentTime())
+        self.audioDelegate?.onChangeCurrentTimeSong(updatedCurrentTime: self.getCurrentTime())
     }
     
     func getNameImageVolume() -> String{
@@ -110,7 +115,7 @@ class AudioPlayerManager{
             self.sound = try AudioPlayer(contentsOf: url)
             self.sound?.completionHandler = {finished in
                 if(finished){
-                    self.audioDelegate.onSongFinished()
+                    self.audioDelegate?.onSongFinished()
                 }
             }
             self.audioState.newSoundSetted()
@@ -119,6 +124,34 @@ class AudioPlayerManager{
         catch{
             print("Error al cargar el sonido: \(error.localizedDescription)")
         }
+    }
+    
+    func setTracks(currentTrack: Track, tracks: [Track]){
+        self.tracksPlayer = TracksPlayer(currentTrack: currentTrack, tracks: tracks)
+    }
+    
+    func nextTrack(){
+        self.tracksPlayer?.nextTrack()
+    }
+    
+    func previousTrack(){
+        self.tracksPlayer?.previousTrack()
+    }
+    
+    func areInTheFirstTrack() -> Bool{
+        return self.tracksPlayer?.areInTheFirstTrack() ?? true
+    }
+    
+    func areInTheLastTrack() -> Bool{
+        return self.tracksPlayer?.areInTheLastTrack() ?? true
+    }
+    
+    func areNotInTheLastTrack() -> Bool{
+        return self.tracksPlayer?.areNotInTheLastTrack() ?? false
+    }
+    
+    func getCurrentTrack() -> Track?{
+        return self.tracksPlayer?.currentTrack
     }
 
 }

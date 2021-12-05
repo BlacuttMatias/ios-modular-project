@@ -7,7 +7,7 @@
 
 import Foundation
 
-class RegisterValidator: StringValidator{
+class RegisterViewModel: StringValidator{
 
     func isValidEmail(_ email: String) -> Bool{
         return !email.isEmpty && isNotTooLong(email) && email.contains("@")
@@ -15,5 +15,9 @@ class RegisterValidator: StringValidator{
     
     func isNotValidEmail(_ email: String) -> Bool{
         return !isValidEmail(email)
+    }
+    
+    func getNameWelcomeViewController() -> String{
+        return "TabViewController"
     }
 }
