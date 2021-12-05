@@ -33,6 +33,9 @@
 		D0C650B4275855C700671370 /* TrackerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C650B3275855C700671370 /* TrackerDelegate.swift */; };
 		D0C650B8275876D500671370 /* PlaylistDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C650B7275876D500671370 /* PlaylistDetailViewModel.swift */; };
 		D0C650BA275877DE00671370 /* PlaylistDetailDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C650B9275877DE00671370 /* PlaylistDetailDelegate.swift */; };
+		D0C81BFF275C7699001A3393 /* ActionMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C81BFE275C7699001A3393 /* ActionMenuButton.swift */; };
+		D0C81C01275C7B3B001A3393 /* MenuCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C81C00275C7B3B001A3393 /* MenuCreator.swift */; };
+		D0C81C03275C8589001A3393 /* MenuAudioPlayerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C81C02275C8589001A3393 /* MenuAudioPlayerDelegate.swift */; };
 		D0C90B0C27331324000FDC9F /* TrackerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C90B0B27331324000FDC9F /* TrackerTableViewController.swift */; };
 		D0CF7F302756894A00C61498 /* PlaylistTrackViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CF7F2F2756894A00C61498 /* PlaylistTrackViewCell.swift */; };
 		D0D53DC2273567DC000F1BB7 /* AudioPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D53DC1273567DC000F1BB7 /* AudioPlayerViewController.swift */; };
@@ -106,6 +109,9 @@
 		D0C650B3275855C700671370 /* TrackerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerDelegate.swift; sourceTree = "<group>"; };
 		D0C650B7275876D500671370 /* PlaylistDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDetailViewModel.swift; sourceTree = "<group>"; };
 		D0C650B9275877DE00671370 /* PlaylistDetailDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDetailDelegate.swift; sourceTree = "<group>"; };
+		D0C81BFE275C7699001A3393 /* ActionMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionMenuButton.swift; sourceTree = "<group>"; };
+		D0C81C00275C7B3B001A3393 /* MenuCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCreator.swift; sourceTree = "<group>"; };
+		D0C81C02275C8589001A3393 /* MenuAudioPlayerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuAudioPlayerDelegate.swift; sourceTree = "<group>"; };
 		D0C90B0B27331324000FDC9F /* TrackerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerTableViewController.swift; sourceTree = "<group>"; };
 		D0CF7F2F2756894A00C61498 /* PlaylistTrackViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistTrackViewCell.swift; sourceTree = "<group>"; };
 		D0D53DC1273567DC000F1BB7 /* AudioPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewController.swift; sourceTree = "<group>"; };
@@ -290,6 +296,7 @@
 				D0027B382748301C00971E82 /* AudioDelegate.swift */,
 				D0C650B3275855C700671370 /* TrackerDelegate.swift */,
 				D0C650B9275877DE00671370 /* PlaylistDetailDelegate.swift */,
+				D0C81C02275C8589001A3393 /* MenuAudioPlayerDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -308,6 +315,8 @@
 				D0F2E9922742C4AB006966D0 /* AudioState.swift */,
 				D0F2E9942742EE30006966D0 /* Errors.swift */,
 				D0F2274E27517E7600BAC8B0 /* TracksPlayer.swift */,
+				D0C81BFE275C7699001A3393 /* ActionMenuButton.swift */,
+				D0C81C00275C7B3B001A3393 /* MenuCreator.swift */,
 			);
 			path = Utlis;
 			sourceTree = "<group>";
@@ -628,6 +637,7 @@
 				D0C650B1275854D100671370 /* TrackerViewModel.swift in Sources */,
 				D0C650AF27584EE400671370 /* LoginViewModel.swift in Sources */,
 				D0F2E98B27429C7D006966D0 /* ImageManager.swift in Sources */,
+				D0C81C03275C8589001A3393 /* MenuAudioPlayerDelegate.swift in Sources */,
 				D0F2E98D2742B17F006966D0 /* Resources.swift in Sources */,
 				D0A35CCE272C213200F88788 /* WelcomeViewController.swift in Sources */,
 				D0F2E9912742C497006966D0 /* PausedState.swift in Sources */,
@@ -639,9 +649,11 @@
 				D0FDBD8D27270B4900E3982B /* AppDelegate.swift in Sources */,
 				D0A7D84F2734446D00980BFF /* TrackTableViewCell.swift in Sources */,
 				D0891AFC272B3C2E0085F8D5 /* RegisterViewModel.swift in Sources */,
+				D0C81BFF275C7699001A3393 /* ActionMenuButton.swift in Sources */,
 				D0FE0BEA273ECDA900CB481A /* AudioPlayerViewModel.swift in Sources */,
 				D0A35CD0272C31C200F88788 /* Models.swift in Sources */,
 				D0D53DC2273567DC000F1BB7 /* AudioPlayerViewController.swift in Sources */,
+				D0C81C01275C7B3B001A3393 /* MenuCreator.swift in Sources */,
 				D0F2274F27517E7600BAC8B0 /* TracksPlayer.swift in Sources */,
 				D0FDBD8F27270B4900E3982B /* SceneDelegate.swift in Sources */,
 				D0F2E9952742EE30006966D0 /* Errors.swift in Sources */,
