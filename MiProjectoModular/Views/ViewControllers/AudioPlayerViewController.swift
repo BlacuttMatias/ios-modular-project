@@ -236,6 +236,10 @@ class AudioPlayerViewController: UIViewController {
         
     }
     
+    private func getUiMenu() -> UIMenu{
+        return MenuCreator().createMenu(withActions: audioPlayerViewModel?.getActionsMenu() ?? [], title: "")
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         self.audioPlayerViewModel?.pause()
     }
@@ -244,26 +248,12 @@ class AudioPlayerViewController: UIViewController {
         self.changeStatePlaying()
     }
     
-    func setMenuButton(){
-        var menuItems: [UIAction] {
-            return [
-                UIAction(title: "Standard item", image: UIImage(systemName: "sun.max"), handler: { (_) in
-                }),
-                UIAction(title: "Disabled item", image: UIImage(systemName: "moon"), attributes: .disabled, handler: { (_) in
-                }),
-                UIAction(title: "Delete..", image: UIImage(systemName: "trash"), attributes: .destructive, handler: { (_) in
-                })
-            ]
-        }
-
-        var demoMenu: UIMenu {
-            return UIMenu(title: "My menu", image: nil, identifier: nil, options: [], children: menuItems)
-        }
+    private func setMenuButton(){
         
         let image = UIImage(named: Resource.menuIcon)
         menuButton.setImage(image, for: .normal)
         menuButton.tintColor = .lightGray
-        menuButton.menu = demoMenu
+        menuButton.menu = self.getUiMenu()
         menuButton.showsMenuAsPrimaryAction = true
         
         self.view.addSubview(menuButton)
@@ -272,7 +262,6 @@ class AudioPlayerViewController: UIViewController {
         constraintSetter.setTopEqualContraint(referenceAnchorView: self.view.topAnchor, distance: 15)
         constraintSetter.setRightEqualContraint(referenceAnchorView: self.view.trailingAnchor, distance: -15)
 
-        
     }
 
     /*

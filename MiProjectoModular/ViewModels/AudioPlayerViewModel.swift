@@ -153,5 +153,15 @@ class AudioPlayerViewModel{
     func getCurrentTrack() -> Track?{
         return self.tracksPlayer?.currentTrack
     }
+    
+    func getActionsMenu() -> [ActionMenuButton]{
+        return [
+            ActionMenuButton(title: "Remove from lybrary", imageName: Resource.deleteIcon, actionHandler: { _ in }, attributes: .destructive),
+            ActionMenuButton(title: "Download", imageName: Resource.downloadIcon, actionHandler: { _ in }),
+            ActionMenuButton(title: "Add to a Playlist...", imageName: Resource.addPlaylistIcon, actionHandler: { _ in }),
+            ActionMenuButton(title: "Share Song...", imageName: Resource.shareIcon, actionHandler: { _ in }),
+            ActionMenuButton(title: "Love", imageName: Resource.loveIcon, actionHandler: { _ in })
+        ]
+    }
 
 }
