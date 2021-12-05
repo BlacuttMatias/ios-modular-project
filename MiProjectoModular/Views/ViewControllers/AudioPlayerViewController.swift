@@ -264,6 +264,10 @@ class AudioPlayerViewController: UIViewController {
         constraintSetter.setRightEqualContraint(referenceAnchorView: self.view.trailingAnchor, distance: -15)
 
     }
+    
+    private func refreshUiLoveAction(){
+        menuButton.menu = self.getUiMenu()
+    }
 
     /*
     // MARK: - Navigation
@@ -322,6 +326,13 @@ extension AudioPlayerViewController: MenuAudioPlayerDelegate {
     }
     
     func love(action: UIAction) {
+        self.audioPlayerViewModel?.doLoveAction()
+        let titleAlert = self.audioPlayerViewModel?.getTitleLoveAction() ?? ""
+        let messageAlert = self.audioPlayerViewModel?.getMessageLoveAction() ?? ""
+        let alert = UIAlertController(title: titleAlert, message: messageAlert, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        self.refreshUiLoveAction()
         return
     }
 }
