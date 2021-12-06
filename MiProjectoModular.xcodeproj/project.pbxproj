@@ -20,6 +20,7 @@
 		D0193C4727398B61005A4B80 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0193C4627398B61005A4B80 /* TabViewController.swift */; };
 		D0891AFA272B3A790085F8D5 /* StringValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0891AF9272B3A790085F8D5 /* StringValidator.swift */; };
 		D0891AFC272B3C2E0085F8D5 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0891AFB272B3C2E0085F8D5 /* RegisterViewModel.swift */; };
+		D0976D04275E6F9400E59D3A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0976D03275E6F9400E59D3A /* Extensions.swift */; };
 		D0A35CCE272C213200F88788 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A35CCD272C213200F88788 /* WelcomeViewController.swift */; };
 		D0A35CD0272C31C200F88788 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A35CCF272C31C200F88788 /* Models.swift */; };
 		D0A7D84D273443BD00980BFF /* ButtonOnCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A7D84C273443BD00980BFF /* ButtonOnCellDelegate.swift */; };
@@ -96,6 +97,7 @@
 		D0193C4627398B61005A4B80 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		D0891AF9272B3A790085F8D5 /* StringValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringValidator.swift; sourceTree = "<group>"; };
 		D0891AFB272B3C2E0085F8D5 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		D0976D03275E6F9400E59D3A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D0A35CCD272C213200F88788 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		D0A35CCF272C31C200F88788 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		D0A7D84C273443BD00980BFF /* ButtonOnCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonOnCellDelegate.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				D0FDBD8C27270B4900E3982B /* AppDelegate.swift */,
 				D0FDBD8E27270B4900E3982B /* SceneDelegate.swift */,
 				D0FDBD9727270B4B00E3982B /* LaunchScreen.storyboard */,
+				D0976D03275E6F9400E59D3A /* Extensions.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -646,6 +649,7 @@
 				D0B7A4BE274FF0800016589B /* UIButton+Extension.swift in Sources */,
 				D0FDBD9127270B4900E3982B /* LoginViewController.swift in Sources */,
 				D0F407532746DD9900FD8CA0 /* ApiManager.swift in Sources */,
+				D0976D04275E6F9400E59D3A /* Extensions.swift in Sources */,
 				D0FDBD8D27270B4900E3982B /* AppDelegate.swift in Sources */,
 				D0A7D84F2734446D00980BFF /* TrackTableViewCell.swift in Sources */,
 				D0891AFC272B3C2E0085F8D5 /* RegisterViewModel.swift in Sources */,

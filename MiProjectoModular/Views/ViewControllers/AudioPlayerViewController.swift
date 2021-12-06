@@ -317,9 +317,7 @@ extension AudioPlayerViewController: MenuAudioPlayerDelegate {
         self.audioPlayerViewModel?.doDownloadAction()
         let titleAlert = self.audioPlayerViewModel?.getTitleDownloadAction() ?? ""
         let messageAlert = self.audioPlayerViewModel?.getMessageDownloadAction() ?? ""
-        let alert = UIAlertController(title: titleAlert, message: messageAlert, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        self.showSimpleAlert(title: titleAlert, message: messageAlert)
         self.refreshUiMenu()
         return
     }
@@ -336,10 +334,9 @@ extension AudioPlayerViewController: MenuAudioPlayerDelegate {
         self.audioPlayerViewModel?.doLoveAction()
         let titleAlert = self.audioPlayerViewModel?.getTitleLoveAction() ?? ""
         let messageAlert = self.audioPlayerViewModel?.getMessageLoveAction() ?? ""
-        let alert = UIAlertController(title: titleAlert, message: messageAlert, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        self.showSimpleAlert(title: titleAlert, message: messageAlert)
         self.refreshUiMenu()
         return
     }
+    
 }
