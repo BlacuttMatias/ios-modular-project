@@ -16,7 +16,7 @@ class TrackTableViewCell: UITableViewCell{
     private var audioTrackImage: UIImageView = UIImageView()
     private var titleLabel: UILabel = UILabel()
     private var artistLabel: UILabel = UILabel()
-    private var playButton: PlayButton = PlayButton()
+    private var playButton: UIButton = UIButton(type: .system)
     
     init(track: Track, parent: ButtonOnCellDelegate, reuseIdentifier: String){
         self.track = track
@@ -72,9 +72,8 @@ class TrackTableViewCell: UITableViewCell{
     }
     
     private func setPlayButton(){
-        playButton.icon = UIImage(named: Resource.playCircleIcon)
-        playButton.secondIcon = UIImage(named: Resource.pauseCircleFilled)
-        playButton.performTwoStateSelection()
+        playButton.setImage(UIImage(named: Resource.playCircleIcon), for: .normal)
+        playButton.tintColor = .white
         playButton.addTarget(self, action: #selector(playButtonTouch), for: .touchUpInside)
         self.contentView.addSubview(playButton)
         
