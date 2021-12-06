@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class TrackTableViewCell: UITableViewCell{
+class TrackTableViewCell: UITableViewCell, UiMenuCreator{
     
     private var track: Track
     private var parent: ButtonOnCellDelegate
@@ -16,9 +16,9 @@ class TrackTableViewCell: UITableViewCell{
     private var audioTrackImage: UIImageView = UIImageView()
     private var titleLabel: UILabel = UILabel()
     private var artistLabel: UILabel = UILabel()
-    private var playButton: UIButton = UIButton(type: .system)
+    private var menuButton: UIButton = UIButton(type: .system)
     
-    init(track: Track, parent: ButtonOnCellDelegate, reuseIdentifier: String){
+    init(track: Track, parent: ButtonOnCellDelegate, reuseIdentifier: String, actionsMenu: [ActionMenuButton]?, titleUiMenu: String?){
         self.track = track
         self.parent = parent
             
@@ -29,7 +29,7 @@ class TrackTableViewCell: UITableViewCell{
         setAudioTrackImage()
         setTitleLabel()
         setArtistLabel()
-        setPlayButton()
+        setMenuButton(uiMenu: self.createUiMenu(actions: actionsMenu, title: titleUiMenu))
         
         self.backgroundColor = UIColor.black
     }
@@ -71,13 +71,15 @@ class TrackTableViewCell: UITableViewCell{
         constraintSetter.setLeftEqualContraint(referenceAnchorView: self.audioTrackImage.trailingAnchor, distance: 10)
     }
     
-    private func setPlayButton(){
-        playButton.setImage(UIImage(named: Resource.playCircleIcon), for: .normal)
-        playButton.tintColor = .white
-        playButton.addTarget(self, action: #selector(playButtonTouch), for: .touchUpInside)
-        self.contentView.addSubview(playButton)
+    private func setMenuButton(uiMenu: UIMenu){
+        menuButton.setImage(UIImage(named: Resource.menuIcon), for: .normal)
+        menuButton.tintColor = .white
+        self.menuButton.menu = uiMenu
+        self.menuButton.showsMenuAsPrimaryAction = true
+        menuButton.addTarget(self, action: #selector(playButtonTouch), for: .menuActionTriggered)
+        self.contentView.addSubview(menuButton)
         
-        let constraintSetter = ConstraintsSetter(uiView: self.playButton)
+        let constraintSetter = ConstraintsSetter(uiView: self.menuButton)
         constraintSetter.setTopEqualContraint(referenceAnchorView: self.topAnchor, distance: 10)
         constraintSetter.setWidthConstraint(width: 50)
         constraintSetter.setBottomEqualContraint(referenceAnchorView: self.bottomAnchor, distance: -10)

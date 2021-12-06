@@ -7,16 +7,17 @@
 
 import UIKit
 
-class TrackerTableViewController: UITableViewController {
+class TrackerTableViewController: UITableViewController, UiMenuCreator {
 
     var trackerViewModel: TrackerViewModel?
+    var selectedCell: TrackTableViewCell?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.presentLoadingAlert()
         
-        self.trackerViewModel = TrackerViewModel(apiManager: ApiManager.getInstance(), trackerDelegate: self)
+        self.trackerViewModel = TrackerViewModel(apiManager: ApiManager.getInstance(), trackerDelegate: self, menuTrackerDelegate: self)
          
         //self.tableView.register(TrackTableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
         // Uncomment the following line to preserve selection between presentations
@@ -115,10 +116,7 @@ class TrackerTableViewController: UITableViewController {
 
 extension TrackerTableViewController: ButtonOnCellDelegate {
     func buttonTouchedOnCell(tableViewCell: TrackTableViewCell) {
-        guard let trackerViewModel = self.trackerViewModel else{
-            return
-        }
-        self.present(trackerViewModel.getAudioPlayerViewController(currentTrack: tableViewCell.getTrack()), animated: true)
+        self.selectedCell = tableViewCell
     }
 }
 
@@ -134,3 +132,23 @@ extension TrackerTableViewController: TrackerDelegate {
     
 }
 
+extension TrackerTableViewController: MenuTrackerDelegate {
+    func playSong(action: UIAction) {
+        guard let trackerViewModel = self.trackerViewModel else{
+            return
+        }
+        guard let currentCell = self.selectedCell else{
+            return
+        }
+        self.present(trackerViewModel.getAudioPlayerViewController(currentTrack: currentCell.getTrack()), animated: true)
+    }
+    
+    func downloadSong(action: UIAction) {
+        return
+    }
+    
+    func eliminateFromPlaylist(action: UIAction) {
+        return
+    }
+    
+}
