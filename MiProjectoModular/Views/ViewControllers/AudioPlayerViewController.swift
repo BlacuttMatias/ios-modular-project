@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AudioPlayerViewController: UIViewController {
+class AudioPlayerViewController: UIViewController, UiMenuCreator {
 
     private var menuButton: UIButton = UIButton(type: .system)
     private var audioPlayerLabel: UILabel = UILabel()
@@ -237,10 +237,6 @@ class AudioPlayerViewController: UIViewController {
         
     }
     
-    private func getUiMenu() -> UIMenu{
-        return MenuCreator().createMenu(withActions: audioPlayerViewModel?.getActionsMenu() ?? [], title: "")
-    }
-    
     override func viewDidDisappear(_ animated: Bool) {
         self.audioPlayerViewModel?.pause()
     }
@@ -267,6 +263,10 @@ class AudioPlayerViewController: UIViewController {
     
     private func refreshUiMenu(){
         menuButton.menu = self.getUiMenu()
+    }
+    
+    private func getUiMenu() -> UIMenu{
+        return self.createUiMenu(actions: self.audioPlayerViewModel?.getActionsMenu(), title: "")
     }
 
     /*
