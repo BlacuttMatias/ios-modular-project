@@ -10,8 +10,7 @@ import UIKit
 class TrackerTableViewController: UITableViewController, UiMenuCreator {
 
     var trackerViewModel: TrackerViewModel?
-    var selectedCell: TrackTableViewCell?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,6 +66,14 @@ class TrackerTableViewController: UITableViewController, UiMenuCreator {
         return cell
     }
     
+    private func refreshUiMenu(){
+        trackerViewModel?.selectedCell?.setMenuOfMenuButton(uiMenu: self.getUiMenu())
+    }
+    
+    private func getUiMenu() -> UIMenu{
+        return self.createUiMenu(actions: self.trackerViewModel?.getActionsMenu(wasDownloaded: self.trackerViewModel?.selectedCell?.wasDownloaded), title: "")
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -116,7 +123,7 @@ class TrackerTableViewController: UITableViewController, UiMenuCreator {
 
 extension TrackerTableViewController: ButtonOnCellDelegate {
     func buttonTouchedOnCell(tableViewCell: TrackTableViewCell) {
-        self.selectedCell = tableViewCell
+        self.trackerViewModel?.selectedCell = tableViewCell
     }
 }
 
@@ -137,14 +144,18 @@ extension TrackerTableViewController: MenuTrackerDelegate {
         guard let trackerViewModel = self.trackerViewModel else{
             return
         }
-        guard let currentCell = self.selectedCell else{
+        guard let currentTrack = self.trackerViewModel?.getSelectedTrack() else{
             return
         }
-        self.present(trackerViewModel.getAudioPlayerViewController(currentTrack: currentCell.getTrack()), animated: true)
+        self.present(trackerViewModel.getAudioPlayerViewController(currentTrack: currentTrack), animated: true)
     }
     
     func downloadSong(action: UIAction) {
-        return
+        self.trackerViewModel?.doDownloadAction()
+        let titleAlert = self.trackerViewModel?.getTitleDownloadAction()
+        let messageAlert = self.trackerViewModel?.getMessageDownloadAction()
+        self.showSimpleAlert(title: titleAlert, message: messageAlert)
+        self.refreshUiMenu()
     }
     
     func eliminateFromPlaylist(action: UIAction) {

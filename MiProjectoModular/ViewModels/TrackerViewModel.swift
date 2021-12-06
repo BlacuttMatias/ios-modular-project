@@ -13,7 +13,7 @@ class TrackerViewModel{
     private weak var trackerDelegate: TrackerDelegate?
     private var loadTracksCallback: (([Track]?, Error?) -> ()) = {_,_ in }
     private weak var menuTrackerDelegate: MenuTrackerDelegate?
-    private var wasDownloaded: Bool = Bool()
+    var selectedCell: TrackTableViewCell?
     
     init(apiManager: ApiManager, trackerDelegate: TrackerDelegate, menuTrackerDelegate: MenuTrackerDelegate){
         self.trackerDelegate = trackerDelegate
@@ -48,7 +48,7 @@ class TrackerViewModel{
         guard let trackerDelegate = self.trackerDelegate else {
             return nil
         }
-        return TrackTableViewCell(track: self.tracks[index], parent: trackerDelegate, reuseIdentifier: "reuseIdentifier", actionsMenu: self.getActionsMenu(), titleUiMenu: "")
+        return TrackTableViewCell(track: self.tracks[index], parent: trackerDelegate, reuseIdentifier: "reuseIdentifier", actionsMenu: self.getActionsMenu(wasDownloaded: false), titleUiMenu: "")
     }
     
     func getAudioPlayerViewController(currentTrack: Track) -> AudioPlayerViewController{
@@ -57,18 +57,36 @@ class TrackerViewModel{
         return vc
     }
     
-    func getActionsMenu() -> [ActionMenuButton]{
+    func getActionsMenu(wasDownloaded: Bool?) -> [ActionMenuButton]{
         var actions = [
             ActionMenuButton(title: "Play", imageName: Resource.playCircleIcon, actionHandler: { self.menuTrackerDelegate?.playSong(action: $0) }),
             ActionMenuButton(title: "Eliminate from Playlist", imageName: Resource.deleteIcon, actionHandler: { self.menuTrackerDelegate?.eliminateFromPlaylist(action: $0) }),
         ]
-        if(!self.wasDownloaded){
+        if(!(wasDownloaded ?? false)){
             let downloadAction = ActionMenuButton(title: "Download", imageName: Resource.downloadIcon, actionHandler: { self.menuTrackerDelegate?.downloadSong(action: $0) })
             actions.insert(downloadAction, at: 1)
         }
         return actions
     }
     
+    func getTitleDownloadAction() -> String{
+        return "Downloading song..."
+    }
+    
+    func getMessageDownloadAction() -> String{
+        let titleSong = selectedCell?.getTrack().title ?? "Unknown"
+        let artistSong = selectedCell?.getTrack().artist ?? "Unknown"
+        let albumSong = selectedCell?.getTrack().album ?? "Unknown"
+        return "Title: \(titleSong)\n Artist: \(artistSong)\n Album: \(albumSong)"
+    }
+    
+    func getSelectedTrack() -> Track?{
+        return self.selectedCell?.getTrack()
+    }
+    
+    func doDownloadAction(){
+        self.selectedCell?.wasDownloaded = true
+    }
     
 }
     

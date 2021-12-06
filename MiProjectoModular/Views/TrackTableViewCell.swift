@@ -17,6 +17,7 @@ class TrackTableViewCell: UITableViewCell, UiMenuCreator{
     private var titleLabel: UILabel = UILabel()
     private var artistLabel: UILabel = UILabel()
     private var menuButton: UIButton = UIButton(type: .system)
+    var wasDownloaded: Bool = Bool()
     
     init(track: Track, parent: ButtonOnCellDelegate, reuseIdentifier: String, actionsMenu: [ActionMenuButton]?, titleUiMenu: String?){
         self.track = track
@@ -105,6 +106,10 @@ class TrackTableViewCell: UITableViewCell, UiMenuCreator{
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    func setMenuOfMenuButton(uiMenu: UIMenu){
+        self.menuButton.menu = uiMenu
     }
     
 }
