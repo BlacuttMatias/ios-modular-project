@@ -159,7 +159,7 @@ extension TrackerTableViewController: MenuTrackerDelegate {
     }
     
     func eliminateFromPlaylist(action: UIAction) {
-        return
+        self.showSimpleAlert(title: trackerViewModel?.getMessageDeleteSongAction(), message: trackerViewModel?.getMessageDeleteSongAction())
     }
     
 }

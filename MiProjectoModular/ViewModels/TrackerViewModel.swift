@@ -88,6 +88,16 @@ class TrackerViewModel{
         self.selectedCell?.wasDownloaded = true
     }
     
+    func getTitleDeleteSongAction() -> String{
+        let songTitle = selectedCell?.getTrack().title ?? "Unknown"
+        return "\"\(songTitle)\" removed from Playlist"
+    }
+    
+    func getMessageDeleteSongAction() -> String{
+        let songTitle = selectedCell?.getTrack().title ?? "Unknown"
+        return "The song \"\(songTitle)\" was removed from the Playlist"
+    }
+    
 }
     
 
