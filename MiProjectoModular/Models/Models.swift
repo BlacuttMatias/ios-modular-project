@@ -54,10 +54,3 @@ class Tracks{
         Track(title: "cancion7", artist: "artista7", album: "album7", songId: "bensound-ukulele", genre: nil, duration: 146.42)
     ]
 }
-
-enum PlayerStates {
-    case play
-    case pause
-    case next
-    case previous
-}

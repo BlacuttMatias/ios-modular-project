@@ -163,21 +163,21 @@ class AudioPlayerViewModel{
     
     func getActionsMenu() -> [ActionMenuButton]{
         var actions = [
-            ActionMenuButton(title: "Remove from lybrary", imageName: Resource.deleteIcon, actionHandler: { self.menuDelegate?.deleteLybrary(action: $0) }, attributes: .destructive),
-            ActionMenuButton(title: "Add to a Playlist...", imageName: Resource.addPlaylistIcon, actionHandler: { self.menuDelegate?.addToPlaylist(action: $0) }),
-            ActionMenuButton(title: "Share Song...", imageName: Resource.shareIcon, actionHandler: { self.menuDelegate?.shareSong(action: $0) }),
+            ActionMenuButton(title: TitleActionMenuAudioPlayer.removeFromLybrary.rawValue, imageName: Resource.deleteIcon, actionHandler: { self.menuDelegate?.deleteLybrary(action: $0) }, attributes: .destructive),
+            ActionMenuButton(title: TitleActionMenuAudioPlayer.addToAPlaylist.rawValue, imageName: Resource.addPlaylistIcon, actionHandler: { self.menuDelegate?.addToPlaylist(action: $0) }),
+            ActionMenuButton(title: TitleActionMenuAudioPlayer.shareSong.rawValue, imageName: Resource.shareIcon, actionHandler: { self.menuDelegate?.shareSong(action: $0) }),
         ]
         if(!self.wasDownloaded){
-            let downloadAction = ActionMenuButton(title: "Download", imageName: Resource.downloadIcon, actionHandler: { self.menuDelegate?.downloadSong(action: $0) })
+            let downloadAction = ActionMenuButton(title: TitleActionMenuAudioPlayer.download.rawValue, imageName: Resource.downloadIcon, actionHandler: { self.menuDelegate?.downloadSong(action: $0) })
             actions.insert(downloadAction, at: 1)
         }
         
         var loveAction: ActionMenuButton
         if(self.love){
-            loveAction = ActionMenuButton(title: "Unlove", imageName: Resource.unloveIcon, actionHandler: { self.menuDelegate?.love(action: $0) })
+            loveAction = ActionMenuButton(title: TitleActionMenuAudioPlayer.unloved.rawValue, imageName: Resource.unloveIcon, actionHandler: { self.menuDelegate?.love(action: $0) })
         }
         else{
-            loveAction = ActionMenuButton(title: "Love", imageName: Resource.loveIcon, actionHandler: { self.menuDelegate?.love(action: $0) })
+            loveAction = ActionMenuButton(title: TitleActionMenuAudioPlayer.love.rawValue, imageName: Resource.loveIcon, actionHandler: { self.menuDelegate?.love(action: $0) })
         }
         actions.append(loveAction)
         return actions

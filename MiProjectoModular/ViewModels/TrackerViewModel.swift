@@ -59,11 +59,11 @@ class TrackerViewModel{
     
     func getActionsMenu(wasDownloaded: Bool?) -> [ActionMenuButton]{
         var actions = [
-            ActionMenuButton(title: "Play", imageName: Resource.playCircleIcon, actionHandler: { self.menuTrackerDelegate?.playSong(action: $0) }),
-            ActionMenuButton(title: "Eliminate from Playlist", imageName: Resource.deleteIcon, actionHandler: { self.menuTrackerDelegate?.eliminateFromPlaylist(action: $0) }),
+            ActionMenuButton(title: TitleActionMenuTracker.play.rawValue, imageName: Resource.playCircleIcon, actionHandler: { self.menuTrackerDelegate?.playSong(action: $0) }),
+            ActionMenuButton(title: TitleActionMenuTracker.eliminateFromPlaylist.rawValue, imageName: Resource.deleteIcon, actionHandler: { self.menuTrackerDelegate?.eliminateFromPlaylist(action: $0) }),
         ]
         if(!(wasDownloaded ?? false)){
-            let downloadAction = ActionMenuButton(title: "Download", imageName: Resource.downloadIcon, actionHandler: { self.menuTrackerDelegate?.downloadSong(action: $0) })
+            let downloadAction = ActionMenuButton(title: TitleActionMenuTracker.download.rawValue, imageName: Resource.downloadIcon, actionHandler: { self.menuTrackerDelegate?.downloadSong(action: $0) })
             actions.insert(downloadAction, at: 1)
         }
         return actions
