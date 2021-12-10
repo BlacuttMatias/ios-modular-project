@@ -14,6 +14,24 @@ extension UIViewController{
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
+    // set label error of input of textfield
+    func setErrorLabel(label: UILabel, textField: UITextField){
+        label.setErrorStyle()
+        self.view.addSubview(label)
+        
+        let constraintSetter = ConstraintsSetter(uiView: label)
+        constraintSetter.setTopEqualContraint(referenceAnchorView: textField.bottomAnchor, distance: 8)
+        constraintSetter.setLeftEqualContraint(referenceAnchorView: textField.leadingAnchor, distance: 0)
+        constraintSetter.setRightEqualContraint(referenceAnchorView: textField.trailingAnchor, distance: 0, priority: 750)
+    }
+    
+    func showLabelError(label: UILabel, errorMessage: String){
+        label.text = errorMessage
+        UIView.animate(withDuration: 1, animations: {
+            label.alpha = 1
+        })
+    }
 }
 protocol UiMenuCreator{
     func createUiMenu(actions: [ActionMenuButton]?, title: String?) -> UIMenu

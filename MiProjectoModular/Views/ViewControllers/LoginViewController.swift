@@ -38,30 +38,11 @@ class LoginViewController: UIViewController {
     }
 
     func setUsernameErrorLabel(){
-        self.usernameErrorLabel.setErrorStyle()
-        self.view.addSubview(self.usernameErrorLabel)
-        
-        let constraintSetter = ConstraintsSetter(uiView: self.usernameErrorLabel)
-        constraintSetter.setTopEqualContraint(referenceAnchorView: self.usernameTextField.bottomAnchor, distance: 8)
-        constraintSetter.setLeftEqualContraint(referenceAnchorView: self.usernameTextField.leadingAnchor, distance: 0)
-        constraintSetter.setRightEqualContraint(referenceAnchorView: self.usernameTextField.trailingAnchor, distance: 0, priority: 750)
+        self.setErrorLabel(label: usernameErrorLabel, textField: usernameTextField)
     }
     
     func setPasswordErrorLabel(){
-        self.passwordErrorLabel.setErrorStyle()
-        self.view.addSubview(self.passwordErrorLabel)
-        
-        let constraintSetter = ConstraintsSetter(uiView: self.passwordErrorLabel)
-        constraintSetter.setTopEqualContraint(referenceAnchorView: self.passwordTextField.bottomAnchor, distance: 8)
-        constraintSetter.setLeftEqualContraint(referenceAnchorView: self.passwordTextField.leadingAnchor, distance: 0)
-        constraintSetter.setRightEqualContraint(referenceAnchorView: self.passwordTextField.trailingAnchor, distance: 0, priority: 750)
-    }
-    
-    func showLabelError(label: UILabel, errorMessage: String){
-        label.text = errorMessage
-        UIView.animate(withDuration: 1, animations: {
-            label.alpha = 1
-        })
+        self.setErrorLabel(label: passwordErrorLabel, textField: passwordTextField)
     }
     
     func showUsernameError(errorMessage: String){
