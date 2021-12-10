@@ -18,12 +18,13 @@ extension UIViewController{
     // set label error of input of textfield
     func setErrorLabel(label: UILabel, textField: UITextField){
         label.setErrorStyle()
+        label.numberOfLines = 0
         self.view.addSubview(label)
         
         let constraintSetter = ConstraintsSetter(uiView: label)
         constraintSetter.setTopEqualContraint(referenceAnchorView: textField.bottomAnchor, distance: 8)
+        constraintSetter.setWidthConstraint(width: textField.frame.width)
         constraintSetter.setLeftEqualContraint(referenceAnchorView: textField.leadingAnchor, distance: 0)
-        constraintSetter.setRightEqualContraint(referenceAnchorView: textField.trailingAnchor, distance: 0, priority: 750)
     }
     
     func showLabelError(label: UILabel, errorMessage: String){
