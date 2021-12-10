@@ -55,6 +55,11 @@ class ConstraintsSetter{
         constraint.isActive = true
     }
     
+    func setCenterYContraint(referenceAnchorView: NSLayoutAnchor<NSLayoutYAxisAnchor>){
+        let constraint = uiView.centerYAnchor.constraint(equalTo: referenceAnchorView)
+        constraint.isActive = true
+    }
+    
     func setHeightConstraint(height: CGFloat){
         let constraint = uiView.heightAnchor.constraint(equalToConstant: height)
         constraint.isActive = true
