@@ -25,4 +25,15 @@ extension UIButton{
         self.backgroundColor = UIColor(named: Resource.buttonColor)
         
     }
+    
+    func animateError(){
+        let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+        animation.repeatCount = 4
+        animation.duration = 0.2/TimeInterval(animation.repeatCount)
+        animation.autoreverses = true
+        animation.values = [10, -10]
+        self.layer.add(animation, forKey: "shake")
+    }
+
 }

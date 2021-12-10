@@ -15,6 +15,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var signInButton: UIButton!
     var usernameErrorLabel: UILabel = UILabel()
     var passwordErrorLabel: UILabel = UILabel()
+    var invalidLoginView: UILabel = UILabel()
     
     var typeError: Int = 0
     var loginViewModel: LoginViewModel = LoginViewModel()
@@ -35,6 +36,8 @@ class LoginViewController: UIViewController {
         
         self.setUsernameErrorLabel()
         self.setPasswordErrorLabel()
+
+        self.setInvalidLoginView(width: self.passwordTextField.frame.width - 25)
     }
 
     func setUsernameErrorLabel(){
@@ -53,12 +56,39 @@ class LoginViewController: UIViewController {
         self.showLabelError(label: self.passwordErrorLabel, errorMessage: errorMessage)
     }
     
+    func setInvalidLoginView(width: CGFloat){
+        invalidLoginView.backgroundColor = UIColor(named: Resource.errorBackgroundColor)
+        invalidLoginView.text = "Username/Email or password incorrect"
+        invalidLoginView.textAlignment = .center
+        invalidLoginView.numberOfLines = 0
+        invalidLoginView.layer.cornerRadius = 8
+        invalidLoginView.layer.masksToBounds = true
+        invalidLoginView.layer.borderWidth = 3
+        invalidLoginView.layer.borderColor = UIColor.red.cgColor
+        invalidLoginView.alpha = 0
+        
+        self.view.addSubview(self.invalidLoginView)
+        
+        let constraintSetter = ConstraintsSetter(uiView: self.invalidLoginView)
+        constraintSetter.setTopEqualContraint(referenceAnchorView: self.passwordTextField.bottomAnchor, distance: 20)
+        constraintSetter.setCenterXContraint(referenceAnchorView: self.view.centerXAnchor)
+        constraintSetter.setWidthConstraint(width: width)
+        constraintSetter.setBottomEqualContraint(referenceAnchorView: self.signInButton.topAnchor, distance: -40)
+    }
+    
+    func showInvalidLogin(){
+        UIView.animate(withDuration: 0.7, animations: {
+            self.invalidLoginView.alpha = 1
+        })
+    }
+    
     func hideErrors(){
         UIView.animate(withDuration: 0.1, animations: {
             self.usernameErrorLabel.alpha = 0
             self.passwordErrorLabel.alpha = 0
             self.usernameTextField.setDefaultBorderColor()
             self.passwordTextField.setDefaultBorderColor()
+            self.invalidLoginView.alpha = 0
         })
 
     }
@@ -74,7 +104,7 @@ class LoginViewController: UIViewController {
         guard loginViewModel.isNotEmpty(usernameOrEmail) else{
             typeError = 1
             self.usernameTextField.animateError()
-            self.showUsernameError(errorMessage: "This field can't be empty")
+            self.showUsernameError(errorMessage: "This field is required")
             return
         }
         guard loginViewModel.isNotTooLong(usernameOrEmail) else{
@@ -85,9 +115,8 @@ class LoginViewController: UIViewController {
         }
         guard loginViewModel.isNotEmpty(password) else{
             typeError = 3
-            print("Debes ingresar una password")
             self.passwordTextField.animateError()
-            self.showPasswordError(errorMessage: "This field can't be empty")
+            self.showPasswordError(errorMessage: "This field is required")
             return
         }
         guard loginViewModel.isNotTooLong(password) else{
@@ -98,7 +127,8 @@ class LoginViewController: UIViewController {
         }
         guard loginViewModel.isRegistered(usernameOrEmail: usernameOrEmail, password: password) else{
             typeError = 10
-            print("Usuario no registrado")
+            self.signInButton.animateError()
+            self.showInvalidLogin()
             return
         }
         goToWelcomeViewController()
