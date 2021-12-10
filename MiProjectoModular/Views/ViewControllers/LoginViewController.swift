@@ -26,6 +26,9 @@ class LoginViewController: UIViewController {
         self.view.backgroundColor = UIColor(named: backgroundColorName)
         
         signInButton.roundedBorder()
+        
+        self.usernameTextField.setRoundedBorders()
+        self.passwordTextField.setRoundedBorders()
     }
 
 
@@ -40,6 +43,7 @@ class LoginViewController: UIViewController {
         guard loginViewModel.isNotEmpty(usernameOrEmail) else{
             typeError = 1
             print("Debe ingresar un Username o Email")
+            self.usernameTextField.animateError()
             return
         }
         guard loginViewModel.isNotTooLong(usernameOrEmail) else{
@@ -50,6 +54,7 @@ class LoginViewController: UIViewController {
         guard loginViewModel.isNotEmpty(password) else{
             typeError = 3
             print("Debes ingresar una password")
+            self.passwordTextField.animateError()
             return
         }
         guard loginViewModel.isNotTooLong(password) else{
