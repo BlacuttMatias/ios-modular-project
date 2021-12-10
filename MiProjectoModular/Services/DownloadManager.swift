@@ -56,3 +56,7 @@ extension DownloadManager: URLSessionDelegate, URLSessionDownloadDelegate{
         }
     }
 }
+
+
+// To use him
+// DownloadManager.shared.startDownload(url: URL(string: "https://speed.hetzner.de/100MB.bin")!)

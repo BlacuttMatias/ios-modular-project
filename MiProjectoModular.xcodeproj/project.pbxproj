@@ -43,6 +43,7 @@
 		D0CAB26C275FE0A9003BE15A /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CAB26B275FE0A9003BE15A /* Enums.swift */; };
 		D0CF7F302756894A00C61498 /* PlaylistTrackViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CF7F2F2756894A00C61498 /* PlaylistTrackViewCell.swift */; };
 		D0D53DC2273567DC000F1BB7 /* AudioPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D53DC1273567DC000F1BB7 /* AudioPlayerViewController.swift */; };
+		D0DB2A342763B4AC00C18644 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB2A332763B4AC00C18644 /* UITextField+Extension.swift */; };
 		D0F2274F27517E7600BAC8B0 /* TracksPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2274E27517E7600BAC8B0 /* TracksPlayer.swift */; };
 		D0F2E98B27429C7D006966D0 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2E98A27429C7D006966D0 /* ImageManager.swift */; };
 		D0F2E98D2742B17F006966D0 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2E98C2742B17F006966D0 /* Resources.swift */; };
@@ -123,6 +124,7 @@
 		D0CAB26B275FE0A9003BE15A /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		D0CF7F2F2756894A00C61498 /* PlaylistTrackViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistTrackViewCell.swift; sourceTree = "<group>"; };
 		D0D53DC1273567DC000F1BB7 /* AudioPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewController.swift; sourceTree = "<group>"; };
+		D0DB2A332763B4AC00C18644 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		D0F2274E27517E7600BAC8B0 /* TracksPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracksPlayer.swift; sourceTree = "<group>"; };
 		D0F2E98A27429C7D006966D0 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		D0F2E98C2742B17F006966D0 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				D0B7A4BF274FF09A0016589B /* UILabel+Extension.swift */,
 				D0B7A4C1275031920016589B /* UIImage+Extension.swift */,
 				D0B7A4BD274FF0800016589B /* UIButton+Extension.swift */,
+				D0DB2A332763B4AC00C18644 /* UITextField+Extension.swift */,
 			);
 			path = UiUtils;
 			sourceTree = "<group>";
@@ -634,6 +637,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0DB2A342763B4AC00C18644 /* UITextField+Extension.swift in Sources */,
 				D0976D07275E8E5700E59D3A /* MenuTrackerDelegate.swift in Sources */,
 				D0F2E9932742C4AB006966D0 /* AudioState.swift in Sources */,
 				D0F407512746D1DB00FD8CA0 /* DataManager.swift in Sources */,
