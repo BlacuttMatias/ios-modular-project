@@ -14,4 +14,14 @@ extension UILabel{
     func setFontSizeIn18(){
         self.setFontSize(18)
     }
+    
+    func setFontError(){
+        self.setFontSize(15)
+        self.textColor = .red
+    }
+    
+    func setErrorStyle(){
+        self.setFontError()
+        self.alpha = 0
+    }
 }

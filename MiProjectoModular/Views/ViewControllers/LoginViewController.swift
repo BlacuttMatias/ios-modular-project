@@ -13,6 +13,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signInLabel: UILabel!
     @IBOutlet weak var signInButton: UIButton!
+    var usernameErrorLabel: UILabel = UILabel()
+    var passwordErrorLabel: UILabel = UILabel()
+    
     var typeError: Int = 0
     var loginViewModel: LoginViewModel = LoginViewModel()
     
@@ -29,12 +32,59 @@ class LoginViewController: UIViewController {
         
         self.usernameTextField.setRoundedBorders()
         self.passwordTextField.setRoundedBorders()
+        
+        self.setUsernameErrorLabel()
+        self.setPasswordErrorLabel()
     }
 
+    func setUsernameErrorLabel(){
+        self.usernameErrorLabel.setErrorStyle()
+        self.view.addSubview(self.usernameErrorLabel)
+        
+        let constraintSetter = ConstraintsSetter(uiView: self.usernameErrorLabel)
+        constraintSetter.setTopEqualContraint(referenceAnchorView: self.usernameTextField.bottomAnchor, distance: 8)
+        constraintSetter.setLeftEqualContraint(referenceAnchorView: self.usernameTextField.leadingAnchor, distance: 0)
+        constraintSetter.setRightEqualContraint(referenceAnchorView: self.usernameTextField.trailingAnchor, distance: 0, priority: 750)
+    }
+    
+    func setPasswordErrorLabel(){
+        self.passwordErrorLabel.setErrorStyle()
+        self.view.addSubview(self.passwordErrorLabel)
+        
+        let constraintSetter = ConstraintsSetter(uiView: self.passwordErrorLabel)
+        constraintSetter.setTopEqualContraint(referenceAnchorView: self.passwordTextField.bottomAnchor, distance: 8)
+        constraintSetter.setLeftEqualContraint(referenceAnchorView: self.passwordTextField.leadingAnchor, distance: 0)
+        constraintSetter.setRightEqualContraint(referenceAnchorView: self.passwordTextField.trailingAnchor, distance: 0, priority: 750)
+    }
+    
+    func showLabelError(label: UILabel, errorMessage: String){
+        label.text = errorMessage
+        UIView.animate(withDuration: 1, animations: {
+            label.alpha = 1
+        })
+    }
+    
+    func showUsernameError(errorMessage: String){
+        self.showLabelError(label: self.usernameErrorLabel, errorMessage: errorMessage)
+    }
+    
+    func showPasswordError(errorMessage: String){
+        self.showLabelError(label: self.passwordErrorLabel, errorMessage: errorMessage)
+    }
+    
+    func hideErrors(){
+        UIView.animate(withDuration: 0.1, animations: {
+            self.usernameErrorLabel.alpha = 0
+            self.passwordErrorLabel.alpha = 0
+            self.usernameTextField.setDefaultBorderColor()
+            self.passwordTextField.setDefaultBorderColor()
+        })
 
+    }
 
     @IBAction func `continue`(_ sender: UIButton) {
         //print(#function)
+        self.hideErrors()
         guard let usernameOrEmail = usernameTextField.text, let password = passwordTextField.text else{
             typeError = 0
             print("Hay nil")
@@ -44,6 +94,7 @@ class LoginViewController: UIViewController {
             typeError = 1
             print("Debe ingresar un Username o Email")
             self.usernameTextField.animateError()
+            self.showUsernameError(errorMessage: "This field can't be empty")
             return
         }
         guard loginViewModel.isNotTooLong(usernameOrEmail) else{
@@ -55,6 +106,7 @@ class LoginViewController: UIViewController {
             typeError = 3
             print("Debes ingresar una password")
             self.passwordTextField.animateError()
+            self.showPasswordError(errorMessage: "This field can't be empty")
             return
         }
         guard loginViewModel.isNotTooLong(password) else{
