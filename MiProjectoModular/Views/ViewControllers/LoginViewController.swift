@@ -73,14 +73,14 @@ class LoginViewController: UIViewController {
         }
         guard loginViewModel.isNotEmpty(usernameOrEmail) else{
             typeError = 1
-            print("Debe ingresar un Username o Email")
             self.usernameTextField.animateError()
             self.showUsernameError(errorMessage: "This field can't be empty")
             return
         }
         guard loginViewModel.isNotTooLong(usernameOrEmail) else{
             typeError = 2
-            print ("el username o email debe tener menos de 10 caracteres")
+            self.usernameTextField.animateError()
+            self.showUsernameError(errorMessage: "Username or Email must have least than 10 characters")
             return
         }
         guard loginViewModel.isNotEmpty(password) else{
@@ -92,7 +92,8 @@ class LoginViewController: UIViewController {
         }
         guard loginViewModel.isNotTooLong(password) else{
             typeError = 4
-            print("La password debe tener menos de 10 caracteres")
+            self.passwordTextField.animateError()
+            self.showPasswordError(errorMessage: "Password must have least than 10 characters")
             return
         }
         guard loginViewModel.isRegistered(usernameOrEmail: usernameOrEmail, password: password) else{
