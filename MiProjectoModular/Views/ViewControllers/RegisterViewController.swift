@@ -18,7 +18,6 @@ class RegisterViewController: UIViewController {
     var emailErrorLabel: UILabel = UILabel()
     var passwordErrorLabel: UILabel = UILabel()
     var invalidRegisterView: UIViewError = UIViewError()
-    var typeError: Int = 0
     var registerViewModel: RegisterViewModel = RegisterViewModel()
     
     override func viewDidLoad() {
@@ -99,42 +98,35 @@ class RegisterViewController: UIViewController {
     @IBAction func register(_ sender: UIButton) {
         self.hideErrors()
         guard let username = usernameTextField.text, let email = emailTextField.text, let password = passwordTextField.text else{
-            typeError = 0
             print("Hay nil")
             return
         }
         guard registerViewModel.isNotEmpty(username) else{
-            typeError = 5
             self.usernameTextField.animateError()
             self.showUsernameError(errorMessage: "This field is required")
             return
         }
         guard registerViewModel.isNotTooLong(username) else{
-            typeError = 6
             self.usernameTextField.animateError()
             self.showUsernameError(errorMessage: "Username must have least than 10 characters")
             return
         }
         guard registerViewModel.isNotEmpty(email) else{
-            typeError = 1
             self.emailTextField.animateError()
             self.showEmailError(errorMessage: "This field is required")
             return
         }
         guard registerViewModel.isValidEmail(email) else{
-            typeError = 2
             self.emailTextField.animateError()
             self.showEmailError(errorMessage: "Email must have \"@\" and least than 10 characters")
             return
         }
         guard registerViewModel.isNotEmpty(password) else{
-            typeError = 3
             self.passwordTextField.animateError()
             self.showPasswordError(errorMessage: "This field is required")
             return
         }
         guard registerViewModel.isNotTooLong(password) else{
-            typeError = 4
             self.passwordTextField.animateError()
             self.showPasswordError(errorMessage: "Password must have least than 10 characters")
             return

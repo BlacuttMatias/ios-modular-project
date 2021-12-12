@@ -16,8 +16,6 @@ class LoginViewController: UIViewController {
     var usernameErrorLabel: UILabel = UILabel()
     var passwordErrorLabel: UILabel = UILabel()
     var invalidLoginView: UIViewError = UIViewError()
-    
-    var typeError: Int = 0
     var loginViewModel: LoginViewModel = LoginViewModel()
     
     override func viewDidLoad() {
@@ -90,36 +88,30 @@ class LoginViewController: UIViewController {
         //print(#function)
         self.hideErrors()
         guard let usernameOrEmail = usernameTextField.text, let password = passwordTextField.text else{
-            typeError = 0
             print("Hay nil")
             return
         }
         guard loginViewModel.isNotEmpty(usernameOrEmail) else{
-            typeError = 1
             self.usernameTextField.animateError()
             self.showUsernameError(errorMessage: "This field is required")
             return
         }
         guard loginViewModel.isNotTooLong(usernameOrEmail) else{
-            typeError = 2
             self.usernameTextField.animateError()
             self.showUsernameError(errorMessage: "Username must have least than 10 characters")
             return
         }
         guard loginViewModel.isNotEmpty(password) else{
-            typeError = 3
             self.passwordTextField.animateError()
             self.showPasswordError(errorMessage: "This field is required")
             return
         }
         guard loginViewModel.isNotTooLong(password) else{
-            typeError = 4
             self.passwordTextField.animateError()
             self.showPasswordError(errorMessage: "Password must have least than 10 characters")
             return
         }
         guard loginViewModel.isRegistered(usernameOrEmail: usernameOrEmail, password: password) else{
-            typeError = 10
             self.signInButton.animateError()
             self.showInvalidLogin()
             return
