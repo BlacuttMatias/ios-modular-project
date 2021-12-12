@@ -14,6 +14,9 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var signUpFacebbokButton: UIButton!
+    var usernameErrorLabel: UILabel = UILabel()
+    var emailErrorLabel: UILabel = UILabel()
+    var passwordErrorLabel: UILabel = UILabel()
     var typeError: Int = 0
     var registerViewModel: RegisterViewModel = RegisterViewModel()
     
@@ -21,14 +24,59 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         signUpButton.roundedBorder()
         signUpFacebbokButton.roundedBorder()
+        
+        usernameTextField.setErrorStyle()
+        emailTextField.setErrorStyle()
+        passwordTextField.setErrorStyle()
+        
+        self.setUsernameErrorLabel()
+        self.setEmailErrorLabel()
+        self.setPasswordErrorLabel()
+        
     }
     
+    func setUsernameErrorLabel(){
+        self.setErrorLabel(label: usernameErrorLabel, textField: usernameTextField)
+    }
+    
+    func setEmailErrorLabel(){
+        self.setErrorLabel(label: emailErrorLabel, textField: emailTextField)
+    }
+    
+    func setPasswordErrorLabel(){
+        self.setErrorLabel(label: passwordErrorLabel, textField: passwordTextField)
+    }
+    
+    func showUsernameError(errorMessage: String){
+        self.showLabelError(label: self.usernameErrorLabel, errorMessage: errorMessage)
+    }
+    
+    func showEmailError(errorMessage: String){
+        self.showLabelError(label: self.emailErrorLabel, errorMessage: errorMessage)
+    }
+    
+    func showPasswordError(errorMessage: String){
+        self.showLabelError(label: self.passwordErrorLabel, errorMessage: errorMessage)
+    }
+    
+    func hideErrors(){
+        UIView.animate(withDuration: 0.1, animations: {
+            self.usernameErrorLabel.alpha = 0
+            self.emailErrorLabel.alpha = 0
+            self.passwordErrorLabel.alpha = 0
+            self.usernameTextField.hideErrorStyle()
+            self.emailTextField.hideErrorStyle()
+            self.passwordTextField.hideErrorStyle()
+        })
+
+    }
     
     @IBAction func signIn(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
     
     @IBAction func register(_ sender: UIButton) {
+        self.hideErrors()
         guard let username = usernameTextField.text, let email = emailTextField.text, let password = passwordTextField.text else{
             typeError = 0
             print("Hay nil")
@@ -36,32 +84,38 @@ class RegisterViewController: UIViewController {
         }
         guard registerViewModel.isNotEmpty(username) else{
             typeError = 5
-            print("Debes ingresar un Username")
+            self.usernameTextField.animateError()
+            self.showUsernameError(errorMessage: "This field is required")
             return
         }
         guard registerViewModel.isNotTooLong(username) else{
             typeError = 6
-            print ("El username debe tener menos de 10 caracteres")
+            self.usernameTextField.animateError()
+            self.showUsernameError(errorMessage: "Username must have least than 10 characters")
             return
         }
         guard registerViewModel.isNotEmpty(email) else{
             typeError = 1
-            print ("Debes ingresar un Email")
+            self.emailTextField.animateError()
+            self.showEmailError(errorMessage: "This field is required")
             return
         }
         guard registerViewModel.isValidEmail(email) else{
             typeError = 2
-            print("El email debe tener @ y menos de 10 caracteres")
+            self.emailTextField.animateError()
+            self.showEmailError(errorMessage: "Email must have \"@\" and least than 10 characters")
             return
         }
         guard registerViewModel.isNotEmpty(password) else{
             typeError = 3
-            print("Debes ingresar una password")
+            self.passwordTextField.animateError()
+            self.showPasswordError(errorMessage: "This field is required")
             return
         }
         guard registerViewModel.isNotTooLong(password) else{
             typeError = 4
-            print("La password debe tener menos de 10 caracteres")
+            self.passwordTextField.animateError()
+            self.showPasswordError(errorMessage: "Password must have least than 10 characters")
             return
         }
         goToWelcomeViewController()
