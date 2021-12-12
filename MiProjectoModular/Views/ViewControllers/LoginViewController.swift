@@ -32,8 +32,8 @@ class LoginViewController: UIViewController {
         
         signInButton.roundedBorder()
         
-        self.usernameTextField.setRoundedBorders()
-        self.passwordTextField.setRoundedBorders()
+        self.usernameTextField.setErrorStyle()
+        self.passwordTextField.setErrorStyle()
         
         self.setUsernameErrorLabel()
         self.setPasswordErrorLabel()
@@ -99,8 +99,8 @@ class LoginViewController: UIViewController {
         UIView.animate(withDuration: 0.1, animations: {
             self.usernameErrorLabel.alpha = 0
             self.passwordErrorLabel.alpha = 0
-            self.usernameTextField.setDefaultBorderColor()
-            self.passwordTextField.setDefaultBorderColor()
+            self.usernameTextField.hideErrorStyle()
+            self.passwordTextField.hideErrorStyle()
             self.invalidLoginView.alpha = 0
         })
 
