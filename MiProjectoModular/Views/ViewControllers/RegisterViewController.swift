@@ -17,6 +17,8 @@ class RegisterViewController: UIViewController {
     var usernameErrorLabel: UILabel = UILabel()
     var emailErrorLabel: UILabel = UILabel()
     var passwordErrorLabel: UILabel = UILabel()
+    var invalidRegisterView: UIView = UIView()
+    var invalidRegisterLabel: UILabel = UILabel()
     var typeError: Int = 0
     var registerViewModel: RegisterViewModel = RegisterViewModel()
     
@@ -32,6 +34,8 @@ class RegisterViewController: UIViewController {
         self.setUsernameErrorLabel()
         self.setEmailErrorLabel()
         self.setPasswordErrorLabel()
+        
+        self.setInvalidRegisterView(width: self.passwordTextField.frame.width - 25)
         
     }
     
@@ -67,8 +71,48 @@ class RegisterViewController: UIViewController {
             self.usernameTextField.hideErrorStyle()
             self.emailTextField.hideErrorStyle()
             self.passwordTextField.hideErrorStyle()
+            self.invalidRegisterView.alpha = 0
         })
 
+    }
+    
+    func setInvalidLoginLabel(){
+        invalidRegisterLabel.text = "Username already exists"
+        invalidRegisterLabel.textColor = .red
+        invalidRegisterLabel.textAlignment = .center
+        invalidRegisterLabel.numberOfLines = 0
+        
+        self.invalidRegisterView.addSubview(invalidRegisterLabel)
+        
+        let constraintSetter = ConstraintsSetter(uiView: self.invalidRegisterLabel)
+        constraintSetter.setCenterXContraint(referenceAnchorView: invalidRegisterView.centerXAnchor)
+        constraintSetter.setCenterYContraint(referenceAnchorView: invalidRegisterView.centerYAnchor)
+    }
+    
+    func setInvalidRegisterView(width: CGFloat){
+        invalidRegisterView.backgroundColor = UIColor(named: Resource.errorBackgroundColor)
+
+        invalidRegisterView.layer.cornerRadius = 8
+        invalidRegisterView.layer.masksToBounds = true
+        invalidRegisterView.layer.borderWidth = 2
+        invalidRegisterView.layer.borderColor = UIColor.red.cgColor
+        invalidRegisterView.alpha = 0
+        
+        self.setInvalidLoginLabel()
+        
+        self.view.addSubview(self.invalidRegisterView)
+        
+        let constraintSetter = ConstraintsSetter(uiView: self.invalidRegisterView)
+        constraintSetter.setTopEqualContraint(referenceAnchorView: self.passwordTextField.bottomAnchor, distance: 15)
+        constraintSetter.setCenterXContraint(referenceAnchorView: self.view.centerXAnchor)
+        constraintSetter.setWidthConstraint(width: width)
+        constraintSetter.setBottomEqualContraint(referenceAnchorView: self.signUpButton.topAnchor, distance: -15)
+    }
+    
+    func showInvalidRegister(){
+        UIView.animate(withDuration: 0.7, animations: {
+            self.invalidRegisterView.alpha = 1
+        })
     }
     
     @IBAction func signIn(_ sender: UIButton) {
@@ -116,6 +160,11 @@ class RegisterViewController: UIViewController {
             typeError = 4
             self.passwordTextField.animateError()
             self.showPasswordError(errorMessage: "Password must have least than 10 characters")
+            return
+        }
+        guard !registerViewModel.usernameAlreadyExists(username: username) else{
+            self.signUpButton.animateError()
+            self.showInvalidRegister()
             return
         }
         goToWelcomeViewController()
