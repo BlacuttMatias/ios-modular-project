@@ -41,4 +41,5 @@ struct Resource{
     static let loveIcon = "LoveIcon"
     static let unloveIcon = "UnloveIcon"
     static let errorBackgroundColor = "ErrorBackgroundColor"
+    static let errorIcon = "ErrorIcon"
 }
