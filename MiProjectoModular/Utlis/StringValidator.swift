@@ -23,7 +23,7 @@ extension StringValidator{
     }
     
     func isNotEmpty(_ string: String) -> Bool{
-        return !string.isEmpty
+        return !string.trimmingCharacters(in: .whitespaces).isEmpty
     }
     
     func someOneIsEmpty(args: String...) -> Bool{
