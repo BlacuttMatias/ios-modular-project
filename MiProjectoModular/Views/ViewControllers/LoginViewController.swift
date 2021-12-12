@@ -15,8 +15,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var signInButton: UIButton!
     var usernameErrorLabel: UILabel = UILabel()
     var passwordErrorLabel: UILabel = UILabel()
-    var invalidLoginView: UIView = UIView()
-    var invalidLoginLabel: UILabel = UILabel()
+    var invalidLoginView: UIViewError = UIViewError()
     
     var typeError: Int = 0
     var loginViewModel: LoginViewModel = LoginViewModel()
@@ -57,29 +56,9 @@ class LoginViewController: UIViewController {
         self.showLabelError(label: self.passwordErrorLabel, errorMessage: errorMessage)
     }
     
-    func setInvalidLoginLabel(){
-        invalidLoginLabel.text = "Incorrect Username or Password"
-        invalidLoginLabel.textColor = .red
-        invalidLoginLabel.textAlignment = .center
-        invalidLoginLabel.numberOfLines = 0
-        
-        self.invalidLoginView.addSubview(invalidLoginLabel)
-        
-        let constraintSetter = ConstraintsSetter(uiView: self.invalidLoginLabel)
-        constraintSetter.setCenterXContraint(referenceAnchorView: invalidLoginView.centerXAnchor)
-        constraintSetter.setCenterYContraint(referenceAnchorView: invalidLoginView.centerYAnchor)
-    }
-    
     func setInvalidLoginView(width: CGFloat){
-        invalidLoginView.backgroundColor = UIColor(named: Resource.errorBackgroundColor)
 
-        invalidLoginView.layer.cornerRadius = 8
-        invalidLoginView.layer.masksToBounds = true
-        invalidLoginView.layer.borderWidth = 2
-        invalidLoginView.layer.borderColor = UIColor.red.cgColor
-        invalidLoginView.alpha = 0
-        
-        self.setInvalidLoginLabel()
+        self.invalidLoginView.setErrorMessage(messageError: "Incorrect Username or Password")
         
         self.view.addSubview(self.invalidLoginView)
         

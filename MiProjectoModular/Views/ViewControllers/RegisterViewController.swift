@@ -17,8 +17,7 @@ class RegisterViewController: UIViewController {
     var usernameErrorLabel: UILabel = UILabel()
     var emailErrorLabel: UILabel = UILabel()
     var passwordErrorLabel: UILabel = UILabel()
-    var invalidRegisterView: UIView = UIView()
-    var invalidRegisterLabel: UILabel = UILabel()
+    var invalidRegisterView: UIViewError = UIViewError()
     var typeError: Int = 0
     var registerViewModel: RegisterViewModel = RegisterViewModel()
     
@@ -76,30 +75,8 @@ class RegisterViewController: UIViewController {
 
     }
     
-    func setInvalidLoginLabel(){
-        invalidRegisterLabel.text = "Username already exists"
-        invalidRegisterLabel.textColor = .red
-        invalidRegisterLabel.textAlignment = .center
-        invalidRegisterLabel.numberOfLines = 0
-        
-        self.invalidRegisterView.addSubview(invalidRegisterLabel)
-        
-        let constraintSetter = ConstraintsSetter(uiView: self.invalidRegisterLabel)
-        constraintSetter.setCenterXContraint(referenceAnchorView: invalidRegisterView.centerXAnchor)
-        constraintSetter.setCenterYContraint(referenceAnchorView: invalidRegisterView.centerYAnchor)
-    }
-    
     func setInvalidRegisterView(width: CGFloat){
-        invalidRegisterView.backgroundColor = UIColor(named: Resource.errorBackgroundColor)
 
-        invalidRegisterView.layer.cornerRadius = 8
-        invalidRegisterView.layer.masksToBounds = true
-        invalidRegisterView.layer.borderWidth = 2
-        invalidRegisterView.layer.borderColor = UIColor.red.cgColor
-        invalidRegisterView.alpha = 0
-        
-        self.setInvalidLoginLabel()
-        
         self.view.addSubview(self.invalidRegisterView)
         
         let constraintSetter = ConstraintsSetter(uiView: self.invalidRegisterView)
@@ -163,6 +140,7 @@ class RegisterViewController: UIViewController {
             return
         }
         guard !registerViewModel.usernameAlreadyExists(username: username) else{
+            self.invalidRegisterView.setErrorMessage(messageError: "Username already exists")
             self.signUpButton.animateError()
             self.showInvalidRegister()
             return
