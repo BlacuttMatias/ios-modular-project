@@ -59,6 +59,7 @@ class LoginViewController: UIViewController {
     
     func setInvalidLoginLabel(){
         invalidLoginLabel.text = "Incorrect Username or Password"
+        invalidLoginLabel.textColor = .red
         invalidLoginLabel.textAlignment = .center
         invalidLoginLabel.numberOfLines = 0
         
@@ -74,7 +75,7 @@ class LoginViewController: UIViewController {
 
         invalidLoginView.layer.cornerRadius = 8
         invalidLoginView.layer.masksToBounds = true
-        invalidLoginView.layer.borderWidth = 3
+        invalidLoginView.layer.borderWidth = 2
         invalidLoginView.layer.borderColor = UIColor.red.cgColor
         invalidLoginView.alpha = 0
         
