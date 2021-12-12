@@ -21,6 +21,7 @@
 		D0891AFA272B3A790085F8D5 /* StringValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0891AF9272B3A790085F8D5 /* StringValidator.swift */; };
 		D0891AFC272B3C2E0085F8D5 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0891AFB272B3C2E0085F8D5 /* RegisterViewModel.swift */; };
 		D095128427669368005A5261 /* UIViewError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095128327669368005A5261 /* UIViewError.swift */; };
+		D0951286276698BD005A5261 /* LoginDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0951285276698BD005A5261 /* LoginDelegate.swift */; };
 		D0976D04275E6F9400E59D3A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0976D03275E6F9400E59D3A /* Extensions.swift */; };
 		D0976D07275E8E5700E59D3A /* MenuTrackerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0976D06275E8E5700E59D3A /* MenuTrackerDelegate.swift */; };
 		D0A35CCE272C213200F88788 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A35CCD272C213200F88788 /* WelcomeViewController.swift */; };
@@ -103,6 +104,7 @@
 		D0891AF9272B3A790085F8D5 /* StringValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringValidator.swift; sourceTree = "<group>"; };
 		D0891AFB272B3C2E0085F8D5 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		D095128327669368005A5261 /* UIViewError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewError.swift; sourceTree = "<group>"; };
+		D0951285276698BD005A5261 /* LoginDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDelegate.swift; sourceTree = "<group>"; };
 		D0976D03275E6F9400E59D3A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D0976D06275E8E5700E59D3A /* MenuTrackerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTrackerDelegate.swift; sourceTree = "<group>"; };
 		D0A35CCD272C213200F88788 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 				D0C650B9275877DE00671370 /* PlaylistDetailDelegate.swift */,
 				D0C81C02275C8589001A3393 /* MenuAudioPlayerDelegate.swift */,
 				D0976D06275E8E5700E59D3A /* MenuTrackerDelegate.swift */,
+				D0951285276698BD005A5261 /* LoginDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -664,6 +667,7 @@
 				D0A7D84D273443BD00980BFF /* ButtonOnCellDelegate.swift in Sources */,
 				D0891AFA272B3A790085F8D5 /* StringValidator.swift in Sources */,
 				D0CAB26C275FE0A9003BE15A /* Enums.swift in Sources */,
+				D0951286276698BD005A5261 /* LoginDelegate.swift in Sources */,
 				D0BFAB8C276267180061C372 /* DownloadManager.swift in Sources */,
 				D0B7A4BE274FF0800016589B /* UIButton+Extension.swift in Sources */,
 				D0FDBD9127270B4900E3982B /* LoginViewController.swift in Sources */,

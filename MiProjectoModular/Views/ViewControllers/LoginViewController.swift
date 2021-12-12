@@ -21,6 +21,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.loginViewModel.setLoginDelegate(loginDelegate: self)
+        
         let backgroundColorName = Resource.backgroundColor
         let labelColorName = Resource.labelColor
         
@@ -44,14 +46,6 @@ class LoginViewController: UIViewController {
     
     func setPasswordErrorLabel(){
         self.setErrorLabel(label: passwordErrorLabel, textField: passwordTextField)
-    }
-    
-    func showUsernameError(errorMessage: String){
-        self.showLabelError(label: self.usernameErrorLabel, errorMessage: errorMessage)
-    }
-    
-    func showPasswordError(errorMessage: String){
-        self.showLabelError(label: self.passwordErrorLabel, errorMessage: errorMessage)
     }
     
     func setInvalidLoginView(width: CGFloat){
@@ -87,37 +81,9 @@ class LoginViewController: UIViewController {
     @IBAction func `continue`(_ sender: UIButton) {
         //print(#function)
         self.hideErrors()
-        guard let usernameOrEmail = usernameTextField.text, let password = passwordTextField.text else{
-            print("Hay nil")
-            return
-        }
-        guard loginViewModel.isNotEmpty(usernameOrEmail) else{
-            self.usernameTextField.animateError()
-            self.showUsernameError(errorMessage: "This field is required")
-            return
-        }
-        guard loginViewModel.isNotTooLong(usernameOrEmail) else{
-            self.usernameTextField.animateError()
-            self.showUsernameError(errorMessage: "Username must have least than 10 characters")
-            return
-        }
-        guard loginViewModel.isNotEmpty(password) else{
-            self.passwordTextField.animateError()
-            self.showPasswordError(errorMessage: "This field is required")
-            return
-        }
-        guard loginViewModel.isNotTooLong(password) else{
-            self.passwordTextField.animateError()
-            self.showPasswordError(errorMessage: "Password must have least than 10 characters")
-            return
-        }
-        guard loginViewModel.isRegistered(usernameOrEmail: usernameOrEmail, password: password) else{
-            self.signInButton.animateError()
-            self.showInvalidLogin()
-            return
-        }
-        goToWelcomeViewController()
-        //print("Usuario autenticado")
+        let usernameOrEmail = usernameTextField.text
+        let password = passwordTextField.text
+        self.loginViewModel.login(optionalUsernameOrEmail: usernameOrEmail, optionalPassword: password)
     }
     
     @IBAction func signUp(_ sender: UIButton) {
@@ -145,3 +111,25 @@ class LoginViewController: UIViewController {
     
 }
 
+extension LoginViewController: LoginDelegate{
+
+    func showUsernameEmailError(errorMessage: String) {
+        self.usernameTextField.animateError()
+        self.showLabelError(label: self.usernameErrorLabel, errorMessage: errorMessage)
+    }
+    
+    func showPasswordError(errorMessage: String){
+        self.passwordTextField.animateError()
+        self.showLabelError(label: self.passwordErrorLabel, errorMessage: errorMessage)
+    }
+    
+    func showLoginUserError(errorMessage: String) {
+        self.signInButton.animateError()
+        self.showInvalidLogin()
+    }
+    
+    func succesfulLogin() {
+        goToWelcomeViewController()
+    }
+    
+}

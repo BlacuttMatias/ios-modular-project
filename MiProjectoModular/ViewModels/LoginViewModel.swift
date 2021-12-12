@@ -9,8 +9,13 @@ import Foundation
 
 class LoginViewModel: StringValidator{
     
-    let registered = Registered()
+    private let registered = Registered()
+    private weak var loginDelegate: LoginDelegate?
 
+    func setLoginDelegate(loginDelegate: LoginDelegate){
+        self.loginDelegate = loginDelegate
+    }
+    
     func usernameOrEmailIsVallid(usernameOrEmail: String) -> Bool{
         return !usernameOrEmail.isEmpty && isNotTooLong(usernameOrEmail)
     }
@@ -36,5 +41,37 @@ class LoginViewModel: StringValidator{
     
     func getNameWelcomeViewController() -> String{
         return "TabViewController"
+    }
+    
+    func login(optionalUsernameOrEmail: String?, optionalPassword: String?){
+        guard let usernameOrEmail = optionalUsernameOrEmail else {
+            self.loginDelegate?.showUsernameEmailError(errorMessage: "This field is required")
+            return
+        }
+        guard self.isNotEmpty(usernameOrEmail) else{
+            self.loginDelegate?.showUsernameEmailError(errorMessage: "This field is required")
+            return
+        }
+        guard self.isNotTooLong(usernameOrEmail) else{
+            self.loginDelegate?.showUsernameEmailError(errorMessage: "Username must have least than 10 characters")
+            return
+        }
+        guard let password = optionalPassword else {
+            self.loginDelegate?.showPasswordError(errorMessage: "This field is required")
+            return
+        }
+        guard self.isNotEmpty(password) else{
+            self.loginDelegate?.showPasswordError(errorMessage: "This field is required")
+            return
+        }
+        guard self.isNotTooLong(password) else{
+           self.loginDelegate?.showPasswordError(errorMessage: "Password must have least than 10 characters")
+            return
+        }
+        guard self.isRegistered(usernameOrEmail: usernameOrEmail, password: password) else{
+            self.loginDelegate?.showLoginUserError(errorMessage: "Incorrect Username or Password")
+            return
+        }
+        self.loginDelegate?.succesfulLogin()
     }
 }
