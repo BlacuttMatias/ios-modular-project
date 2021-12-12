@@ -19,6 +19,14 @@ struct Registered {
     func isRegistered(account: Account) -> Bool{
         return (account.username == user1.username || account.email == user1.email) && account.pass == user1.pass
     }
+    
+    func exists(username: String) -> Bool{
+        return user1.username == username
+    }
+    
+    func exists(email: String) -> Bool{
+        return user1.email == email
+    }
 }
 
 struct Track: Codable{
