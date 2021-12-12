@@ -58,7 +58,7 @@ class LoginViewController: UIViewController {
     }
     
     func setInvalidLoginLabel(){
-        invalidLoginLabel.text = "Username/Email or password incorrect"
+        invalidLoginLabel.text = "Incorrect Username or Password"
         invalidLoginLabel.textAlignment = .center
         invalidLoginLabel.numberOfLines = 0
         
@@ -123,7 +123,7 @@ class LoginViewController: UIViewController {
         guard loginViewModel.isNotTooLong(usernameOrEmail) else{
             typeError = 2
             self.usernameTextField.animateError()
-            self.showUsernameError(errorMessage: "Username or Email must have least than 10 characters")
+            self.showUsernameError(errorMessage: "Username must have least than 10 characters")
             return
         }
         guard loginViewModel.isNotEmpty(password) else{
