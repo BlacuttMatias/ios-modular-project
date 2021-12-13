@@ -56,6 +56,7 @@
 		D0F407512746D1DB00FD8CA0 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F407502746D1DB00FD8CA0 /* DataManager.swift */; };
 		D0F407532746DD9900FD8CA0 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F407522746DD9900FD8CA0 /* ApiManager.swift */; };
 		D0FD400F27676EA4004B67DE /* RegisterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FD400E27676EA4004B67DE /* RegisterDelegate.swift */; };
+		D0FD40522767AC48004B67DE /* RestServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FD40512767AC48004B67DE /* RestServiceManager.swift */; };
 		D0FDBD8D27270B4900E3982B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FDBD8C27270B4900E3982B /* AppDelegate.swift */; };
 		D0FDBD8F27270B4900E3982B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FDBD8E27270B4900E3982B /* SceneDelegate.swift */; };
 		D0FDBD9127270B4900E3982B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FDBD9027270B4900E3982B /* LoginViewController.swift */; };
@@ -140,6 +141,7 @@
 		D0F407502746D1DB00FD8CA0 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		D0F407522746DD9900FD8CA0 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		D0FD400E27676EA4004B67DE /* RegisterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDelegate.swift; sourceTree = "<group>"; };
+		D0FD40512767AC48004B67DE /* RestServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestServiceManager.swift; sourceTree = "<group>"; };
 		D0FDBD8927270B4900E3982B /* MiProjectoModular.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiProjectoModular.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0FDBD8C27270B4900E3982B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0FDBD8E27270B4900E3982B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 			children = (
 				D0F407522746DD9900FD8CA0 /* ApiManager.swift */,
 				D0BFAB8B276267180061C372 /* DownloadManager.swift */,
+				D0FD40512767AC48004B67DE /* RestServiceManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -687,6 +690,7 @@
 				D0D53DC2273567DC000F1BB7 /* AudioPlayerViewController.swift in Sources */,
 				D0C81C01275C7B3B001A3393 /* MenuCreator.swift in Sources */,
 				D0F2274F27517E7600BAC8B0 /* TracksPlayer.swift in Sources */,
+				D0FD40522767AC48004B67DE /* RestServiceManager.swift in Sources */,
 				D0FDBD8F27270B4900E3982B /* SceneDelegate.swift in Sources */,
 				D0F2E9952742EE30006966D0 /* Errors.swift in Sources */,
 				D0193C4727398B61005A4B80 /* TabViewController.swift in Sources */,
