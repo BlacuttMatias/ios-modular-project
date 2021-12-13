@@ -17,7 +17,7 @@ class TrackerViewModel{
     var addElementsTimer: Timer?
     let addElementsNotification: String = "addElementsNotification"
     
-    init(apiManager: ApiManager, trackerDelegate: TrackerDelegate, menuTrackerDelegate: MenuTrackerDelegate){
+    init(apiManager: RestServiceManager, trackerDelegate: TrackerDelegate, menuTrackerDelegate: MenuTrackerDelegate){
         self.trackerDelegate = trackerDelegate
         self.menuTrackerDelegate = menuTrackerDelegate
         loadTracksCallback = { tracks, error in

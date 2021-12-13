@@ -16,7 +16,7 @@ class TrackerTableViewController: UITableViewController, UiMenuCreator {
         
         self.presentLoadingAlert()
         
-        self.trackerViewModel = TrackerViewModel(apiManager: ApiManager.getInstance(), trackerDelegate: self, menuTrackerDelegate: self)
+        self.trackerViewModel = TrackerViewModel(apiManager: RestServiceManager.getInstance(), trackerDelegate: self, menuTrackerDelegate: self)
          
         //self.tableView.register(TrackTableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
         // Uncomment the following line to preserve selection between presentations
