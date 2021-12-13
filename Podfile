@@ -7,6 +7,7 @@ target 'MiProjectoModular' do
 
   # Pods for MiProjectoModular
 	pod 'AudioPlayerSwift'
+	pod "Alamofire", "~> 5.4"
 
   target 'MiProjectoModularTests' do
     inherit! :search_paths
