@@ -50,8 +50,6 @@ class LoginViewController: UIViewController {
     
     func setInvalidLoginView(width: CGFloat){
 
-        self.invalidLoginView.setErrorMessage(messageError: "Incorrect Username or Password")
-        
         self.view.addSubview(self.invalidLoginView)
         
         let constraintSetter = ConstraintsSetter(uiView: self.invalidLoginView)

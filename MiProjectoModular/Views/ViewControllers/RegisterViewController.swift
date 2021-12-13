@@ -22,6 +22,9 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.registerViewModel.setRegisterDelegate(registerDelegate: self)
+        
         signUpButton.roundedBorder()
         signUpFacebbokButton.roundedBorder()
         
@@ -47,18 +50,6 @@ class RegisterViewController: UIViewController {
     
     func setPasswordErrorLabel(){
         self.setErrorLabel(label: passwordErrorLabel, textField: passwordTextField)
-    }
-    
-    func showUsernameError(errorMessage: String){
-        self.showLabelError(label: self.usernameErrorLabel, errorMessage: errorMessage)
-    }
-    
-    func showEmailError(errorMessage: String){
-        self.showLabelError(label: self.emailErrorLabel, errorMessage: errorMessage)
-    }
-    
-    func showPasswordError(errorMessage: String){
-        self.showLabelError(label: self.passwordErrorLabel, errorMessage: errorMessage)
     }
     
     func hideErrors(){
@@ -97,49 +88,10 @@ class RegisterViewController: UIViewController {
     
     @IBAction func register(_ sender: UIButton) {
         self.hideErrors()
-        guard let username = usernameTextField.text, let email = emailTextField.text, let password = passwordTextField.text else{
-            print("Hay nil")
-            return
-        }
-        guard registerViewModel.isNotEmpty(username) else{
-            self.usernameTextField.animateError()
-            self.showUsernameError(errorMessage: "This field is required")
-            return
-        }
-        guard registerViewModel.isNotTooLong(username) else{
-            self.usernameTextField.animateError()
-            self.showUsernameError(errorMessage: "Username must have least than 10 characters")
-            return
-        }
-        guard registerViewModel.isNotEmpty(email) else{
-            self.emailTextField.animateError()
-            self.showEmailError(errorMessage: "This field is required")
-            return
-        }
-        guard registerViewModel.isValidEmail(email) else{
-            self.emailTextField.animateError()
-            self.showEmailError(errorMessage: "Email must have \"@\" and least than 10 characters")
-            return
-        }
-        guard registerViewModel.isNotEmpty(password) else{
-            self.passwordTextField.animateError()
-            self.showPasswordError(errorMessage: "This field is required")
-            return
-        }
-        guard registerViewModel.isNotTooLong(password) else{
-            self.passwordTextField.animateError()
-            self.showPasswordError(errorMessage: "Password must have least than 10 characters")
-            return
-        }
-        guard !registerViewModel.usernameAlreadyExists(username: username) else{
-            self.invalidRegisterView.setErrorMessage(messageError: "Username already exists")
-            self.signUpButton.animateError()
-            self.showInvalidRegister()
-            return
-        }
-        goToWelcomeViewController()
-        //print("Usuario registrado")
-        
+        let username = usernameTextField.text
+        let email = emailTextField.text
+        let password = self.passwordTextField.text
+        self.registerViewModel.register(optionalUsername: username, optionalEmail: email, optionalPassword: password)
     }
     
     func goToWelcomeViewController() {
@@ -160,4 +112,33 @@ class RegisterViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+}
+
+extension RegisterViewController: RegisterDelegate{
+    
+    func showUsernameError(errorMessage: String){
+        self.usernameTextField.animateError()
+        self.showLabelError(label: self.usernameErrorLabel, errorMessage: errorMessage)
     }
+    
+    func showEmailError(errorMessage: String){
+        self.emailTextField.animateError()
+        self.showLabelError(label: self.emailErrorLabel, errorMessage: errorMessage)
+    }
+    
+    func showPasswordError(errorMessage: String){
+        self.passwordTextField.animateError()
+        self.showLabelError(label: self.passwordErrorLabel, errorMessage: errorMessage)
+    }
+    
+    func showRegisterUserError(errorMessage: String) {
+        self.invalidRegisterView.setErrorMessage(errorMessage: errorMessage)
+        self.signUpButton.animateError()
+        self.showInvalidRegister()
+    }
+    
+    func succesfulRegister() {
+        goToWelcomeViewController()
+    }
+    
+}

@@ -21,8 +21,8 @@ class UIViewError: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setErrorMessage(messageError: String){
-        self.errorMessageLabel.text = messageError
+    func setErrorMessage(errorMessage: String){
+        self.errorMessageLabel.text = errorMessage
     }
     
     private func setStyle(){
