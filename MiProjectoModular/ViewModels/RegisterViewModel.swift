@@ -82,11 +82,11 @@ class RegisterViewModel: StringValidator{
             return
         }
         guard self.usernameNotAlreadyExists(username: username) else{
-            self.registerDelegate?.showRegisterUserError(errorMessage: "Username already exists")
+            self.registerDelegate?.showUsernameError(errorMessage: "Username already exists")
             return
         }
         guard self.emailNotAlreadyExists(email: email) else{
-            self.registerDelegate?.showRegisterUserError(errorMessage: "Email already exists")
+            self.registerDelegate?.showEmailError(errorMessage: "Email already exists")
             return
         }
         self.registerDelegate?.succesfulRegister()
