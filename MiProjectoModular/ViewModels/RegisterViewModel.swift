@@ -36,6 +36,14 @@ class RegisterViewModel: StringValidator{
         return registered.exists(email: email)
     }
     
+    func usernameNotAlreadyExists(username: String) -> Bool{
+        return !self.usernameAlreadyExists(username: username)
+    }
+    
+    func emailNotAlreadyExists(email: String) -> Bool{
+        return !self.emailAlreadyExists(email: email)
+    }
+    
     func register(optionalUsername: String?, optionalEmail: String?, optionalPassword: String?){
         guard let username = optionalUsername else {
             self.registerDelegate?.showUsernameError(errorMessage: "This field is required")
@@ -73,12 +81,11 @@ class RegisterViewModel: StringValidator{
            self.registerDelegate?.showPasswordError(errorMessage: "Password must have least than 10 characters")
             return
         }
-        guard !self.usernameAlreadyExists(username: username) else{
-            print("Username already exists")
+        guard self.usernameNotAlreadyExists(username: username) else{
             self.registerDelegate?.showRegisterUserError(errorMessage: "Username already exists")
             return
         }
-        guard !self.emailAlreadyExists(email: email) else{
+        guard self.emailNotAlreadyExists(email: email) else{
             self.registerDelegate?.showRegisterUserError(errorMessage: "Email already exists")
             return
         }
