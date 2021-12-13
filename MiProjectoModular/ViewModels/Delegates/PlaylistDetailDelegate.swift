@@ -10,4 +10,5 @@ import Foundation
 protocol PlaylistDetailDelegate: AnyObject{
     func reloadPicker()
     func songAdded()
+    func songRemoved()
 }

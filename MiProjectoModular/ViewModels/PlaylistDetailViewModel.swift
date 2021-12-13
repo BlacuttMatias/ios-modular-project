@@ -60,4 +60,9 @@ class PlaylistDetailViewModel{
     func getCellPlaylist(index: Int) -> PlaylistTrackViewCell{
         return PlaylistTrackViewCell(track: self.playlist[index], reuseIdentifier: "cellPlaylist")
     }
+    
+    func removeSong(index: Int){
+        self.playlist.remove(at: index)
+        self.playlistDetailDelegate?.songRemoved()
+    }
 }

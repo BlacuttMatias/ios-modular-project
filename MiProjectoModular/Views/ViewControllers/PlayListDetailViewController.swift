@@ -173,6 +173,15 @@ extension PlayListDetailViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 65
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "", handler: {a,b,c in
+            self.playlistDetailViewModel?.removeSong(index: indexPath.row)
+        })
+        deleteAction.image = UIImage(named: Resource.deleteIcon)?.withTintColor(.white)
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+    
 }
 
 extension PlayListDetailViewController: UITableViewDataSource{
@@ -221,6 +230,10 @@ extension PlayListDetailViewController: PlaylistDetailDelegate{
     func songAdded() {
         self.playlistTableView.reloadData()
         self.songTextField.text = ""
+    }
+    
+    func songRemoved() {
+        self.playlistTableView.reloadData()
     }
     
 }
