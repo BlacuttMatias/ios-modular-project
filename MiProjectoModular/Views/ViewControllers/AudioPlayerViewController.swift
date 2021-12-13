@@ -70,7 +70,7 @@ class AudioPlayerViewController: UIViewController, UiMenuCreator {
         self.view.addSubview(audioPlayerLabel)
         
         let constraintSetter = ConstraintsSetter(uiView: audioPlayerLabel)
-        constraintSetter.setTopEqualContraint(referenceAnchorView: self.view.topAnchor, distance: 40)
+        constraintSetter.setTopEqualContraint(referenceAnchorView: self.view.topAnchor, distance: 60)
         constraintSetter.setCenterXContraint(referenceAnchorView: self.view.centerXAnchor)
 
     }
