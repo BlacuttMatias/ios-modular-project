@@ -59,7 +59,8 @@ class LoginViewController: UIViewController {
         constraintSetter.setBottomEqualContraint(referenceAnchorView: self.signInButton.topAnchor, distance: -40)
     }
     
-    func showInvalidLogin(){
+    func showInvalidLogin(errorMessage: String){
+        self.invalidLoginView.setErrorMessage(errorMessage: errorMessage)
         UIView.animate(withDuration: 0.7, animations: {
             self.invalidLoginView.alpha = 1
         })
@@ -123,7 +124,7 @@ extension LoginViewController: LoginDelegate{
     
     func showLoginUserError(errorMessage: String) {
         self.signInButton.animateError()
-        self.showInvalidLogin()
+        self.showInvalidLogin(errorMessage: errorMessage)
     }
     
     func succesfulLogin() {
