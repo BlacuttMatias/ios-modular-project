@@ -41,6 +41,7 @@
 		D0C81BFF275C7699001A3393 /* ActionMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C81BFE275C7699001A3393 /* ActionMenuButton.swift */; };
 		D0C81C01275C7B3B001A3393 /* MenuCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C81C00275C7B3B001A3393 /* MenuCreator.swift */; };
 		D0C81C03275C8589001A3393 /* MenuAudioPlayerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C81C02275C8589001A3393 /* MenuAudioPlayerDelegate.swift */; };
+		D0C8647D2769188500685EEF /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C8647C2769188500685EEF /* WelcomeViewModel.swift */; };
 		D0C90B0C27331324000FDC9F /* TrackerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C90B0B27331324000FDC9F /* TrackerTableViewController.swift */; };
 		D0CAB26C275FE0A9003BE15A /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CAB26B275FE0A9003BE15A /* Enums.swift */; };
 		D0CF7F302756894A00C61498 /* PlaylistTrackViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CF7F2F2756894A00C61498 /* PlaylistTrackViewCell.swift */; };
@@ -126,6 +127,7 @@
 		D0C81BFE275C7699001A3393 /* ActionMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionMenuButton.swift; sourceTree = "<group>"; };
 		D0C81C00275C7B3B001A3393 /* MenuCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCreator.swift; sourceTree = "<group>"; };
 		D0C81C02275C8589001A3393 /* MenuAudioPlayerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuAudioPlayerDelegate.swift; sourceTree = "<group>"; };
+		D0C8647C2769188500685EEF /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		D0C90B0B27331324000FDC9F /* TrackerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerTableViewController.swift; sourceTree = "<group>"; };
 		D0CAB26B275FE0A9003BE15A /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		D0CF7F2F2756894A00C61498 /* PlaylistTrackViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistTrackViewCell.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				D0C650B0275854D100671370 /* TrackerViewModel.swift */,
 				D0FE0BE9273ECDA900CB481A /* AudioPlayerViewModel.swift */,
 				D0C650B7275876D500671370 /* PlaylistDetailViewModel.swift */,
+				D0C8647C2769188500685EEF /* WelcomeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -650,6 +653,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0DB2A342763B4AC00C18644 /* UITextField+Extension.swift in Sources */,
+				D0C8647D2769188500685EEF /* WelcomeViewModel.swift in Sources */,
 				D0976D07275E8E5700E59D3A /* MenuTrackerDelegate.swift in Sources */,
 				D0F2E9932742C4AB006966D0 /* AudioState.swift in Sources */,
 				D0F407512746D1DB00FD8CA0 /* DataManager.swift in Sources */,

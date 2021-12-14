@@ -11,12 +11,25 @@ class WelcomeViewController: UIViewController {
 
     @IBOutlet weak var imagenLogo: UIImageView!
     @IBOutlet weak var logoutButton: UIButton!
+    private var welcomeViewModel: WelcomeViewModel = WelcomeViewModel()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         imagenLogo.image = UIImage(named: Resource.welcomeImage)
         logoutButton.roundedBorder()
+        self.addGestures()
+    }
+    
+    private func addGestures(){
+        self.imagenLogo.isUserInteractionEnabled = true
+
+        let tapImageLogoGesture = UITapGestureRecognizer(target: self, action: #selector(didTapImageLogo(_:)))
+        self.imagenLogo.addGestureRecognizer(tapImageLogoGesture)
+    }
+    
+    @objc func didTapImageLogo(_ sender: UITapGestureRecognizer){
+        self.showSimpleAlert(title: self.welcomeViewModel.getAppInfoAlertTitle(), message: self.welcomeViewModel.getAppInfoAlertMessage())
     }
     
     @IBAction func Logout(_ sender: UIButton) {
