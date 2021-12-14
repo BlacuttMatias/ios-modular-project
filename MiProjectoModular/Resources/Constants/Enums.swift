@@ -28,3 +28,13 @@ enum TitleActionMenuTracker: String {
     case download = "Download"
     case eliminateFromPlaylist = "Eliminate from Playlist"
 }
+
+enum ErrorSignInUp: String{
+    case emptyField = "This field is required"
+    case usernameTooLong = "Username must have least than 10 characters"
+    case passwordTooLong = "Password must have least than 10 characters"
+    case userNotExists = "Incorrect Username or Password"
+    case notValidEmail = "Email must have \"@\" and least than 10 characters"
+    case usernameAlreadyExists = "Username already exists"
+    case emailAlreadyExists = "Email already exists"
+}

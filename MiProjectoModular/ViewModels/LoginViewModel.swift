@@ -45,31 +45,31 @@ class LoginViewModel: StringValidator{
     
     func login(optionalUsernameOrEmail: String?, optionalPassword: String?){
         guard let usernameOrEmail = optionalUsernameOrEmail else {
-            self.loginDelegate?.showUsernameEmailError(errorMessage: "This field is required")
+            self.loginDelegate?.showUsernameEmailError(errorMessage: ErrorSignInUp.emptyField.rawValue)
             return
         }
         guard self.isNotEmpty(usernameOrEmail) else{
-            self.loginDelegate?.showUsernameEmailError(errorMessage: "This field is required")
+            self.loginDelegate?.showUsernameEmailError(errorMessage: ErrorSignInUp.emptyField.rawValue)
             return
         }
         guard self.isNotTooLong(usernameOrEmail) else{
-            self.loginDelegate?.showUsernameEmailError(errorMessage: "Username must have least than 10 characters")
+            self.loginDelegate?.showUsernameEmailError(errorMessage: ErrorSignInUp.usernameTooLong.rawValue)
             return
         }
         guard let password = optionalPassword else {
-            self.loginDelegate?.showPasswordError(errorMessage: "This field is required")
+            self.loginDelegate?.showPasswordError(errorMessage: ErrorSignInUp.emptyField.rawValue)
             return
         }
         guard self.isNotEmpty(password) else{
-            self.loginDelegate?.showPasswordError(errorMessage: "This field is required")
+            self.loginDelegate?.showPasswordError(errorMessage: ErrorSignInUp.emptyField.rawValue)
             return
         }
         guard self.isNotTooLong(password) else{
-           self.loginDelegate?.showPasswordError(errorMessage: "Password must have least than 10 characters")
+            self.loginDelegate?.showPasswordError(errorMessage: ErrorSignInUp.passwordTooLong.rawValue)
             return
         }
         guard self.isRegistered(usernameOrEmail: usernameOrEmail, password: password) else{
-            self.loginDelegate?.showLoginUserError(errorMessage: "Incorrect Username or Password")
+            self.loginDelegate?.showLoginUserError(errorMessage: ErrorSignInUp.userNotExists.rawValue)
             return
         }
         self.loginDelegate?.succesfulLogin()
