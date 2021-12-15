@@ -134,10 +134,12 @@ class AudioPlayerViewModel{
     
     func nextTrack(){
         self.tracksPlayer?.nextTrack()
+        self.wasDownloaded = false
     }
     
     func previousTrack(){
         self.tracksPlayer?.previousTrack()
+        self.wasDownloaded = false
     }
     
     func areInTheFirstTrack() -> Bool{
