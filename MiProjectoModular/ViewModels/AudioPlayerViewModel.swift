@@ -164,7 +164,7 @@ class AudioPlayerViewModel{
     
     func getActionsMenu() -> [ActionMenuButton]{
         var actions = [
-            ActionMenuButton(title: TitleActionMenuAudioPlayer.removeFromLybrary.rawValue, imageName: Resource.deleteIcon, actionHandler: { self.menuDelegate?.deleteLybrary(action: $0) }, attributes: .destructive),
+            ActionMenuButton(title: TitleActionMenuAudioPlayer.remove.rawValue, imageName: Resource.deleteIcon, actionHandler: { self.menuDelegate?.deleteLybrary(action: $0) }, attributes: .destructive),
             ActionMenuButton(title: TitleActionMenuAudioPlayer.addToAPlaylist.rawValue, imageName: Resource.addPlaylistIcon, actionHandler: { self.menuDelegate?.addToPlaylist(action: $0) }),
             ActionMenuButton(title: TitleActionMenuAudioPlayer.shareSong.rawValue, imageName: Resource.shareIcon, actionHandler: { self.menuDelegate?.shareSong(action: $0) }),
         ]

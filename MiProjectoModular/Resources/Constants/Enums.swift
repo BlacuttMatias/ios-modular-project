@@ -15,7 +15,7 @@ enum PlayerStates {
 }
 
 enum TitleActionMenuAudioPlayer: String {
-    case removeFromLybrary = "Remove from lybrary"
+    case remove = "Remove..."
     case download = "Download"
     case addToAPlaylist = "Add to a Playlist..."
     case shareSong = "Share Song..."
