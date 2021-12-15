@@ -21,11 +21,6 @@ class TrackerViewModel{
     init(apiManager: RestServiceManager, trackerDelegate: TrackerDelegate, menuTrackerDelegate: MenuTrackerDelegate){
         self.trackerDelegate = trackerDelegate
         self.menuTrackerDelegate = menuTrackerDelegate
-        /*
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
-        let context = appDelegate.managedObjectContext
-        self.savedData()
-        */
         loadTracksCallback = { tracks, error in
             if error != nil {
                 DispatchQueue.main.async {
@@ -35,37 +30,6 @@ class TrackerViewModel{
             }
             else{
                 self.tracks = tracks ?? []
-                /*
-                if let _context = context{
-                    let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "TrackModel")
-                    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-                    do{
-                        try appDelegate.persistentStoreCoordinator?.execute(deleteRequest, with: _context)
-                    } catch{
-                        print(error)
-                    }
-                    
-                    let _tracks = tracks ?? []
-                    for item in _tracks{
-                        guard let trackEntity = NSEntityDescription.insertNewObject(forEntityName: "TrackModel", into: _context) as? NSManagedObject else {
-                            return
-                        }
-                        trackEntity.setValue(item.songId, forKey: "songId")
-                        trackEntity.setValue(item.title, forKey: "title")
-                        trackEntity.setValue(item.artist, forKey: "artist")
-                        trackEntity.setValue(item.genre, forKey: "genre")
-                        trackEntity.setValue(item.album, forKey: "album")
-                        trackEntity.setValue(item.duration, forKey: "duration")
-                        
-                        do{
-                            try _context.save()
-                        } catch{
-                            print("No se guardo la informacion: \(error), \(error.localizedDescription)")
-                        }
-                            
-                    }
-                }
-                */
                 DispatchQueue.main.async {
                     self.trackerDelegate?.reloadDataTable()
                     self.trackerDelegate?.dismissLoadingAlert()
@@ -81,35 +45,7 @@ class TrackerViewModel{
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(addElementsNotification), object: nil)
         self.addElementsTimer?.invalidate()
     }
-    /*
-    func savedData(){
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
-        let context = appDelegate.managedObjectContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "TrackModel")
-        request.returnsObjectsAsFaults = false
-        
-        do{
-            let result = try context!.fetch(request)
-            self.tracks = []
-            
-            for data in result as! [NSManagedObject]{
-                let title = data.value(forKey: "title") as? String ?? ""
-                let songId = data.value(forKey: "songId") as? String ?? ""
-                let artist = data.value(forKey: "artist") as? String ?? ""
-                let album = data.value(forKey: "album") as? String ?? ""
-                let genre = data.value(forKey: "genre") as? String ?? ""
-                let duration = data.value(forKey: "duration") as? Double ?? 0
-                
-                let track = Track(title: title, artist: artist, album: album, songId: songId, genre: genre, duration: duration)
-                
-                self.tracks.append(track)
-            }
-        } catch{
-            print("Fallo al obtener info de la BD. \(error), \(error.localizedDescription)")
-        }
-        
-    }
-    */
+    
     func getNumberOfRows() -> Int{
         return self.tracks.count
     }
