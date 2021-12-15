@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20G224" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="TrackModel" representedClassName="TrackModel" syncable="YES" codeGenerationType="class">
+        <attribute name="album" optional="YES" attributeType="String"/>
+        <attribute name="artist" optional="YES" attributeType="String"/>
+        <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="genre" optional="YES" attributeType="String"/>
+        <attribute name="songId" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="UserLogin" representedClassName="UserLogin" syncable="YES" codeGenerationType="class">
+        <attribute name="username" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="TrackModel" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="UserLogin" positionX="-54" positionY="-9" width="128" height="44"/>
+    </elements>
+</model>

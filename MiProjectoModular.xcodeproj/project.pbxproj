@@ -48,6 +48,7 @@
 		D0D53DC2273567DC000F1BB7 /* AudioPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D53DC1273567DC000F1BB7 /* AudioPlayerViewController.swift */; };
 		D0DB2A342763B4AC00C18644 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB2A332763B4AC00C18644 /* UITextField+Extension.swift */; };
 		D0F2274F27517E7600BAC8B0 /* TracksPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2274E27517E7600BAC8B0 /* TracksPlayer.swift */; };
+		D0F2E471276A17C900A34643 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D0F2E46F276A17C900A34643 /* Model.xcdatamodeld */; };
 		D0F2E98B27429C7D006966D0 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2E98A27429C7D006966D0 /* ImageManager.swift */; };
 		D0F2E98D2742B17F006966D0 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2E98C2742B17F006966D0 /* Resources.swift */; };
 		D0F2E98F2742C436006966D0 /* PlayingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2E98E2742C436006966D0 /* PlayingState.swift */; };
@@ -134,6 +135,7 @@
 		D0D53DC1273567DC000F1BB7 /* AudioPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerViewController.swift; sourceTree = "<group>"; };
 		D0DB2A332763B4AC00C18644 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		D0F2274E27517E7600BAC8B0 /* TracksPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracksPlayer.swift; sourceTree = "<group>"; };
+		D0F2E470276A17C900A34643 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		D0F2E98A27429C7D006966D0 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		D0F2E98C2742B17F006966D0 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		D0F2E98E2742C436006966D0 /* PlayingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingState.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				D0A35CCF272C31C200F88788 /* Models.swift */,
+				D0F2E46F276A17C900A34643 /* Model.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -660,6 +663,7 @@
 				D0C3B749274D523D00F1C833 /* PlayButton.swift in Sources */,
 				D0C90B0C27331324000FDC9F /* TrackerTableViewController.swift in Sources */,
 				D0C650BA275877DE00671370 /* PlaylistDetailDelegate.swift in Sources */,
+				D0F2E471276A17C900A34643 /* Model.xcdatamodeld in Sources */,
 				D0027B392748301C00971E82 /* AudioDelegate.swift in Sources */,
 				D0C650B8275876D500671370 /* PlaylistDetailViewModel.swift in Sources */,
 				D0039CB02755182600F764A8 /* PlayListDetailViewController.swift in Sources */,
@@ -1080,6 +1084,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D0F2E46F276A17C900A34643 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D0F2E470276A17C900A34643 /* Model.xcdatamodel */,
+			);
+			currentVersion = D0F2E470276A17C900A34643 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D0FDBD8127270B4900E3982B /* Project object */;
 }
