@@ -62,3 +62,29 @@ class Tracks{
         Track(title: "cancion7", artist: "artista7", album: "album7", songId: "bensound-ukulele", genre: nil, duration: 146.42)
     ]
 }
+
+
+class TrackWithLove{
+    let title: String
+    let artist: String?
+    let album: String?
+    let songId: String
+    let genre: String?
+    let duration: Double?
+    var love: Bool = Bool()
+    
+    init(title: String, artist: String?, album: String?, songId: String, genre: String?, duration: Double?){
+        self.title = title
+        self.artist = artist
+        self.album = album
+        self.songId = songId
+        self.genre = genre
+        self.duration = duration
+    }
+    
+    func changeLove(){
+        self.love = !self.love
+    }
+}
+
+var tracksAudioPlayer: [TrackWithLove] = []

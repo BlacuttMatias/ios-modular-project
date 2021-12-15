@@ -8,12 +8,17 @@
 import Foundation
 
 class TracksPlayer{
-    var currentTrack: Track
-    var tracks: [Track] = []
+    var currentTrack: TrackWithLove
+    var tracks: [TrackWithLove] = []
     
     init(currentTrack: Track, tracks: [Track]){
-        self.currentTrack = currentTrack
-        self.tracks = tracks
+        let trackConverter = TrackConverter()
+
+        if(tracksAudioPlayer.isEmpty){
+            tracksAudioPlayer = trackConverter.getTracksWithLove(with: tracks)
+        }
+        self.tracks = tracksAudioPlayer
+        self.currentTrack = self.tracks.first(where: {$0.songId == currentTrack.songId}) ?? self.tracks[0]
     }
     
     private func indexCurrentTrack() -> Int{
@@ -38,5 +43,9 @@ class TracksPlayer{
     
     func areNotInTheLastTrack() -> Bool{
         return !self.areInTheLastTrack()
+    }
+    
+    func getCurrentTrack() -> TrackWithLove{
+        return self.currentTrack
     }
 }

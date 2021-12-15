@@ -16,7 +16,6 @@ class AudioPlayerViewModel{
     var audioDelegate: AudioDelegate?
     private var tracksPlayer: TracksPlayer?
     private var menuDelegate: MenuAudioPlayerDelegate?
-    private var love: Bool = Bool()
     private var wasDownloaded: Bool = Bool()
     
     init(file: String, fileExtension: String, audioDelegate: AudioDelegate){
@@ -153,8 +152,8 @@ class AudioPlayerViewModel{
         return self.tracksPlayer?.areNotInTheLastTrack() ?? false
     }
     
-    func getCurrentTrack() -> Track?{
-        return self.tracksPlayer?.currentTrack
+    func getCurrentTrack() -> TrackWithLove?{
+        return self.tracksPlayer?.getCurrentTrack()
     }
     
     func setMenuDelegate(menuDelegate: MenuAudioPlayerDelegate){
@@ -173,7 +172,7 @@ class AudioPlayerViewModel{
         }
         
         var loveAction: ActionMenuButton
-        if(self.love){
+        if(self.getLoveCurrentTrack()){
             loveAction = ActionMenuButton(title: TitleActionMenuAudioPlayer.unloved.rawValue, imageName: Resource.unloveIcon, actionHandler: { self.menuDelegate?.love(action: $0) })
         }
         else{
@@ -183,12 +182,16 @@ class AudioPlayerViewModel{
         return actions
     }
     
+    func getLoveCurrentTrack() -> Bool{
+        return self.getCurrentTrack()!.love
+    }
+    
     func doLoveAction(){
-        self.love = !self.love
+        self.getCurrentTrack()?.changeLove()
     }
     
     func getTitleLoveAction() -> String{
-        if(self.love){
+        if(self.getLoveCurrentTrack()){
             return "Loved"
         }
         else{
@@ -197,7 +200,7 @@ class AudioPlayerViewModel{
     }
     
     func getMessageLoveAction() -> String{
-        if(self.love){
+        if(self.getLoveCurrentTrack()){
             return "We will recommend more like this in Listen Now"
         }
         else{

@@ -18,6 +18,7 @@
 		D00CDD6E273DB68300C24A8C /* ConstraintsSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00CDD6D273DB68300C24A8C /* ConstraintsSetter.swift */; };
 		D010F14F2729AF5E00D2AB03 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D010F14E2729AF5E00D2AB03 /* RegisterViewController.swift */; };
 		D0193C4727398B61005A4B80 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0193C4627398B61005A4B80 /* TabViewController.swift */; };
+		D07F1D32276A55F800AB3C51 /* TrackConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07F1D31276A55F800AB3C51 /* TrackConverter.swift */; };
 		D0891AFA272B3A790085F8D5 /* StringValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0891AF9272B3A790085F8D5 /* StringValidator.swift */; };
 		D0891AFC272B3C2E0085F8D5 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0891AFB272B3C2E0085F8D5 /* RegisterViewModel.swift */; };
 		D095128427669368005A5261 /* UIViewError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D095128327669368005A5261 /* UIViewError.swift */; };
@@ -105,6 +106,7 @@
 		D00CDD6D273DB68300C24A8C /* ConstraintsSetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintsSetter.swift; sourceTree = "<group>"; };
 		D010F14E2729AF5E00D2AB03 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		D0193C4627398B61005A4B80 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		D07F1D31276A55F800AB3C51 /* TrackConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackConverter.swift; sourceTree = "<group>"; };
 		D0891AF9272B3A790085F8D5 /* StringValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringValidator.swift; sourceTree = "<group>"; };
 		D0891AFB272B3C2E0085F8D5 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		D095128327669368005A5261 /* UIViewError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewError.swift; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 				D0F2274E27517E7600BAC8B0 /* TracksPlayer.swift */,
 				D0C81BFE275C7699001A3393 /* ActionMenuButton.swift */,
 				D0C81C00275C7B3B001A3393 /* MenuCreator.swift */,
+				D07F1D31276A55F800AB3C51 /* TrackConverter.swift */,
 			);
 			path = Utlis;
 			sourceTree = "<group>";
@@ -675,6 +678,7 @@
 				D0C650AF27584EE400671370 /* LoginViewModel.swift in Sources */,
 				D0F2E98B27429C7D006966D0 /* ImageManager.swift in Sources */,
 				D0FD400F27676EA4004B67DE /* RegisterDelegate.swift in Sources */,
+				D07F1D32276A55F800AB3C51 /* TrackConverter.swift in Sources */,
 				D0C81C03275C8589001A3393 /* MenuAudioPlayerDelegate.swift in Sources */,
 				D0F2E98D2742B17F006966D0 /* Resources.swift in Sources */,
 				D0A35CCE272C213200F88788 /* WelcomeViewController.swift in Sources */,

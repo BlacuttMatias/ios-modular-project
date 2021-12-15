@@ -51,7 +51,7 @@ class AudioPlayerViewController: UIViewController, UiMenuCreator {
         self.audioPlayerViewModel?.setTracks(currentTrack: currentTrack, tracks: tracks)
     }
     
-    private func track() -> Track?{
+    private func track() -> TrackWithLove?{
         return self.audioPlayerViewModel?.getCurrentTrack()
     }
     
@@ -165,6 +165,7 @@ class AudioPlayerViewController: UIViewController, UiMenuCreator {
         }
         self.audioPlayerLabel.text = self.track()?.title
         self.playSlider.value = 0.0
+        self.refreshUiMenu()
     }
     
     private func setPlaySlider(){
