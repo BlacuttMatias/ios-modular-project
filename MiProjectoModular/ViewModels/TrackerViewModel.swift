@@ -37,8 +37,8 @@ class TrackerViewModel{
             }
         }
         ApiManager.getInstance().getMusic(completion: loadTracksCallback)
-        self.addObserverToAddElements()
-        self.startTimerAddElements()
+        //self.addObserverToAddElements()
+        //self.startTimerAddElements()
     }
     
     deinit{
