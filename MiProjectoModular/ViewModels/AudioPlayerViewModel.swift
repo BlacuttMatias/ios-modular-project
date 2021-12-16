@@ -218,11 +218,26 @@ class AudioPlayerViewModel{
         return "Downloading song..."
     }
     
-    func getMessageDownloadAction() -> String{
+    private func getTitleArtistAndAlbumOfSongWithLineBreak() -> String{
         let titleSong = tracksPlayer?.currentTrack.title ?? "Unknown"
         let artistSong = tracksPlayer?.currentTrack.artist ?? "Unknown"
         let albumSong = tracksPlayer?.currentTrack.album ?? "Unknown"
-        return "Title: \(titleSong)\n Artist: \(artistSong)\n Album: \(albumSong)"
+        return "Title: \(titleSong)\nArtist: \(artistSong)\nAlbum: \(albumSong)"
+    }
+    
+    private func getTitleArtistAndAlbumOfSong() -> String{
+        let titleSong = tracksPlayer?.currentTrack.title ?? "Unknown"
+        let artistSong = tracksPlayer?.currentTrack.artist ?? "Unknown"
+        let albumSong = tracksPlayer?.currentTrack.album ?? "Unknown"
+        return "Title: \(titleSong), Artist: \(artistSong), Album: \(albumSong)"
+    }
+    
+    func getMessageDownloadAction() -> String{
+        return self.getTitleArtistAndAlbumOfSongWithLineBreak()
+    }
+    
+    func getTextToShare() -> String{
+        return self.getTitleArtistAndAlbumOfSong()
     }
 
 }

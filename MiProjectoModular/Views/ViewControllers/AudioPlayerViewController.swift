@@ -326,6 +326,12 @@ extension AudioPlayerViewController: MenuAudioPlayerDelegate {
     }
     
     func shareSong(action: UIAction) {
+        // set up activity view controller
+        let text = self.audioPlayerViewModel?.getTextToShare() ?? ""
+        let textToShare = [ text ]
+        let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view 
+        self.present(activityViewController, animated: true, completion: nil)
         return
     }
     
