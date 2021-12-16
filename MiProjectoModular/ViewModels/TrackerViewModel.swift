@@ -6,7 +6,7 @@
 //
 
 import Foundation
-//import CoreData
+import CoreData
 
 class TrackerViewModel{
     
@@ -21,21 +21,27 @@ class TrackerViewModel{
     init(apiManager: RestServiceManager, trackerDelegate: TrackerDelegate, menuTrackerDelegate: MenuTrackerDelegate){
         self.trackerDelegate = trackerDelegate
         self.menuTrackerDelegate = menuTrackerDelegate
-        /*
+        
+        ///
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let context = appDelegate.managedObjectContext
         self.savedData()
-        */
+        ///
+        
         loadTracksCallback = { tracks, error in
             if error != nil {
+                self.savedData()
                 DispatchQueue.main.async {
+                    self.trackerDelegate?.reloadDataTable()
                     self.trackerDelegate?.dismissLoadingAlert()
                 }
                 print("Error to load songs")
+                
+                
             }
             else{
                 self.tracks = tracks ?? []
-                /*
+            ///
                 if let _context = context{
                     let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "TrackModel")
                     let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
@@ -65,7 +71,7 @@ class TrackerViewModel{
                             
                     }
                 }
-                */
+                
                 DispatchQueue.main.async {
                     self.trackerDelegate?.reloadDataTable()
                     self.trackerDelegate?.dismissLoadingAlert()
@@ -81,7 +87,7 @@ class TrackerViewModel{
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(addElementsNotification), object: nil)
         self.addElementsTimer?.invalidate()
     }
-    /*
+    
     func savedData(){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         let context = appDelegate.managedObjectContext
@@ -109,7 +115,7 @@ class TrackerViewModel{
         }
         
     }
-    */
+    
     func getNumberOfRows() -> Int{
         return self.tracks.count
     }
