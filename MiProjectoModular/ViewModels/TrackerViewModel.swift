@@ -58,6 +58,7 @@ class TrackerViewModel{
         guard let trackerDelegate = self.trackerDelegate else {
             return nil
         }
+        guard !self.tracks.isEmpty else { return nil }
         return TrackTableViewCell(track: self.tracks[index], parent: trackerDelegate, reuseIdentifier: "reuseIdentifier", actionsMenu: self.getActionsMenu(wasDownloaded: false), titleUiMenu: "")
     }
     
