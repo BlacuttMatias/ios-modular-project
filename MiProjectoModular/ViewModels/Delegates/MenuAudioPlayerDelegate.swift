@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol MenuAudioPlayerDelegate{
+protocol MenuAudioPlayerDelegate: AnyObject{
     func deleteLybrary(action: UIAction)
     func downloadSong(action: UIAction)
     func addToPlaylist(action: UIAction)

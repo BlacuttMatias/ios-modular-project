@@ -13,9 +13,9 @@ class AudioPlayerViewModel{
     private var sound: AudioPlayer? = nil
     private var audioState: AudioState
     private var timer: Timer?
-    var audioDelegate: AudioDelegate?
+    weak var audioDelegate: AudioDelegate?
     private var tracksPlayer: TracksPlayer?
-    private var menuDelegate: MenuAudioPlayerDelegate?
+    private weak var menuDelegate: MenuAudioPlayerDelegate?
     private var wasDownloaded: Bool = Bool()
     
     init(file: String, fileExtension: String, audioDelegate: AudioDelegate){

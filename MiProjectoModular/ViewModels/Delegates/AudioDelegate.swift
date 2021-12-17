@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol AudioDelegate{
+protocol AudioDelegate: AnyObject{
     func onChangePlayingState()
     func onChangeCurrentTimeSong(updatedCurrentTime: Float)
     func onSongFinished()
